@@ -224,16 +224,40 @@ function drawMeasure(el, l, data, { width, height, showSig, top = 10, active = -
 /* ---------- Звук ---------- */
 
 let audio = null;
-let master = null;
+let master = null; // барабани: леко ехо на стая + компресор
+let clickBus = null; // метроном: сух, без ехо
 let noiseBuf = null;
+let snareHits = []; // готови записи на удара — няколко леко различни варианта
 const live = new Set();
+
+// закъснението между „пуснат звук“ и „чут звук“ — за да върви картината заедно със звука
+const outLatency = () => (audio?.outputLatency || 0) + (audio?.baseLatency || 0);
 
 function ac() {
   if (!audio) {
-    audio = new AudioContext();
+    audio = new AudioContext({ latencyHint: "interactive" });
+    const comp = audio.createDynamicsCompressor();
+    comp.threshold.value = -14;
+    comp.knee.value = 10;
+    comp.ratio.value = 3;
+    comp.attack.value = 0.002;
+    comp.release.value = 0.15;
+    comp.connect(audio.destination);
+
     master = audio.createGain();
-    master.gain.value = 0.8;
-    master.connect(audio.destination);
+    master.gain.value = 0.9;
+    master.connect(comp);
+    const room = audio.createConvolver();
+    room.buffer = makeRoom();
+    const wet = audio.createGain();
+    wet.gain.value = 0.12;
+    master.connect(room);
+    room.connect(wet);
+    wet.connect(comp);
+
+    clickBus = audio.createGain();
+    clickBus.connect(audio.destination);
+
     noiseBuf = audio.createBuffer(1, audio.sampleRate, audio.sampleRate);
     const d = noiseBuf.getChannelData(0);
     for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
@@ -242,11 +266,105 @@ function ac() {
   return audio;
 }
 
-function envelope(t, peak, decay) {
+// кратко меко ехо на малка стая
+function makeRoom() {
+  const len = Math.floor(audio.sampleRate * 0.7);
+  const buf = audio.createBuffer(2, len, audio.sampleRate);
+  for (let ch = 0; ch < 2; ch++) {
+    const d = buf.getChannelData(ch);
+    let smooth = 0;
+    for (let i = 0; i < len; i++) {
+      smooth = smooth * 0.6 + (Math.random() * 2 - 1) * 0.4;
+      d[i] = smooth * Math.pow(1 - i / len, 3);
+    }
+  }
+  return buf;
+}
+
+// Записва един удар по малък барабан: палка + тяло + пружини.
+async function renderSnare() {
+  const sr = 48000;
+  const off = new OfflineAudioContext(1, Math.ceil(sr * 0.6), sr);
+  const out = off.createGain();
+  out.connect(off.destination);
+  const noiseData = off.createBuffer(1, off.length, sr);
+  const nd = noiseData.getChannelData(0);
+  for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
+  const tune = 0.97 + Math.random() * 0.06;
+
+  const env = (peak, decay, attack = 0.001) => {
+    const g = off.createGain();
+    g.gain.setValueAtTime(0.0001, 0);
+    g.gain.exponentialRampToValueAtTime(peak, attack);
+    g.gain.exponentialRampToValueAtTime(0.0001, attack + decay);
+    g.connect(out);
+    return g;
+  };
+  const noiseThrough = (...filters) => {
+    const s = off.createBufferSource();
+    s.buffer = noiseData;
+    let node = s;
+    for (const [type, freq, q = 0.7] of filters) {
+      const f = off.createBiquadFilter();
+      f.type = type;
+      f.frequency.value = freq;
+      f.Q.value = q;
+      node.connect(f);
+      node = f;
+    }
+    s.start(0);
+    return node;
+  };
+
+  noiseThrough(["highpass", 2500]).connect(env(0.9, 0.012)); // удар на палката
+  [[190, 165, 0.8, 0.14, "triangle"], [335, 300, 0.35, 0.09, "sine"]].forEach(([f0, f1, peak, decay, type]) => {
+    const o = off.createOscillator(); // тялото на барабана
+    o.type = type;
+    o.frequency.setValueAtTime(f0 * tune, 0);
+    o.frequency.exponentialRampToValueAtTime(f1 * tune, 0.06);
+    o.connect(env(peak, decay));
+    o.start(0);
+  });
+  noiseThrough(["bandpass", 4200, 0.6]).connect(env(0.75, 0.24, 0.002)); // пружините отдолу
+  noiseThrough(["highpass", 7500]).connect(env(0.22, 0.13, 0.002)); // съскане
+
+  const buf = await off.startRendering();
+  const ch = buf.getChannelData(0);
+  let peak = 0;
+  for (let i = 0; i < ch.length; i++) peak = Math.max(peak, Math.abs(ch[i]));
+  for (let i = 0; i < ch.length; i++) ch[i] *= 0.9 / peak;
+  return buf;
+}
+
+function prepareSnares() {
+  Promise.all([0, 1, 2, 3].map(renderSnare))
+    .then(buffers => { snareHits = buffers; })
+    .catch(e => console.warn("Не мога да подготвя звука на барабана:", e));
+}
+
+function playSnare(t, vel = 1) {
+  if (!snareHits.length) { // още не е готов записът
+    noise(t, "highpass", 1200, 0.6 * vel, 0.18);
+    tone(t, "triangle", 190, 120, 0.4 * vel, 0.1);
+    return;
+  }
+  const src = audio.createBufferSource();
+  src.buffer = snareHits[Math.floor(Math.random() * snareHits.length)];
+  src.playbackRate.value = 0.99 + Math.random() * 0.02;
+  const g = audio.createGain();
+  g.gain.value = vel;
+  src.connect(g);
+  g.connect(master);
+  live.add(src);
+  src.onended = () => live.delete(src);
+  src.start(t);
+}
+
+function envelope(t, peak, decay, dest = master) {
   const g = audio.createGain();
   g.gain.setValueAtTime(peak, t);
   g.gain.exponentialRampToValueAtTime(0.001, t + decay);
-  g.connect(master);
+  g.connect(dest);
   return g;
 }
 
@@ -257,12 +375,12 @@ function startSrc(src, t, decay) {
   src.stop(t + decay + 0.05);
 }
 
-function tone(t, type, f0, f1, peak, decay) {
+function tone(t, type, f0, f1, peak, decay, dest = master) {
   const o = audio.createOscillator();
   o.type = type;
   o.frequency.setValueAtTime(f0, t);
   if (f1) o.frequency.exponentialRampToValueAtTime(f1, t + decay);
-  o.connect(envelope(t, peak, decay));
+  o.connect(envelope(t, peak, decay, dest));
   startSrc(o, t, decay);
 }
 
@@ -279,7 +397,7 @@ function noise(t, filterType, freq, peak, decay) {
 
 const SOUNDS = {
   kick: t => tone(t, "sine", 150, 40, 1, 0.35),
-  snare: t => { noise(t, "highpass", 1200, 0.6, 0.18); tone(t, "triangle", 190, 120, 0.4, 0.1); },
+  snare: (t, vel) => playSnare(t, vel),
   hihat: t => noise(t, "highpass", 7000, 0.3, 0.05),
   crash: t => noise(t, "highpass", 4500, 0.35, 1.2),
   tom_high: t => tone(t, "sine", 230, 150, 0.8, 0.3),
@@ -287,7 +405,7 @@ const SOUNDS = {
   dum: t => { tone(t, "sine", 110, 65, 1, 0.5); noise(t, "lowpass", 400, 0.3, 0.08); },
   tek: t => { noise(t, "bandpass", 3500, 0.9, 0.06); tone(t, "sine", 900, 600, 0.25, 0.05); },
   ka: t => noise(t, "bandpass", 3000, 0.55, 0.05),
-  click: (t, level = 0) => tone(t, "square", [1000, 1300, 1600][level], null, [0.09, 0.12, 0.14][level], 0.03),
+  click: (t, level = 0) => tone(t, "sine", [1200, 1500, 1900][level], null, [0.22, 0.3, 0.4][level], 0.05, clickBus),
 };
 
 /* ---------- Свирене ---------- */
@@ -297,8 +415,11 @@ let timers = [];
 let track = []; // {t, m, idx, end} — кога коя нота звучи; по него скача топчето
 let trackPos = 0;
 
+const LOOKAHEAD = 0.25; // следващият такт се подготвя толкова секунди предварително
+
+// изпълнява fn, когато звукът за момент t се чуе
 function at(t, fn) {
-  timers.push(setTimeout(fn, Math.max(0, (t - audio.currentTime) * 1000)));
+  timers.push(setTimeout(fn, Math.max(0, (t + outLatency() - audio.currentTime) * 1000)));
 }
 
 function play() {
@@ -324,20 +445,32 @@ function play() {
   scheduleMeasure(id, t0 + meter(l).beats * quarter);
 }
 
-function scheduleMeasure(id, t) {
+// Планира звука на такт m от момент t. Звукът се задава точно по часовника на звуковата карта;
+// таймерите на JS само рисуват и подготвят следващия такт предварително.
+function scheduleMeasure(id, t, m = state.measure) {
   const l = lesson();
-  const m = state.measure;
   const quarter = 60 / state.tempo;
   const { beats } = meter(l);
   const end = t + beats * quarter;
+  const strong = new Set(clicks(l).filter(c => c.label).map(c => c.at.toFixed(4)));
 
-  let x = t;
+  let pos = 0;
   bars()[m].forEach((n, idx) => {
-    const when = x;
+    const when = t + pos * quarter;
+    // по-силно на времената/дяловете, малко по-меко между тях, с лека жива разлика
+    const vel = (strong.has(pos.toFixed(4)) ? 1 : 0.84) + (Math.random() - 0.5) * 0.06;
     track.push({ t: when, m, idx, end });
-    n.voices.forEach(v => SOUNDS[v.sound]?.(when));
-    at(when, () => id === playId && state.measure === m && highlight(idx));
-    x += n.beats * quarter;
+    n.voices.forEach(v => SOUNDS[v.sound]?.(when, vel));
+    at(when, () => {
+      if (id !== playId) return;
+      if (state.measure !== m) { // първата нота на новия такт — сменя такта на екрана
+        state.measure = m;
+        state.active = -1;
+        updateMeasure();
+      }
+      highlight(idx);
+    });
+    pos += n.beats;
   });
 
   clicks(l).forEach(c => {
@@ -346,15 +479,14 @@ function scheduleMeasure(id, t) {
     if (c.label) at(when, () => id === playId && setStatus(c.label));
   });
 
-  at(end - 0.05, () => {
+  const last = m === bars().length - 1;
+  const next = state.mode === "manual" ? m : last ? null : m + 1;
+  if (next !== null) {
+    at(end - Math.min(LOOKAHEAD, (beats * quarter) / 2), () => id === playId && scheduleMeasure(id, end, next));
+    return;
+  }
+  at(end + 0.25, () => { // оставя последния удар да отзвучи
     if (id !== playId) return;
-    if (state.mode === "manual") return scheduleMeasure(id, end);
-    if (state.measure < bars().length - 1) {
-      state.measure++;
-      state.active = -1;
-      updateMeasure();
-      return scheduleMeasure(id, end);
-    }
     const finished = state.fromStart;
     stop();
     if (finished) finishLesson();
@@ -741,7 +873,7 @@ function animateBall() {
   const svg = document.querySelector("#big svg");
   if (!state.playing || !audio || !track.length || !svg) return ball.classList.remove("on");
 
-  const now = audio.currentTime;
+  const now = audio.currentTime - outLatency(); // моментът, който се чува сега
   while (trackPos + 1 < track.length && track[trackPos + 1].t <= now) trackPos++;
   const cur = track[trackPos];
   if (cur.t > now) return ball.classList.remove("on");
@@ -815,5 +947,6 @@ async function init() {
   else go("home");
 }
 
+prepareSnares();
 init();
 animateBall();
