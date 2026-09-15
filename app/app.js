@@ -400,6 +400,8 @@ let trackPos = 0;
 let lastLanded = null;
 
 const LOOKAHEAD = 0.25; // следващият такт се подготвя толкова секунди предварително
+// след последната нота листът минава на следващия такт толкова по-късно — колкото да се види ударът
+const switchDelay = dur => Math.min(0.12, dur * 0.4);
 
 // изпълнява fn, когато звукът за момент t се чуе
 function at(t, fn) {
@@ -461,10 +463,11 @@ function scheduleMeasure(id, t, m = state.measure) {
     pos += n.beats;
   });
 
-  // показва следващия такт веднага щом прозвучи последната нота — детето вижда новите
-  // ноти по-рано и има повече време да се подготви, преди да дойде първата от тях
+  // веднага след удара на последната нота листът минава на следващия такт — детето вижда
+  // новите ноти по-рано; звукът и ритъмът не се променят
+  // (обикновено го прави анимацията точно по часовника на звука; това е резерва)
   if (next !== null && next !== m) {
-    at(lastWhen, () => {
+    at(lastWhen + switchDelay(end - lastWhen) + 0.15, () => {
       if (id !== playId || state.measure === next) return;
       state.measure = next;
       state.active = -1;
@@ -867,45 +870,54 @@ function animateBall() {
   const cur = track[trackPos];
   if (cur.t > now) return ball.classList.remove("on");
   const s = svg.clientWidth / BIG.width;
-
-  // листът вече е сменен на следващия такт (по-рано от тази нота) — топчето кротко
-  // чака и леко се полюшва върху първата му нота, докато дойде истинският ѝ ред
-  if (cur.m !== state.measure) {
-    const a = layoutOf(state.measure);
-    const bob = Math.sin(now * 7) * 2.5;
-    ball.style.transform = `translate(${a.xs[0] * s}px, ${(a.landY + bob) * s}px) translate(-50%, -100%)`;
-    ball.classList.add("on");
-    return;
-  }
-
-  const a = layoutOf(cur.m);
-  const x0 = a.xs[cur.idx];
-  const y0 = a.landY;
+  const nxt = track[trackPos + 1] || nextAfter(cur);
+  const dur = nxt ? nxt.t - cur.t : 0.3;
   const since = now - cur.t; // колко време мина от удара
-  if (cur !== lastLanded) { // точно в момента на звука — кръгче на мястото на кацане
-    lastLanded = cur;
-    if (!cur.rest && since < 0.1) pulse(x0 * s, y0 * s);
+  const crossing = nxt && nxt.m !== cur.m; // последната нота преди нов такт
+  // веднага след удара на последната нота — листът минава на следващия такт
+  if (crossing && state.mode !== "manual" && state.measure === cur.m && since >= switchDelay(dur)) {
+    state.measure = nxt.m;
+    state.active = -1;
+    updateMeasure();
+  }
+  const switched = cur.m !== state.measure; // листът вече показва новия такт
+
+  // откъде скача топчето: от нотата — или, след смяната на листа, от началото на новия такт
+  let x0, y0, t0 = cur.t, flight = dur;
+  if (switched) {
+    const a = layoutOf(state.measure);
+    x0 = Math.max(24, a.xs[0] - 70);
+    y0 = a.landY;
+    t0 = cur.t + switchDelay(dur);
+    flight = Math.max(0.05, dur - switchDelay(dur));
+  } else {
+    const a = layoutOf(cur.m);
+    x0 = a.xs[cur.idx];
+    y0 = a.landY;
+    if (cur !== lastLanded) { // точно в момента на звука — кръгче на мястото на кацане
+      lastLanded = cur;
+      if (!cur.rest && since < 0.1) pulse(x0 * s, y0 * s);
+    }
   }
 
   let x = x0;
   let y = y0;
   let sx = 1;
   let sy = 1;
-  const nxt = track[trackPos + 1] || nextAfter(cur);
-  const dur = nxt ? nxt.t - cur.t : 0.3;
 
   // сплескване веднага СЛЕД удара (не преди), за да се вижда кога точно е звукът
   const squash = Math.min(0.09, Math.max(0.06, dur * 0.5));
-  if (!cur.rest && since < squash) {
+  if (!switched && !cur.rest && since < squash) {
     const k = 1 - since / squash;
     sx = 1 + 0.35 * k;
     sy = 1 - 0.3 * k;
   }
 
-  if (nxt) {
+  // на последната нота топчето стои, докато листът се смени, после продължава в ритъм
+  if (nxt && !(crossing && !switched && state.mode !== "manual")) {
     const b = layoutOf(nxt.m);
     const x1 = b.xs[nxt.idx];
-    const p = Math.min(Math.max(since / dur, 0), 1); // постоянна скорост — без ускорение по средата
+    const p = Math.min(Math.max((now - t0) / flight, 0), 1); // постоянна скорост — без ускорение по средата
     const lift = Math.min(Math.max(dur * 55, Math.abs(x1 - x0) * 0.1, 10), 40); // по-дълга нота или по-далечен скок — по-високо
     x = x0 + (x1 - x0) * p;
     y = y0 + (b.landY - y0) * p - lift * 4 * p * (1 - p);
