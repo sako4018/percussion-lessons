@@ -407,10 +407,9 @@ function renderInstrument() {
     </header>
     <div class="list">
       ${i.lessons.map((l, k) => {
-        const done = isDone(i, k);
         return `
           <button class="row" data-lesson="${k}">
-            <span class="badge ${done ? "done" : ""}">${done ? "✓" : k + 1}</span>
+            <span class="badge">${k + 1}</span>
             <span class="row-text">
               <span class="row-title">Урок ${k + 1} · ${esc(l.title)}</span>
               <span class="muted small">${esc(l.learn.join(" · "))}</span>
