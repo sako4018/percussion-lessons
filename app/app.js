@@ -4,6 +4,28 @@ const VF = Vex.Flow;
 const ACCENT = "#0071e3";
 const DUR = { w: 4, h: 2, q: 1, 8: 0.5, 16: 0.25 }; // в четвъртини
 
+// всеки урок има свой цвят и фигура за топчето
+const PALETTE = ["#ff6b6b", "#fd7e14", "#f59f00", "#2fb344", "#12b886", "#228be6", "#7950f2", "#e64980"];
+const SHAPES = ["smile", "star", "heart", "ball", "flower"];
+const lessonLook = idx => ({ color: PALETTE[idx % PALETTE.length], shape: SHAPES[idx % SHAPES.length] });
+
+function shapeSvg({ color: c, shape }) {
+  const body = {
+    ball: `<circle cx="12" cy="12" r="10" fill="${c}"/><circle cx="8.5" cy="8" r="2.8" fill="#fff" opacity=".5"/>`,
+    smile: `<circle cx="12" cy="12" r="10" fill="${c}"/><circle cx="8.6" cy="10" r="1.3" fill="#fff"/>
+      <circle cx="15.4" cy="10" r="1.3" fill="#fff"/>
+      <path d="M8 13.8Q12 17.6 16 13.8" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>`,
+    star: `<path d="M12 2.5 14.8 8.7 21.5 9.4 16.5 13.9 17.9 20.6 12 17.2 6.1 20.6 7.5 13.9 2.5 9.4 9.2 8.7Z"
+      fill="${c}" stroke="${c}" stroke-width="1.6" stroke-linejoin="round"/>`,
+    heart: `<path d="M12 21C5.5 16.4 2 12.8 2 8.6 2 5.8 4.2 3.6 7 3.6c2 0 3.8 1.1 5 2.9 1.2-1.8 3-2.9 5-2.9 2.8 0 5 2.2 5 5 0 4.2-3.5 7.8-10 12.4Z" fill="${c}"/>`,
+    flower: [0, 1, 2, 3, 4].map(k => {
+      const a = -Math.PI / 2 + (k * 2 * Math.PI) / 5;
+      return `<circle cx="${(12 + 5.6 * Math.cos(a)).toFixed(2)}" cy="${(12 + 5.6 * Math.sin(a)).toFixed(2)}" r="4.4" fill="${c}"/>`;
+    }).join("") + `<circle cx="12" cy="12" r="3.4" fill="#fff"/>`,
+  }[shape];
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${body}</svg>`;
+}
+
 const state = {
   data: null,
   api: null,
@@ -413,6 +435,7 @@ function finishLesson() {
   dlg.className = "overlay";
   dlg.innerHTML = `
     <div class="dialog">
+      <div class="hero-shape">${shapeSvg(lessonLook(idx))}</div>
       <h2>Браво!</h2>
       <p class="muted">Край на пример ${ex + 1} · Урок ${idx + 1} · ${esc(lesson().title)}.</p>
       <div class="dialog-actions">
@@ -421,6 +444,8 @@ function finishLesson() {
       </div>
     </div>`;
   document.body.appendChild(dlg);
+  celebrate(lessonLook(idx).color);
+  tada();
   dlg.querySelector("[data-again]").onclick = () => { dlg.remove(); setMeasure(0); };
   dlg.querySelector("[data-next-example]")?.addEventListener("click", () => {
     dlg.remove();
@@ -428,6 +453,94 @@ function finishLesson() {
   });
   dlg.querySelector("[data-next-lesson]")?.addEventListener("click", () => { dlg.remove(); go("intro", { lessonIdx: idx + 1 }); });
   dlg.querySelector("[data-list]")?.addEventListener("click", () => { dlg.remove(); go("instrument"); });
+}
+
+/* ---------- Награда ---------- */
+
+// кратка весела мелодия: до – ми – сол – до
+function tada() {
+  ac();
+  const t = audio.currentTime + 0.02;
+  [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => tone(t + i * 0.11, "triangle", f, null, 0.25, i === 3 ? 0.6 : 0.18));
+}
+
+// конфети и балони за 4 секунди
+function celebrate(color) {
+  const canvas = document.createElement("canvas");
+  canvas.className = "confetti";
+  document.body.appendChild(canvas);
+  const W = innerWidth;
+  const H = innerHeight;
+  const dpr = devicePixelRatio || 1;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+
+  const colors = [color, ...PALETTE];
+  const pick = () => colors[Math.floor(Math.random() * colors.length)];
+  const pieces = Array.from({ length: 140 }, () => ({
+    x: W / 2 + (Math.random() - 0.5) * W * 0.3, y: H * 0.35,
+    vx: (Math.random() - 0.5) * 9, vy: -Math.random() * 11 - 4,
+    rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.3,
+    w: 6 + Math.random() * 6, h: 4 + Math.random() * 4, c: pick(),
+  }));
+  const balloons = Array.from({ length: 6 }, (_, i) => ({
+    x: W * (0.1 + (0.8 * i) / 5) + (Math.random() - 0.5) * 40, y: H + 60 + Math.random() * 120,
+    vy: 1.6 + Math.random() * 1.2, sway: Math.random() * 6.28, r: 22 + Math.random() * 8,
+    c: i === 0 ? color : PALETTE[(i * 3) % PALETTE.length],
+  }));
+
+  const start = performance.now();
+  function frame(now) {
+    const sec = (now - start) / 1000;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalAlpha = sec > 3.2 ? Math.max(0, 1 - (sec - 3.2) / 0.8) : 1;
+
+    for (const p of pieces) {
+      p.vy += 0.25;
+      p.vx *= 0.99;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    }
+
+    for (const b of balloons) {
+      b.y -= b.vy;
+      b.sway += 0.03;
+      const bx = b.x + Math.sin(b.sway) * 12;
+      const knot = b.y + b.r * 1.05;
+      ctx.strokeStyle = "rgba(0, 0, 0, 0.25)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(bx, knot);
+      ctx.quadraticCurveTo(bx + 6, knot + 25, bx, knot + 50);
+      ctx.stroke();
+      ctx.fillStyle = b.c;
+      ctx.beginPath();
+      ctx.ellipse(bx, b.y, b.r * 0.85, b.r * 1.05, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(bx - 4, knot + 4);
+      ctx.lineTo(bx + 4, knot + 4);
+      ctx.lineTo(bx, knot - 2);
+      ctx.fill();
+      ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
+      ctx.beginPath();
+      ctx.ellipse(bx - b.r * 0.3, b.y - b.r * 0.4, b.r * 0.16, b.r * 0.26, -0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    if (sec < 4) requestAnimationFrame(frame);
+    else canvas.remove();
+  }
+  requestAnimationFrame(frame);
 }
 
 /* ---------- Екрани ---------- */
@@ -523,6 +636,8 @@ function renderIntro() {
 function renderPractice() {
   const l = lesson();
   prepare(inst(), l);
+  const look = lessonLook(state.lessonIdx);
+  $app.style.setProperty("--lesson", look.color);
   $app.innerHTML = `
     <div class="topbar">
       <button class="back" data-back>‹ Урок ${state.lessonIdx + 1} · ${esc(l.title)}</button>
@@ -536,7 +651,7 @@ function renderPractice() {
       <span class="muted small">Размер ${esc(sizeLabel(l))}</span>
     </div>
     <section class="panel stage">
-      <div class="big-wrap"><div id="big"></div><div id="ball" class="ball"></div></div>
+      <div class="big-wrap"><div id="big"></div><div id="ball" class="ball">${shapeSvg(look)}</div></div>
       <p id="status" class="status"></p>
     </section>
     <div class="controls">
