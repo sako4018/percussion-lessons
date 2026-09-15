@@ -29,7 +29,6 @@ function shapeSvg({ color: c, shape }) {
 const state = {
   data: null,
   api: null,
-  progress: { completed: [] },
   view: "home",
   instId: null,
   lessonIdx: 0,
@@ -49,8 +48,6 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 
 const inst = () => state.data.instruments.find(i => i.id === state.instId);
 const lesson = () => inst().lessons[state.lessonIdx];
-const lessonKey = (i, idx) => `${i.id}/${i.lessons[idx].id}`;
-const isDone = (i, idx) => state.progress.completed.includes(lessonKey(i, idx));
 
 /* ---------- Данни ---------- */
 
@@ -117,27 +114,13 @@ function clicks(l) {
 
 function waitApi() {
   return new Promise(resolve => {
-    if (window.pywebview?.api?.load_progress) return resolve(window.pywebview.api);
+    if (window.pywebview?.api?.get_lessons) return resolve(window.pywebview.api);
     const timer = setTimeout(() => resolve(null), 1500);
     window.addEventListener("pywebviewready", () => {
       clearTimeout(timer);
       resolve(window.pywebview.api);
     }, { once: true });
   });
-}
-
-async function loadProgress() {
-  if (state.api) return state.api.load_progress();
-  try {
-    return JSON.parse(localStorage.getItem("progress")) || { completed: [] };
-  } catch {
-    return { completed: [] };
-  }
-}
-
-function saveProgress() {
-  if (state.api) return state.api.save_progress(state.progress);
-  try { localStorage.setItem("progress", JSON.stringify(state.progress)); } catch { /* няма къде */ }
 }
 
 /* ---------- Ноти ---------- */
@@ -554,11 +537,6 @@ function finishLesson() {
   const ex = state.example;
   const hasNextExample = ex < lesson().parsedExamples.length - 1;
   const hasNextLesson = idx < i.lessons.length - 1;
-  const key = lessonKey(i, idx);
-  if (!hasNextExample && !state.progress.completed.includes(key)) {
-    state.progress.completed.push(key);
-    saveProgress();
-  }
   const next = hasNextExample
     ? `<button class="primary" data-next-example>Пример ${ex + 2} ›</button>`
     : hasNextLesson
@@ -692,16 +670,12 @@ function renderHome() {
       <p class="muted">Избери инструмент и започни от първия урок.</p>
     </header>
     <div class="cards">
-      ${state.data.instruments.map(i => {
-        const done = i.lessons.filter((_, k) => isDone(i, k)).length;
-        return `
+      ${state.data.instruments.map(i => `
           <button class="card" data-inst="${esc(i.id)}">
             <span class="card-title">${esc(i.name)}</span>
             <span class="muted">${esc(i.subtitle)}</span>
-            <span class="bar"><span style="width:${(done / i.lessons.length) * 100}%"></span></span>
-            <span class="muted small">${done} от ${i.lessons.length} урока</span>
-          </button>`;
-      }).join("")}
+            <span class="muted small">${i.lessons.length} урока</span>
+          </button>`).join("")}
     </div>`;
   $app.querySelectorAll("[data-inst]").forEach(b => {
     b.onclick = () => go("instrument", { instId: b.dataset.inst });
@@ -964,7 +938,6 @@ async function init() {
   state.api = await waitApi();
   try {
     state.data = state.api ? await state.api.get_lessons() : await (await fetch("lessons.json")).json();
-    state.progress = await loadProgress();
   } catch (e) {
     $app.innerHTML = `<p class="error">Не мога да заредя уроците: ${esc(e.message)}</p>`;
     return;
