@@ -238,6 +238,14 @@ def strong_end(cells):
     return not has_rest(cells[-1]) and cells[-1].split()[-1] in LONG
 
 
+def starts_rest(cells):
+    return cells[0].split()[0].endswith("r")
+
+
+def ends_rest(cells):
+    return cells[-1].split()[-1].endswith("r")
+
+
 def build(s, e, rng):
     if s["parts"]:
         pools, weights, need_rest = pools_8(s, e)
@@ -248,11 +256,15 @@ def build(s, e, rng):
         make = lambda: gen_44(rng, cells, weights)
 
     used = []
+    prev_ends_rest = False  # не позволява пауза веднага след пауза през чертата на такта
     for i in range(BARS):
         chosen = None
+        chosen_cand = None
         for attempt in range(3000):
             cand = make()
             if not valid(s, cand, need_rest):
+                continue
+            if prev_ends_rest and starts_rest(cand) and attempt < 2500:
                 continue
             if i == BARS - 1:  # краят: дълга нота, а ако няма такава — поне без пауза
                 if not (strong_end(cand) if attempt < 1500 else not has_rest(cand[-1])):
@@ -263,10 +275,12 @@ def build(s, e, rng):
             if key in used and attempt < 2000:
                 continue
             chosen = key
+            chosen_cand = cand
             break
         if chosen is None:
             raise RuntimeError(f"„{s['title']}“: пример {e + 1}, такт {i + 1}")
         used.append(chosen)
+        prev_ends_rest = ends_rest(chosen_cand)
     return used
 
 

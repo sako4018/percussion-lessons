@@ -52,17 +52,17 @@
               "q:sd:R q:r q:sd:L q:r",
               "q:sd:R q:sd:L q:r q:r",
               "q:sd:R q:sd:L q:sd:R q:r",
-              "q:r q:sd:R q:sd:L q:sd:R"
+              "q:sd:R q:sd:L q:r q:sd:R"
             ],
             [
               "q:r q:sd:R q:sd:L q:r",
-              "q:r q:sd:R q:r q:sd:L",
-              "q:r q:sd:R q:sd:L q:sd:R",
               "q:sd:R q:r q:sd:L q:r",
-              "q:r q:r q:sd:R q:sd:L",
               "q:sd:R q:r q:r q:sd:L",
               "q:sd:R q:sd:L q:r q:r",
-              "q:sd:R q:sd:L q:r q:sd:R"
+              "q:sd:R q:sd:L q:r q:sd:R",
+              "q:r q:sd:R q:r q:sd:L",
+              "q:r q:r q:sd:R q:sd:L",
+              "q:sd:R q:r q:sd:L q:sd:R"
             ]
           ]
         },
@@ -153,12 +153,12 @@
             [
               "h:sd:R h:r",
               "q:sd:R h:sd:L q:r",
-              "h:r h:sd:R",
               "h:sd:R q:r q:sd:L",
               "q:r q:sd:R h:sd:L",
               "h:sd:R q:sd:L q:r",
-              "h:r q:sd:R q:sd:L",
-              "q:sd:R h:r q:sd:L"
+              "q:sd:R h:r q:sd:L",
+              "h:r h:sd:R",
+              "h:r q:sd:R q:sd:L"
             ],
             [
               "h:r q:sd:R q:sd:L",
@@ -302,11 +302,11 @@
             [
               "q:sd:R q:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L q:sd:R q:sd:L q:r",
-              "q:r 8:sd:R 8:sd:L q:sd:R q:sd:L",
-              "q:r q:sd:R 8:sd:L 8:sd:R q:sd:L",
               "8:sd:R 8:sd:L q:r q:sd:R q:sd:L",
               "8:sd:R 8:sd:L q:r q:sd:R 8:sd:L 8:sd:R",
               "q:sd:R q:r q:sd:L 8:sd:R 8:sd:L",
+              "q:r 8:sd:R 8:sd:L q:sd:R q:sd:L",
+              "q:sd:R q:sd:L q:sd:R q:r",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r q:sd:R"
             ],
             [
@@ -356,20 +356,20 @@
               "q:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:r 8:sd:L",
               "8:sd:R 8:r 8:r 8:sd:L q:r 8:r 8:sd:R",
               "8:sd:R 8:r 8:sd:L 8:r q:r 8:sd:R 8:r",
-              "8:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:r 8:r 8:sd:L",
               "8:sd:R 8:r 8:r 8:sd:L 8:r 8:sd:R 8:r 8:sd:L",
               "8:r 8:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:r 8:sd:L",
               "8:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:r q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:r 8:sd:R",
               "8:r 8:sd:R 8:sd:L 8:r q:r q:sd:R"
             ],
             [
               "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r q:r",
               "8:sd:R 8:sd:L q:r 8:r 8:sd:R 8:sd:L 8:r",
-              "q:r q:sd:R 8:sd:L 8:r q:sd:R",
-              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:r 8:sd:R",
               "8:sd:R 8:r 8:sd:L 8:r 8:r 8:sd:R 8:sd:L 8:sd:R",
               "8:sd:R 8:r 8:r 8:sd:L 8:r 8:sd:R 8:r 8:sd:L",
               "q:r 8:sd:R 8:r 8:r 8:sd:L 8:sd:R 8:r",
+              "q:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:r 8:r 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R",
               "q:r 8:sd:R 8:sd:L 8:r 8:sd:R q:sd:L"
             ],
             [
@@ -482,10 +482,10 @@
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R q:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "8:r 8:sd:R q:r 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L 8:sd:R 8:r",
-              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:r 8:sd:L 8:sd:R",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L",
               "8:sd:R 8:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r 8:r 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:r 8:r 8:sd:L",
               "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r q:sd:R"
             ]
           ]
@@ -664,11 +664,11 @@
               "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r q:sd:R 8:r 16:sd:L 16:sd:R",
               "16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r",
               "16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r",
-              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L",
               "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r",
-              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L",
-              "8:r 16:sd:R 16:sd:L q:sd:R 16:sd:L 16:sd:R 8:r q:sd:L"
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:r 16:sd:R 16:sd:L q:sd:R 16:sd:L 16:sd:R 8:r q:sd:L",
+              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L",
+              "8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R 8:sd:L q:sd:R"
             ],
             [
               "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r 8:r 16:sd:L 16:sd:R",
@@ -676,8 +676,8 @@
               "16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 8:r q:sd:R 8:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r",
-              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r q:sd:R",
-              "8:r 16:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L",
+              "q:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r",
+              "16:sd:R 16:sd:L 8:r 8:r 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
               "16:sd:R 16:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R"
             ],
             [
@@ -694,11 +694,11 @@
               "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L",
               "16:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
               "8:r 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r",
-              "8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R 8:r q:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r",
               "16:sd:R 16:sd:L 8:r 16:r 16:sd:R 16:sd:L 16:sd:R q:sd:L 8:r 16:sd:R 16:sd:L",
               "8:r 16:sd:R 16:sd:L q:r 8:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
-              "q:r 8:r 16:sd:R 16:sd:L 8:sd:R 8:sd:L q:sd:R"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r",
+              "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R q:sd:L"
             ]
           ]
         },
@@ -895,11 +895,11 @@
             [
               "t8:r t8:sd:R t8:sd:L t8:sd:R t8:r t8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
               "t8:r t8:sd:R t8:sd:L 8:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:r",
-              "t8:r t8:sd:R t8:sd:L t8:r t8:sd:R t8:sd:L 8:sd:R 8:r t8:r t8:sd:L t8:sd:R",
               "t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:r t8:sd:R t8:r t8:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L 8:sd:R 8:r",
               "8:sd:R 8:sd:L q:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:r",
               "t8:sd:R t8:sd:L t8:r t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:r t8:sd:R t8:sd:L t8:sd:R t8:r",
+              "t8:sd:R t8:sd:L t8:sd:R t8:r t8:sd:L t8:sd:R t8:r t8:sd:L t8:sd:R t8:sd:L t8:r t8:sd:R",
               "t8:sd:R t8:r t8:sd:L q:r t8:sd:R t8:r t8:sd:L q:sd:R"
             ],
             [
@@ -910,7 +910,7 @@
               "t8:r t8:sd:R t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R 8:sd:L 8:r",
               "t8:sd:R t8:r t8:sd:L t8:r t8:sd:R t8:sd:L q:sd:R 8:r 8:sd:L",
               "t8:sd:R t8:sd:L t8:r t8:sd:R t8:sd:L t8:r t8:r t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:r",
-              "8:r 8:sd:R t8:sd:L t8:sd:R t8:sd:L q:r q:sd:R"
+              "8:sd:R 8:r t8:r t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:r q:sd:L"
             ]
           ]
         },
@@ -1108,28 +1108,28 @@
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
               "8:sd:R 8:r 8:r 8:sd:L 8:sd:R",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
-              "q:r 8:sd:R 8:r 8:sd:L",
               "8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "q:r 8:sd:R 8:sd:L 8:sd:R",
               "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
             ],
             [
               "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
-              "q:r 8:sd:R 8:sd:L 8:r",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
-              "q:r 8:sd:R 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L q:r 8:sd:R",
-              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
+              "q:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L"
             ],
             [
               "8:r 8:sd:R 8:r 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
-              "8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
-              "8:r 8:sd:R 8:sd:L q:r",
               "8:sd:R 8:r q:r 8:sd:L",
               "8:r 8:sd:R q:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:r",
+              "8:sd:R 8:r 8:r 8:sd:L 8:sd:R",
               "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
             ]
           ]
@@ -1162,21 +1162,21 @@
             [
               "8:sd:R 8:sd:L 8:r q:sd:R",
               "8:sd:R 8:sd:L 8:sd:R q:r",
-              "q:r 8:sd:R q:sd:L",
               "8:sd:R q:r 8:sd:L 8:sd:R",
+              "q:r 8:sd:R q:sd:L",
               "8:sd:R q:r 8:sd:L 8:r",
               "8:sd:R q:sd:L q:r",
-              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:r",
               "8:sd:R 8:r 8:sd:L q:sd:R"
             ],
             [
               "8:sd:R 8:sd:L 8:sd:R q:r",
               "q:sd:R 8:sd:L q:r",
-              "q:r 8:sd:R 8:sd:L 8:sd:R",
               "8:sd:R q:sd:L 8:r 8:sd:R",
               "q:sd:R 8:sd:L 8:sd:R 8:r",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
               "8:sd:R q:r 8:sd:L 8:r",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L",
               "8:sd:R q:r q:sd:L"
             ],
             [
@@ -1272,28 +1272,28 @@
               "q:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
               "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:r",
-              "q:r q:r 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L"
+              "8:sd:R 8:r q:r 8:sd:L q:r",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L"
             ],
             [
               "8:sd:R 8:sd:L 8:sd:R q:r q:r",
               "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
               "q:r 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
-              "q:r q:r 8:sd:R 8:sd:L 8:r",
-              "q:r q:r 8:sd:R 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
-              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R"
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
             ],
             [
               "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:r",
-              "q:r 8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
               "8:r 8:sd:R q:r 8:sd:L q:r",
               "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:r",
-              "8:sd:R 8:r q:r 8:sd:L 8:sd:R 8:sd:L"
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "8:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R"
             ],
             [
               "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:r",
@@ -1301,8 +1301,8 @@
               "8:sd:R 8:r 8:sd:L q:r 8:sd:R 8:sd:L",
               "8:r 8:sd:R q:r 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R q:r q:r",
-              "q:r q:r 8:sd:R 8:sd:L 8:r",
-              "q:r 8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:r q:r 8:sd:L q:r",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
               "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L 8:sd:R"
             ]
           ]
@@ -1417,9 +1417,9 @@
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:r 8:sd:L",
               "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R q:sd:L",
               "8:sd:R q:sd:L q:r 8:sd:R q:r",
-              "8:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R",
-              "q:r 8:sd:R q:r 8:sd:L q:r",
-              "8:r 8:sd:R 8:sd:L q:r 8:sd:R q:sd:L"
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L",
+              "q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R"
             ]
           ]
         },
@@ -1452,12 +1452,12 @@
             [
               "q:r 8:sd:R q:r q:sd:L 8:sd:R",
               "q:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:r",
-              "q:r 8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:r 8:sd:R",
               "q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R q:r q:sd:L 8:sd:R",
               "8:sd:R 8:sd:L q:r 8:sd:R q:sd:L 8:sd:R",
-              "8:r 8:sd:R q:sd:L 8:sd:R 8:sd:L q:sd:R"
+              "8:r 8:sd:R q:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:sd:R"
             ],
             [
               "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
@@ -1533,8 +1533,8 @@
               "8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r",
-              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:sd:L 8:r 8:sd:R q:sd:L 8:r 8:sd:R",
               "q:r 8:sd:R 8:sd:L q:sd:R q:sd:L"
             ]
           ]
@@ -1580,10 +1580,10 @@
               "q:r 8:sd:R 8:r 8:sd:L 8:r q:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r q:r 8:sd:R",
               "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r",
-              "q:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:sd:R 8:sd:L 8:r q:sd:R q:sd:L 8:sd:R",
               "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R q:r",
               "8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
               "8:sd:R 8:sd:L 8:sd:R 8:r q:sd:L 8:sd:R q:sd:L"
             ],
             [
@@ -1702,7 +1702,7 @@
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
               "8:sd:R 8:sd:L 8:r q:sd:R 8:sd:L 8:sd:R q:sd:L",
               "8:sd:R q:sd:L q:sd:R q:sd:L q:r",
-              "q:r 8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R"
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R q:sd:L"
             ],
             [
               "8:sd:R q:sd:L q:r q:sd:R 8:sd:L 8:sd:R",
@@ -1757,10 +1757,10 @@
               "8:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:r 8:sd:L 8:sd:R q:sd:L",
               "8:sd:R q:r 8:sd:L 8:r q:sd:R q:r 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L q:r",
-              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L",
               "8:sd:R q:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L 8:r",
               "8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R q:sd:L 8:sd:R 8:r q:r 8:r 8:sd:L 8:sd:R",
+              "8:sd:R q:r 8:sd:L 8:sd:R q:r 8:sd:L 8:r 8:sd:R",
               "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L q:sd:R"
             ],
             [
@@ -1817,20 +1817,20 @@
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:r 8:sd:L",
               "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
               "q:sd:R q:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:r",
-              "8:r 8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L q:sd:R 8:r 8:sd:L",
               "q:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:r 8:sd:L",
               "q:sd:R 8:sd:L 8:r q:sd:R 8:sd:L 8:r 8:sd:R q:sd:L",
+              "8:r 8:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:sd:L 8:r 8:sd:R q:r",
               "8:sd:R 8:r 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:r q:sd:R"
             ],
             [
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:r 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R q:r 8:sd:L 8:sd:R",
               "q:sd:R q:sd:L q:sd:R 8:sd:L q:r 8:sd:R 8:r",
-              "8:r 8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
-              "8:r 8:sd:R q:sd:L 8:sd:R q:r q:sd:L 8:sd:R 8:r",
               "8:sd:R 8:r 8:r 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:r q:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:r 8:r 8:sd:L 8:sd:R q:sd:L q:sd:R q:sd:L"
             ]
           ]
