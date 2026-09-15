@@ -11,6 +11,7 @@ const state = {
   view: "home",
   instId: null,
   lessonIdx: 0,
+  example: 0,
   measure: 0,
   active: -1,
   playing: false,
@@ -39,8 +40,10 @@ function meter(l) {
 // "8:hh+bd:R" → дължина, удари, надпис
 function parseToken(tok, i) {
   const [durRaw, voicesRaw = "", label] = tok.split(":");
-  const dotted = durRaw.endsWith("d");
-  const dur = dotted ? durRaw.slice(0, -1) : durRaw;
+  const triplet = durRaw.startsWith("t"); // t8 = осмина в триола
+  const plain = triplet ? durRaw.slice(1) : durRaw;
+  const dotted = plain.endsWith("d");
+  const dur = dotted ? plain.slice(0, -1) : plain;
   if (!(dur in DUR)) throw new Error(`Непозната дължина "${durRaw}" в "${tok}"`);
   const rest = voicesRaw === "r";
   const voices = rest ? [] : voicesRaw.split("+").map(id => {
@@ -48,24 +51,46 @@ function parseToken(tok, i) {
     return i.voices[id];
   });
   return {
-    dur, dotted, rest, voices,
+    dur, dotted, triplet, rest, voices,
     label: label ?? voices.map(v => v.label).filter(Boolean).join(""),
-    beats: DUR[dur] * (dotted ? 1.5 : 1),
+    beats: DUR[dur] * (dotted ? 1.5 : 1) * (triplet ? 2 / 3 : 1),
   };
 }
 
 function prepare(i, l) {
-  if (l.parsed) return;
+  if (l.parsedExamples) return;
   const expected = meter(l).beats;
-  l.parsed = l.measures.map((m, k) => {
+  l.parsedExamples = (l.examples || [l.measures]).map((ex, e) => ex.map((m, k) => {
     const notes = m.trim().split(/\s+/).map(t => parseToken(t, i));
     const sum = notes.reduce((a, n) => a + n.beats, 0);
     if (Math.abs(sum - expected) > 1e-6) {
-      console.warn(`„${l.title}“, такт ${k + 1}: ${sum} четвъртини вместо ${expected}`);
+      console.warn(`„${l.title}“, пример ${e + 1}, такт ${k + 1}: ${sum} четвъртини вместо ${expected}`);
     }
     return notes;
+  }));
+  l.usedVoices = [...new Set(l.parsedExamples.flat(2).flatMap(n => n.voices))];
+}
+
+// тактовете на избрания пример
+const bars = () => lesson().parsedExamples[state.example];
+
+const sizeLabel = l => l.timeSignature + (l.parts ? ` (${l.parts.join("+")})` : "");
+
+// кликове на метронома в един такт; при неравноделен размер — акцент в началото на всеки дял
+function clicks(l) {
+  const { num, step } = meter(l);
+  if (!l.parts) {
+    return Array.from({ length: num }, (_, b) => ({ at: b * step, level: b === 0 ? 2 : 0, label: String(b + 1) }));
+  }
+  const out = [];
+  let pos = 0;
+  l.parts.forEach((len, p) => {
+    for (let k = 0; k < len; k++) {
+      out.push({ at: (pos + k) * step, level: pos + k === 0 ? 2 : k === 0 ? 1 : 0, label: k === 0 ? String(p + 1) : null });
+    }
+    pos += len;
   });
-  l.usedVoices = [...new Set(l.parsed.flat().flatMap(n => n.voices))];
+  return out;
 }
 
 function waitApi() {
@@ -95,7 +120,7 @@ function saveProgress() {
 
 /* ---------- Ноти ---------- */
 
-function drawMeasure(el, l, k, { width, height, showSig, active = -1 }) {
+function drawMeasure(el, l, data, { width, height, showSig, active = -1 }) {
   el.innerHTML = "";
   const renderer = new VF.Renderer(el, VF.Renderer.Backends.SVG);
   renderer.resize(width, height);
@@ -105,7 +130,7 @@ function drawMeasure(el, l, k, { width, height, showSig, active = -1 }) {
   if (showSig) stave.addClef("percussion").addTimeSignature(l.timeSignature);
   stave.setContext(ctx).draw();
 
-  const notes = l.parsed[k].map((n, idx) => {
+  const notes = data.map((n, idx) => {
     const note = new VF.StaveNote({
       keys: n.rest ? ["b/4"] : n.voices.map(v => v.key),
       duration: n.dur + (n.dotted ? "d" : "") + (n.rest ? "r" : ""),
@@ -131,11 +156,26 @@ function drawMeasure(el, l, k, { width, height, showSig, active = -1 }) {
     return note;
   });
 
+  // триоли: поредни триолни ноти за общо 1 удар = една скоба
+  const tuplets = [];
+  let group = [];
+  let acc = 0;
+  data.forEach((n, idx) => {
+    if (!n.triplet) { group = []; acc = 0; return; }
+    group.push(notes[idx]);
+    acc += n.beats;
+    if (Math.abs(acc - 1) < 1e-6) {
+      tuplets.push(new VF.Tuplet(group, { num_notes: 3, notes_occupied: 2 }));
+      group = [];
+      acc = 0;
+    }
+  });
+
   const { num, den } = meter(l);
   const voice = new VF.Voice({ num_beats: num, beat_value: den })
     .setMode(VF.Voice.Mode.SOFT)
     .addTickables(notes);
-  const groups = (l.beamGroups || []).map(g => new VF.Fraction(...g.split("/").map(Number)));
+  const groups = (l.parts || []).map(p => new VF.Fraction(p, den));
   const beams = VF.Beam.generateBeams(notes, {
     stem_direction: VF.Stem.UP,
     ...(groups.length ? { groups } : {}),
@@ -143,6 +183,7 @@ function drawMeasure(el, l, k, { width, height, showSig, active = -1 }) {
   new VF.Formatter().joinVoices([voice]).format([voice], stave.getNoteEndX() - stave.getNoteStartX() - 16);
   voice.draw(ctx, stave);
   beams.forEach(b => b.setContext(ctx).draw());
+  tuplets.forEach(t => t.setContext(ctx).draw());
 
   const svg = el.querySelector("svg");
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
@@ -218,7 +259,7 @@ const SOUNDS = {
   dum: t => { tone(t, "sine", 110, 65, 1, 0.5); noise(t, "lowpass", 400, 0.3, 0.08); },
   tek: t => { noise(t, "bandpass", 3500, 0.9, 0.06); tone(t, "sine", 900, 600, 0.25, 0.05); },
   ka: t => noise(t, "bandpass", 3000, 0.55, 0.05),
-  click: (t, accent) => tone(t, "square", accent ? 1600 : 1000, null, 0.12, 0.03),
+  click: (t, level = 0) => tone(t, "square", [1000, 1300, 1600][level], null, [0.09, 0.12, 0.14][level], 0.03),
 };
 
 /* ---------- Свирене ---------- */
@@ -240,41 +281,40 @@ function play() {
 
   // един такт отброяване
   const l = lesson();
-  const { num, step } = meter(l);
-  const stepSec = (step * 60) / state.tempo;
+  const quarter = 60 / state.tempo;
   const t0 = audio.currentTime + 0.15;
-  for (let b = 0; b < num; b++) {
-    SOUNDS.click(t0 + b * stepSec, b === 0);
-    at(t0 + b * stepSec, () => id === playId && setStatus(`Отброяване… ${b + 1}`));
-  }
-  scheduleMeasure(id, t0 + num * stepSec);
+  clicks(l).forEach(c => {
+    SOUNDS.click(t0 + c.at * quarter, c.level);
+    if (c.label) at(t0 + c.at * quarter, () => id === playId && setStatus(`Отброяване… ${c.label}`));
+  });
+  scheduleMeasure(id, t0 + meter(l).beats * quarter);
 }
 
 function scheduleMeasure(id, t) {
   const l = lesson();
   const m = state.measure;
   const quarter = 60 / state.tempo;
-  const { num, step, beats } = meter(l);
+  const { beats } = meter(l);
 
   let x = t;
-  l.parsed[m].forEach((n, idx) => {
+  bars()[m].forEach((n, idx) => {
     const when = x;
     n.voices.forEach(v => SOUNDS[v.sound]?.(when));
     at(when, () => id === playId && state.measure === m && highlight(idx));
     x += n.beats * quarter;
   });
 
-  for (let b = 0; b < num; b++) {
-    const when = t + b * step * quarter;
-    if (state.metronome) SOUNDS.click(when, b === 0);
-    at(when, () => id === playId && setStatus(String(b + 1)));
-  }
+  clicks(l).forEach(c => {
+    const when = t + c.at * quarter;
+    if (state.metronome) SOUNDS.click(when, c.level);
+    if (c.label) at(when, () => id === playId && setStatus(c.label));
+  });
 
   const end = t + beats * quarter;
   at(end - 0.05, () => {
     if (id !== playId) return;
     if (state.mode === "manual") return scheduleMeasure(id, end);
-    if (state.measure < l.parsed.length - 1) {
+    if (state.measure < bars().length - 1) {
       state.measure++;
       state.active = -1;
       updateMeasure();
@@ -310,7 +350,7 @@ function highlight(idx) {
 
 function setMeasure(k) {
   stop();
-  const total = lesson().parsed.length;
+  const total = bars().length;
   state.measure = Math.min(Math.max(k, 0), total - 1);
   state.active = -1;
   setStatus("");
@@ -320,7 +360,7 @@ function setMeasure(k) {
 // При ръчен режим, докато свири: сменя такта веднага, без да спира звука.
 // Иначе (автоматичен режим или на пауза): обичайна навигация със спиране.
 function jumpMeasure(k) {
-  const total = lesson().parsed.length;
+  const total = bars().length;
   const target = Math.min(Math.max(k, 0), total - 1);
   if (!state.playing || state.mode !== "manual") return setMeasure(target);
 
@@ -339,27 +379,36 @@ function jumpMeasure(k) {
 function finishLesson() {
   const i = inst();
   const idx = state.lessonIdx;
+  const ex = state.example;
+  const hasNextExample = ex < lesson().parsedExamples.length - 1;
+  const hasNextLesson = idx < i.lessons.length - 1;
   const key = lessonKey(i, idx);
-  if (!state.progress.completed.includes(key)) {
+  if (!hasNextExample && !state.progress.completed.includes(key)) {
     state.progress.completed.push(key);
     saveProgress();
   }
-  const hasNext = idx < i.lessons.length - 1;
+  const next = hasNextExample
+    ? `<button class="primary" data-next-example>Пример ${ex + 2} ›</button>`
+    : hasNextLesson
+      ? `<button class="primary" data-next-lesson>Урок ${idx + 2} ›</button>`
+      : `<button class="primary" data-list>Към уроците</button>`;
   const dlg = document.createElement("div");
   dlg.className = "overlay";
   dlg.innerHTML = `
     <div class="dialog">
       <h2>Браво!</h2>
-      <p class="muted">Завърши урок ${idx + 1} · ${esc(lesson().title)}.</p>
+      <p class="muted">Край на пример ${ex + 1} · Урок ${idx + 1} · ${esc(lesson().title)}.</p>
       <div class="dialog-actions">
         <button class="pill" data-again>Още веднъж</button>
-        ${hasNext
-          ? `<button class="primary" data-next-lesson>Урок ${idx + 2} ›</button>`
-          : `<button class="primary" data-list>Към уроците</button>`}
+        ${next}
       </div>
     </div>`;
   document.body.appendChild(dlg);
   dlg.querySelector("[data-again]").onclick = () => { dlg.remove(); setMeasure(0); };
+  dlg.querySelector("[data-next-example]")?.addEventListener("click", () => {
+    dlg.remove();
+    go("practice", { example: ex + 1, measure: 0, active: -1 });
+  });
   dlg.querySelector("[data-next-lesson]")?.addEventListener("click", () => { dlg.remove(); go("intro", { lessonIdx: idx + 1 }); });
   dlg.querySelector("[data-list]")?.addEventListener("click", () => { dlg.remove(); go("instrument"); });
 }
@@ -439,7 +488,7 @@ function renderIntro() {
     <header class="hero">
       <p class="eyebrow">Урок ${state.lessonIdx + 1}</p>
       <h1>${esc(l.title)}</h1>
-      <p class="muted">Темпо ${l.tempo} · Размер ${esc(l.timeSignature)} · ${l.measures.length} такта</p>
+      <p class="muted">Темпо ${l.tempo} · Размер ${esc(sizeLabel(l))} · ${l.parsedExamples.length} примера по ${l.parsedExamples[0].length} такта</p>
     </header>
     <section class="panel">
       <h2>Какво се учи</h2>
@@ -451,7 +500,7 @@ function renderIntro() {
     </section>
     <button class="primary big" data-start>Започни урока</button>`;
   $("[data-back]").onclick = () => go("instrument");
-  $("[data-start]").onclick = () => go("practice", { measure: 0, active: -1, tempo: l.tempo });
+  $("[data-start]").onclick = () => go("practice", { example: 0, measure: 0, active: -1, tempo: l.tempo });
 }
 
 function renderPractice() {
@@ -461,6 +510,13 @@ function renderPractice() {
     <div class="topbar">
       <button class="back" data-back>‹ Урок ${state.lessonIdx + 1} · ${esc(l.title)}</button>
       <span class="counter" id="counter"></span>
+    </div>
+    <div class="example-bar">
+      <span class="muted">Пример</span>
+      <div class="modes">
+        ${l.parsedExamples.map((_, e) => `<button class="mode-btn ${e === state.example ? "active" : ""}" data-example="${e}">${e + 1}</button>`).join("")}
+      </div>
+      <span class="muted small">Размер ${esc(sizeLabel(l))}</span>
     </div>
     <section class="panel stage">
       <div id="big"></div>
@@ -485,7 +541,7 @@ function renderPractice() {
     <section class="panel">
       <h2>Всички ноти на урока</h2>
       <div class="tiles">
-        ${l.parsed.map((_, k) => `<button class="tile" data-m="${k}"><span class="tile-n">${k + 1}</span><div></div></button>`).join("")}
+        ${bars().map((_, k) => `<button class="tile" data-m="${k}"><span class="tile-n">${k + 1}</span><div></div></button>`).join("")}
       </div>
     </section>
     <section class="panel">
@@ -511,8 +567,12 @@ function renderPractice() {
     };
   });
 
+  $app.querySelectorAll("[data-example]").forEach(btn => {
+    btn.onclick = () => go("practice", { example: Number(btn.dataset.example), measure: 0, active: -1 });
+  });
+
   $app.querySelectorAll(".tile").forEach((tile, k) => {
-    drawMeasure(tile.querySelector("div"), l, k, { width: 300, height: 130, showSig: k === 0 });
+    drawMeasure(tile.querySelector("div"), l, bars()[k], { width: 300, height: 130, showSig: k === 0 });
     tile.onclick = () => jumpMeasure(k);
   });
   updateMeasure();
@@ -520,13 +580,13 @@ function renderPractice() {
 
 function drawBig() {
   const el = document.getElementById("big");
-  if (el) drawMeasure(el, lesson(), state.measure, { width: 640, height: 130, showSig: true, active: state.active });
+  if (el) drawMeasure(el, lesson(), bars()[state.measure], { width: 640, height: 130, showSig: true, active: state.active });
 }
 
 function updateMeasure() {
-  const total = lesson().parsed.length;
+  const total = bars().length;
   drawBig();
-  $("#counter").textContent = `Такт ${state.measure + 1} от ${total}`;
+  $("#counter").textContent = `Пример ${state.example + 1} · Такт ${state.measure + 1} от ${total}`;
   $app.querySelectorAll(".tile").forEach((t, k) => t.classList.toggle("current", k === state.measure));
   $("[data-prev]").disabled = state.measure === 0;
   $("[data-next]").disabled = state.measure === total - 1;
