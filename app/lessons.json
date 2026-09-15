@@ -1,0 +1,82 @@
+{
+  "instruments": [
+    {
+      "id": "snare",
+      "name": "Малък барабан",
+      "subtitle": "Палки и рудименти",
+      "voices": {
+        "sd": { "name": "Малък барабан", "hint": "R = дясна, L = лява ръка", "key": "c/5", "sound": "snare" }
+      },
+      "lessons": [
+        {
+          "id": "grip",
+          "title": "Хват и четвъртини",
+          "learn": [
+            "Правилен хват на палките",
+            "Редуване дясна (R) и лява (L) ръка",
+            "Еднаква сила на двете ръце"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "q:sd:R q:sd:L q:sd:R q:sd:L",
+            "q:sd:R q:sd:L q:sd:R q:sd:L",
+            "q:sd:R q:sd:L q:sd:R q:sd:L",
+            "q:sd:R q:sd:L q:sd:R q:sd:L"
+          ]
+        },
+        {
+          "id": "singles",
+          "title": "Единични удари",
+          "learn": [
+            "Single stroke – R L R L",
+            "Осмини ноти",
+            "Постоянно темпо без забързване"
+          ],
+          "tempo": 70,
+          "timeSignature": "4/4",
+          "measures": [
+            "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+            "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+            "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+            "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
+          ]
+        },
+        {
+          "id": "doubles",
+          "title": "Двойни удари",
+          "learn": [
+            "Double stroke – R R L L",
+            "Отскок на палката",
+            "Контрол на втория удар"
+          ],
+          "tempo": 65,
+          "timeSignature": "4/4",
+          "measures": [
+            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L",
+            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L",
+            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L",
+            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L"
+          ]
+        },
+        {
+          "id": "paradiddle",
+          "title": "Парадидъл",
+          "learn": [
+            "Първият рудимент: R L R R L R L L",
+            "Шестнайсетини ноти",
+            "Смяна на водещата ръка"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "8:sd:R 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:L",
+            "8:sd:R 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:L",
+            "16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L",
+            "16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L"
+          ]
+        }
+      ]
+    }
+  ]
+}
