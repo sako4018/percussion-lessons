@@ -414,6 +414,7 @@ let playId = 0;
 let timers = [];
 let track = []; // {t, m, idx, end} — кога коя нота звучи; по него скача топчето
 let trackPos = 0;
+let lastLanded = null;
 
 const LOOKAHEAD = 0.25; // следващият такт се подготвя толкова секунди предварително
 
@@ -459,7 +460,7 @@ function scheduleMeasure(id, t, m = state.measure) {
     const when = t + pos * quarter;
     // по-силно на времената/дяловете, малко по-меко между тях, с лека жива разлика
     const vel = (strong.has(pos.toFixed(4)) ? 1 : 0.84) + (Math.random() - 0.5) * 0.06;
-    track.push({ t: when, m, idx, end });
+    track.push({ t: when, m, idx, end, rest: n.rest });
     n.voices.forEach(v => SOUNDS[v.sound]?.(when, vel));
     at(when, () => {
       if (id !== playId) return;
@@ -783,7 +784,7 @@ function renderPractice() {
       <span class="muted small">Размер ${esc(sizeLabel(l))}</span>
     </div>
     <section class="panel stage">
-      <div class="big-wrap"><div id="big"></div><div id="ball" class="ball">${shapeSvg(look)}</div></div>
+      <div class="big-wrap"><div id="big"></div><div id="hit" class="hit"></div><div id="ball" class="ball">${shapeSvg(look)}</div></div>
       <p id="status" class="status"></p>
     </section>
     <div class="controls">
@@ -873,35 +874,62 @@ function animateBall() {
   const svg = document.querySelector("#big svg");
   if (!state.playing || !audio || !track.length || !svg) return ball.classList.remove("on");
 
-  const now = audio.currentTime - outLatency(); // моментът, който се чува сега
+  // моментът, който се чува сега (+ половин кадър, защото картината излиза на екрана малко след рисуването)
+  const now = audio.currentTime - outLatency() + 0.008;
   while (trackPos + 1 < track.length && track[trackPos + 1].t <= now) trackPos++;
   const cur = track[trackPos];
   if (cur.t > now) return ball.classList.remove("on");
 
   const a = layoutOf(cur.m);
-  let x = a.xs[cur.idx];
-  let y = a.landY;
+  const s = svg.clientWidth / BIG.width;
+  const x0 = a.xs[cur.idx];
+  const y0 = a.landY;
+  const since = now - cur.t; // колко време мина от удара
+  if (cur !== lastLanded) { // точно в момента на звука — кръгче на мястото на кацане
+    lastLanded = cur;
+    if (!cur.rest && since < 0.1) pulse(x0 * s, y0 * s);
+  }
+
+  let x = x0;
+  let y = y0;
   let sx = 1;
   let sy = 1;
   const nxt = track[trackPos + 1] || nextAfter(cur);
+  const dur = nxt ? nxt.t - cur.t : 0.3;
+
+  // сплескване веднага СЛЕД удара (не преди), за да се вижда кога точно е звукът
+  const squash = Math.min(0.09, Math.max(0.06, dur * 0.5));
+  if (!cur.rest && since < squash) {
+    const k = 1 - since / squash;
+    sx = 1 + 0.35 * k;
+    sy = 1 - 0.3 * k;
+  }
+
   if (nxt) {
     const b = layoutOf(nxt.m);
-    const dur = nxt.t - cur.t;
-    const p = Math.min(Math.max((now - cur.t) / dur, 0), 1);
-    const dist = Math.abs(b.xs[nxt.idx] - x);
-    const lift = Math.min(Math.max(dur * 55, dist * 0.1, 10), 40); // по-дълга нота или по-далечен скок — по-високо
-    x += (b.xs[nxt.idx] - x) * p;
-    y += (b.landY - y) * p - lift * 4 * p * (1 - p);
-    const ground = Math.min(p, 1 - p);
-    if (ground < 0.07) { // леко сплескване при кацане
-      const k = 1 - ground / 0.07;
-      sx = 1 + 0.18 * k;
-      sy = 1 - 0.18 * k;
+    const x1 = b.xs[nxt.idx];
+    const p = Math.min(Math.max(since / dur, 0), 1);
+    const ease = p * p * (3 - 2 * p); // над нотата при излитане и кацане, бързо между тях
+    const lift = Math.min(Math.max(dur * 55, Math.abs(x1 - x0) * 0.1, 10), 40); // по-дълга нота или по-далечен скок — по-високо
+    x = x0 + (x1 - x0) * ease;
+    y = y0 + (b.landY - y0) * ease - lift * 4 * p * (1 - p);
+    if (p > 0.8 && sx === 1) { // леко издължено при падане
+      const k = (p - 0.8) / 0.2;
+      sx = 1 - 0.1 * k;
+      sy = 1 + 0.14 * k;
     }
   }
-  const s = svg.clientWidth / BIG.width;
   ball.style.transform = `translate(${x * s}px, ${y * s}px) translate(-50%, -100%) scale(${sx}, ${sy})`;
   ball.classList.add("on");
+}
+
+function pulse(px, py) {
+  const hit = document.getElementById("hit");
+  if (!hit) return;
+  hit.style.setProperty("--pos", `translate(${px}px, ${py}px)`);
+  hit.classList.remove("go");
+  void hit.offsetWidth; // рестартира анимацията
+  hit.classList.add("go");
 }
 
 function updateMeasure() {
