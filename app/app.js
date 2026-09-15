@@ -908,11 +908,10 @@ function animateBall() {
   if (nxt) {
     const b = layoutOf(nxt.m);
     const x1 = b.xs[nxt.idx];
-    const p = Math.min(Math.max(since / dur, 0), 1);
-    const ease = p * p * (3 - 2 * p); // над нотата при излитане и кацане, бързо между тях
+    const p = Math.min(Math.max(since / dur, 0), 1); // постоянна скорост — без ускорение по средата
     const lift = Math.min(Math.max(dur * 55, Math.abs(x1 - x0) * 0.1, 10), 40); // по-дълга нота или по-далечен скок — по-високо
-    x = x0 + (x1 - x0) * ease;
-    y = y0 + (b.landY - y0) * ease - lift * 4 * p * (1 - p);
+    x = x0 + (x1 - x0) * p;
+    y = y0 + (b.landY - y0) * p - lift * 4 * p * (1 - p);
     if (p > 0.8 && sx === 1) { // леко издължено при падане
       const k = (p - 0.8) / 0.2;
       sx = 1 - 0.1 * k;
