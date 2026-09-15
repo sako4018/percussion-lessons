@@ -437,17 +437,21 @@ function scheduleMeasure(id, t, m = state.measure) {
   const { beats } = meter(l);
   const end = t + beats * quarter;
   const strong = new Set(clicks(l).filter(c => c.label).map(c => c.at.toFixed(4)));
+  const last = m === bars().length - 1;
+  const next = state.mode === "manual" ? m : last ? null : m + 1;
 
   let pos = 0;
+  let lastWhen = t;
   bars()[m].forEach((n, idx) => {
     const when = t + pos * quarter;
+    lastWhen = when;
     // по-силно на времената/дяловете, малко по-меко между тях, с лека жива разлика
     const vel = (strong.has(pos.toFixed(4)) ? 1 : 0.84) + (Math.random() - 0.5) * 0.06;
     track.push({ t: when, m, idx, end, rest: n.rest });
     n.voices.forEach(v => SOUNDS[v.sound]?.(when, vel));
     at(when, () => {
       if (id !== playId) return;
-      if (state.measure !== m) { // първата нота на новия такт — сменя такта на екрана
+      if (state.measure !== m) { // резервно, ако смяната отдолу не е стигнала навреме
         state.measure = m;
         state.active = -1;
         updateMeasure();
@@ -457,14 +461,23 @@ function scheduleMeasure(id, t, m = state.measure) {
     pos += n.beats;
   });
 
+  // показва следващия такт веднага щом прозвучи последната нота — детето вижда новите
+  // ноти по-рано и има повече време да се подготви, преди да дойде първата от тях
+  if (next !== null && next !== m) {
+    at(lastWhen, () => {
+      if (id !== playId || state.measure === next) return;
+      state.measure = next;
+      state.active = -1;
+      updateMeasure();
+    });
+  }
+
   clicks(l).forEach(c => {
     const when = t + c.at * quarter;
     if (state.metronome) SOUNDS.click(when, c.level);
     if (c.label) at(when, () => id === playId && setStatus(c.label));
   });
 
-  const last = m === bars().length - 1;
-  const next = state.mode === "manual" ? m : last ? null : m + 1;
   if (next !== null) {
     at(end - Math.min(LOOKAHEAD, (beats * quarter) / 2), () => id === playId && scheduleMeasure(id, end, next));
     return;
@@ -853,9 +866,19 @@ function animateBall() {
   while (trackPos + 1 < track.length && track[trackPos + 1].t <= now) trackPos++;
   const cur = track[trackPos];
   if (cur.t > now) return ball.classList.remove("on");
+  const s = svg.clientWidth / BIG.width;
+
+  // листът вече е сменен на следващия такт (по-рано от тази нота) — топчето кротко
+  // чака и леко се полюшва върху първата му нота, докато дойде истинският ѝ ред
+  if (cur.m !== state.measure) {
+    const a = layoutOf(state.measure);
+    const bob = Math.sin(now * 7) * 2.5;
+    ball.style.transform = `translate(${a.xs[0] * s}px, ${(a.landY + bob) * s}px) translate(-50%, -100%)`;
+    ball.classList.add("on");
+    return;
+  }
 
   const a = layoutOf(cur.m);
-  const s = svg.clientWidth / BIG.width;
   const x0 = a.xs[cur.idx];
   const y0 = a.landY;
   const since = now - cur.t; // колко време мина от удара
