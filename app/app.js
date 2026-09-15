@@ -16,7 +16,7 @@ const state = {
   playing: false,
   fromStart: false,
   tempo: 60,
-  loop: false,
+  mode: "auto", // "auto" = минава сам напред, "manual" = повтаря такта, учителят сменя
   metronome: true,
 };
 
@@ -234,7 +234,7 @@ function play() {
   if (state.playing) return stop();
   ac();
   state.playing = true;
-  state.fromStart = state.measure === 0 && !state.loop;
+  state.fromStart = state.mode === "auto" && state.measure === 0;
   const id = ++playId;
   updatePlayButton();
 
@@ -273,7 +273,7 @@ function scheduleMeasure(id, t) {
   const end = t + beats * quarter;
   at(end - 0.05, () => {
     if (id !== playId) return;
-    if (state.loop) return scheduleMeasure(id, end);
+    if (state.mode === "manual") return scheduleMeasure(id, end);
     if (state.measure < l.parsed.length - 1) {
       state.measure++;
       state.active = -1;
@@ -315,6 +315,25 @@ function setMeasure(k) {
   state.active = -1;
   setStatus("");
   updateMeasure();
+}
+
+// При ръчен режим, докато свири: сменя такта веднага, без да спира звука.
+// Иначе (автоматичен режим или на пауза): обичайна навигация със спиране.
+function jumpMeasure(k) {
+  const total = lesson().parsed.length;
+  const target = Math.min(Math.max(k, 0), total - 1);
+  if (!state.playing || state.mode !== "manual") return setMeasure(target);
+
+  playId++;
+  timers.forEach(clearTimeout);
+  timers = [];
+  live.forEach(s => { try { s.stop(); } catch { /* вече спрян */ } });
+  live.clear();
+
+  state.measure = target;
+  state.active = -1;
+  updateMeasure();
+  scheduleMeasure(++playId, audio.currentTime + 0.05);
 }
 
 function finishLesson() {
@@ -459,7 +478,10 @@ function renderPractice() {
         <output id="tempoVal">${state.tempo}</output>
       </label>
       <label class="toggle"><input type="checkbox" id="metro" ${state.metronome ? "checked" : ""}> Метроном</label>
-      <label class="toggle"><input type="checkbox" id="loop" ${state.loop ? "checked" : ""}> Повтаряй такта</label>
+      <div class="modes" role="group" aria-label="Режим">
+        <button class="mode-btn ${state.mode === "auto" ? "active" : ""}" data-mode="auto">Автоматично</button>
+        <button class="mode-btn ${state.mode === "manual" ? "active" : ""}" data-mode="manual">Ръчно — аз сменям</button>
+      </div>
     </div>
     <section class="panel">
       <h2>Всички ноти на урока</h2>
@@ -473,19 +495,26 @@ function renderPractice() {
     </section>`;
 
   $("[data-back]").onclick = () => go("intro");
-  $("[data-prev]").onclick = () => setMeasure(state.measure - 1);
-  $("[data-next]").onclick = () => setMeasure(state.measure + 1);
+  $("[data-prev]").onclick = () => jumpMeasure(state.measure - 1);
+  $("[data-next]").onclick = () => jumpMeasure(state.measure + 1);
   $("#play").onclick = play;
   $("#tempo").oninput = e => {
     state.tempo = Number(e.target.value);
     $("#tempoVal").textContent = state.tempo;
   };
   $("#metro").onchange = e => { state.metronome = e.target.checked; };
-  $("#loop").onchange = e => { state.loop = e.target.checked; };
+  $app.querySelectorAll("[data-mode]").forEach(btn => {
+    btn.onclick = () => {
+      if (state.mode === btn.dataset.mode) return;
+      stop();
+      state.mode = btn.dataset.mode;
+      $app.querySelectorAll("[data-mode]").forEach(b => b.classList.toggle("active", b === btn));
+    };
+  });
 
   $app.querySelectorAll(".tile").forEach((tile, k) => {
     drawMeasure(tile.querySelector("div"), l, k, { width: 300, height: 130, showSig: k === 0 });
-    tile.onclick = () => setMeasure(k);
+    tile.onclick = () => jumpMeasure(k);
   });
   updateMeasure();
 }
@@ -518,8 +547,8 @@ document.addEventListener("keydown", e => {
   if (state.view !== "practice" || document.querySelector(".overlay")) return;
   if (e.target.matches?.("input")) return;
   if (e.code === "Space") { e.preventDefault(); play(); }
-  if (e.code === "ArrowLeft") setMeasure(state.measure - 1);
-  if (e.code === "ArrowRight") setMeasure(state.measure + 1);
+  if (e.code === "ArrowLeft") jumpMeasure(state.measure - 1);
+  if (e.code === "ArrowRight") jumpMeasure(state.measure + 1);
 });
 
 /* ---------- Старт ---------- */
