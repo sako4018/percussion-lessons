@@ -77,7 +77,14 @@ button:disabled { cursor: default; opacity: 0.4; }
 .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .counter { font-weight: 600; color: var(--muted); }
 .stage { padding: 18px 28px 12px; }
-.big svg, .tile svg { display: block; }
+.big-wrap { position: relative; }
+#big svg, .tile svg { display: block; }
+.ball {
+  position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 3px 8px rgba(0, 113, 227, 0.35);
+  transform-origin: 50% 100%; opacity: 0; transition: opacity 0.2s; pointer-events: none; will-change: transform;
+}
+.ball.on { opacity: 1; }
 .status { text-align: center; min-height: 30px; margin: 4px 0 0; font-size: 20px; font-weight: 600; color: var(--accent); }
 
 .controls { display: flex; justify-content: center; gap: 12px; margin: 8px 0 14px; }

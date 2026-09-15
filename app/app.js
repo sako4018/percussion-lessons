@@ -120,13 +120,14 @@ function saveProgress() {
 
 /* ---------- Ноти ---------- */
 
-function drawMeasure(el, l, data, { width, height, showSig, active = -1 }) {
+// Рисува такт; връща къде са нотите (x) и линията, на която каца топчето (landY).
+function drawMeasure(el, l, data, { width, height, showSig, top = 10, active = -1 }) {
   el.innerHTML = "";
   const renderer = new VF.Renderer(el, VF.Renderer.Backends.SVG);
   renderer.resize(width, height);
   const ctx = renderer.getContext();
 
-  const stave = new VF.Stave(10, 10, width - 20);
+  const stave = new VF.Stave(10, top, width - 20);
   if (showSig) stave.addClef("percussion").addTimeSignature(l.timeSignature);
   stave.setContext(ctx).draw();
 
@@ -191,6 +192,11 @@ function drawMeasure(el, l, data, { width, height, showSig, active = -1 }) {
   svg.removeAttribute("height");
   svg.style.width = "100%";
   svg.style.height = "auto";
+
+  const xs = notes.map(n => {
+    try { return (n.getNoteHeadBeginX() + n.getNoteHeadEndX()) / 2; } catch { return n.getAbsoluteX() + 6; }
+  });
+  return { xs, landY: stave.getYForLine(0) - (tuplets.length ? 44 : 28) };
 }
 
 /* ---------- Звук ---------- */
@@ -266,6 +272,8 @@ const SOUNDS = {
 
 let playId = 0;
 let timers = [];
+let track = []; // {t, m, idx, end} — кога коя нота звучи; по него скача топчето
+let trackPos = 0;
 
 function at(t, fn) {
   timers.push(setTimeout(fn, Math.max(0, (t - audio.currentTime) * 1000)));
@@ -283,9 +291,13 @@ function play() {
   const l = lesson();
   const quarter = 60 / state.tempo;
   const t0 = audio.currentTime + 0.15;
+  track = [];
+  trackPos = 0;
   clicks(l).forEach(c => {
     SOUNDS.click(t0 + c.at * quarter, c.level);
-    if (c.label) at(t0 + c.at * quarter, () => id === playId && setStatus(`Отброяване… ${c.label}`));
+    if (!c.label) return;
+    at(t0 + c.at * quarter, () => id === playId && setStatus(`Отброяване… ${c.label}`));
+    track.push({ t: t0 + c.at * quarter, m: state.measure, idx: 0, end: null }); // подскача на място
   });
   scheduleMeasure(id, t0 + meter(l).beats * quarter);
 }
@@ -295,10 +307,12 @@ function scheduleMeasure(id, t) {
   const m = state.measure;
   const quarter = 60 / state.tempo;
   const { beats } = meter(l);
+  const end = t + beats * quarter;
 
   let x = t;
   bars()[m].forEach((n, idx) => {
     const when = x;
+    track.push({ t: when, m, idx, end });
     n.voices.forEach(v => SOUNDS[v.sound]?.(when));
     at(when, () => id === playId && state.measure === m && highlight(idx));
     x += n.beats * quarter;
@@ -310,7 +324,6 @@ function scheduleMeasure(id, t) {
     if (c.label) at(when, () => id === playId && setStatus(c.label));
   });
 
-  const end = t + beats * quarter;
   at(end - 0.05, () => {
     if (id !== playId) return;
     if (state.mode === "manual") return scheduleMeasure(id, end);
@@ -331,6 +344,8 @@ function stop() {
   playId++;
   timers.forEach(clearTimeout);
   timers = [];
+  track = [];
+  trackPos = 0;
   live.forEach(s => { try { s.stop(); } catch { /* вече спрян */ } });
   live.clear();
   if (!state.playing) return;
@@ -372,6 +387,8 @@ function jumpMeasure(k) {
 
   state.measure = target;
   state.active = -1;
+  track = [];
+  trackPos = 0;
   updateMeasure();
   scheduleMeasure(++playId, audio.currentTime + 0.05);
 }
@@ -519,7 +536,7 @@ function renderPractice() {
       <span class="muted small">Размер ${esc(sizeLabel(l))}</span>
     </div>
     <section class="panel stage">
-      <div id="big"></div>
+      <div class="big-wrap"><div id="big"></div><div id="ball" class="ball"></div></div>
       <p id="status" class="status"></p>
     </section>
     <div class="controls">
@@ -578,9 +595,66 @@ function renderPractice() {
   updateMeasure();
 }
 
+const BIG = { width: 640, height: 170, top: 50, showSig: true }; // отгоре има място за подскоците
+
 function drawBig() {
   const el = document.getElementById("big");
-  if (el) drawMeasure(el, lesson(), bars()[state.measure], { width: 640, height: 130, showSig: true, active: state.active });
+  if (el) drawMeasure(el, lesson(), bars()[state.measure], { ...BIG, active: state.active });
+}
+
+// къде са нотите в такт m от избрания пример (рисува се веднъж настрани и се помни)
+function layoutOf(m) {
+  const cache = (lesson().layouts ??= {});
+  const key = `${state.example}/${m}`;
+  cache[key] ??= drawMeasure(document.createElement("div"), lesson(), bars()[m], BIG);
+  return cache[key];
+}
+
+/* ---------- Топче ---------- */
+
+// следващото кацане след последната нота на такта (още не е в track)
+function nextAfter(cur) {
+  if (cur.end == null) return null;
+  const m = state.mode === "manual" ? cur.m : cur.m + 1;
+  return m < bars().length ? { t: cur.end, m, idx: 0 } : null;
+}
+
+function animateBall() {
+  requestAnimationFrame(animateBall);
+  const ball = document.getElementById("ball");
+  if (!ball) return;
+  const svg = document.querySelector("#big svg");
+  if (!state.playing || !audio || !track.length || !svg) return ball.classList.remove("on");
+
+  const now = audio.currentTime;
+  while (trackPos + 1 < track.length && track[trackPos + 1].t <= now) trackPos++;
+  const cur = track[trackPos];
+  if (cur.t > now) return ball.classList.remove("on");
+
+  const a = layoutOf(cur.m);
+  let x = a.xs[cur.idx];
+  let y = a.landY;
+  let sx = 1;
+  let sy = 1;
+  const nxt = track[trackPos + 1] || nextAfter(cur);
+  if (nxt) {
+    const b = layoutOf(nxt.m);
+    const dur = nxt.t - cur.t;
+    const p = Math.min(Math.max((now - cur.t) / dur, 0), 1);
+    const dist = Math.abs(b.xs[nxt.idx] - x);
+    const lift = Math.min(Math.max(dur * 55, dist * 0.1, 10), 40); // по-дълга нота или по-далечен скок — по-високо
+    x += (b.xs[nxt.idx] - x) * p;
+    y += (b.landY - y) * p - lift * 4 * p * (1 - p);
+    const ground = Math.min(p, 1 - p);
+    if (ground < 0.07) { // леко сплескване при кацане
+      const k = 1 - ground / 0.07;
+      sx = 1 + 0.18 * k;
+      sy = 1 - 0.18 * k;
+    }
+  }
+  const s = svg.clientWidth / BIG.width;
+  ball.style.transform = `translate(${x * s}px, ${y * s}px) translate(-50%, -100%) scale(${sx}, ${sy})`;
+  ball.classList.add("on");
 }
 
 function updateMeasure() {
@@ -627,3 +701,4 @@ async function init() {
 }
 
 init();
+animateBall();
