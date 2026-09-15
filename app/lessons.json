@@ -1019,6 +1019,821 @@
               "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R"
             ]
           ]
+        },
+        {
+          "id": "l20",
+          "title": "5/8 — втори удължен дял",
+          "learn": [
+            "Неравноделен размер 5/8 = 2 + 3",
+            "Броене „1 2 | 1 2 3“",
+            "Осмини и четвъртини"
+          ],
+          "tempo": 80,
+          "timeSignature": "5/8",
+          "parts": [
+            2,
+            3
+          ],
+          "examples": [
+            [
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "q:sd:R q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L"
+            ],
+            [
+              "q:sd:R q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L"
+            ]
+          ]
+        },
+        {
+          "id": "l21",
+          "title": "5/8 с паузи",
+          "learn": [
+            "5/8 = 2 + 3",
+            "Четвъртина пауза и осмина пауза",
+            "Осмини"
+          ],
+          "tempo": 80,
+          "timeSignature": "5/8",
+          "parts": [
+            2,
+            3
+          ],
+          "examples": [
+            [
+              "8:r 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "8:r 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:sd:L 8:sd:R q:r",
+              "8:sd:R 8:sd:L q:r 8:sd:R",
+              "q:r 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L"
+            ],
+            [
+              "8:r 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:sd:L q:r 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:r 8:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "q:r 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "q:r 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "q:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:r 8:sd:R",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
+            ],
+            [
+              "8:r 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:r 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:r q:r 8:sd:L",
+              "8:r 8:sd:R q:r 8:sd:L",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
+            ]
+          ]
+        },
+        {
+          "id": "l22",
+          "title": "5/8 — първи удължен дял",
+          "learn": [
+            "5/8 = 3 + 2",
+            "Броене „1 2 3 | 1 2“",
+            "Осмини, четвъртини и паузи"
+          ],
+          "tempo": 80,
+          "timeSignature": "5/8",
+          "parts": [
+            3,
+            2
+          ],
+          "examples": [
+            [
+              "q:sd:R 8:sd:L q:sd:R",
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R q:sd:L q:sd:R",
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:r q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:r",
+              "q:r 8:sd:R q:sd:L",
+              "8:sd:R q:r 8:sd:L 8:sd:R",
+              "8:sd:R q:r 8:sd:L 8:r",
+              "8:sd:R q:sd:L q:r",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:r 8:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R q:r",
+              "q:sd:R 8:sd:L q:r",
+              "q:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L 8:r 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "8:sd:R q:r 8:sd:L 8:r",
+              "8:sd:R q:r q:sd:L"
+            ],
+            [
+              "8:sd:R q:r q:sd:L",
+              "8:sd:R q:sd:L 8:r 8:sd:R",
+              "q:r 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:r 8:r 8:sd:R",
+              "8:sd:R 8:r 8:sd:L q:sd:R",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "8:sd:R q:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:r q:sd:R"
+            ]
+          ]
+        },
+        {
+          "id": "l23",
+          "title": "7/8 — втори удължен дял",
+          "learn": [
+            "Неравноделен размер 7/8 = 2 + 3 + 2",
+            "Броене „1 2 | 1 2 3 | 1 2“",
+            "Осмини и четвъртини"
+          ],
+          "tempo": 80,
+          "timeSignature": "7/8",
+          "parts": [
+            2,
+            3,
+            2
+          ],
+          "examples": [
+            [
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R q:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R",
+              "q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R q:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R q:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R"
+            ]
+          ]
+        },
+        {
+          "id": "l24",
+          "title": "7/8 с паузи",
+          "learn": [
+            "7/8 = 2 + 3 + 2",
+            "Четвъртина пауза и осмина пауза",
+            "Осмини"
+          ],
+          "tempo": 80,
+          "timeSignature": "7/8",
+          "parts": [
+            2,
+            3,
+            2
+          ],
+          "examples": [
+            [
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:r 8:r 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:r",
+              "q:r q:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R q:r q:r",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "q:r 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "q:r q:r 8:sd:R 8:sd:L 8:r",
+              "q:r q:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R"
+            ],
+            [
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:r",
+              "q:r 8:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:r 8:sd:R q:r 8:sd:L q:r",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:r q:r 8:sd:L 8:sd:R 8:sd:L"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:r 8:sd:L q:r 8:sd:R 8:sd:L",
+              "8:r 8:sd:R q:r 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:r q:r",
+              "q:r q:r 8:sd:R 8:sd:L 8:r",
+              "q:r 8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L 8:sd:R"
+            ]
+          ]
+        },
+        {
+          "id": "l25",
+          "title": "7/8 — първи удължен дял",
+          "learn": [
+            "7/8 = 3 + 2 + 2",
+            "Броене „1 2 3 | 1 2 | 1 2“",
+            "Осмини, четвъртини и паузи"
+          ],
+          "tempo": 80,
+          "timeSignature": "7/8",
+          "parts": [
+            3,
+            2,
+            2
+          ],
+          "examples": [
+            [
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:r q:sd:R q:sd:L",
+              "q:sd:R 8:sd:L q:r 8:sd:R 8:r",
+              "8:sd:R q:r 8:sd:L 8:r q:sd:R",
+              "q:r 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:r 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:r q:r 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:r 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R q:r",
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R",
+              "8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:r 8:sd:R 8:r 8:sd:L",
+              "8:sd:R q:sd:L 8:sd:R 8:r q:sd:L"
+            ],
+            [
+              "q:sd:R 8:sd:L q:r 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:r 8:r 8:sd:L",
+              "8:sd:R q:r 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:r q:r q:sd:R",
+              "8:sd:R q:sd:L 8:r 8:sd:R q:sd:L",
+              "8:sd:R q:sd:L q:r q:sd:R",
+              "8:sd:R 8:r 8:sd:L q:sd:R q:sd:L"
+            ]
+          ]
+        },
+        {
+          "id": "l26",
+          "title": "8/8 — първи и трети удължен дял",
+          "learn": [
+            "8/8 = 3 + 2 + 3",
+            "Не е 4/4 — дяловете са неравни",
+            "Осмини, четвъртини и паузи"
+          ],
+          "tempo": 80,
+          "timeSignature": "8/8",
+          "parts": [
+            3,
+            2,
+            3
+          ],
+          "examples": [
+            [
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R q:r 8:sd:L 8:r 8:sd:R 8:r 8:sd:L",
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r",
+              "8:sd:R q:r 8:r 8:sd:L q:sd:R 8:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L q:r",
+              "q:sd:R 8:sd:L 8:sd:R 8:r q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R q:r 8:sd:L q:sd:R",
+              "8:sd:R q:r 8:r 8:sd:L q:sd:R 8:sd:L",
+              "8:sd:R 8:r 8:sd:L q:sd:R q:sd:L 8:sd:R",
+              "8:sd:R q:r q:r q:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r",
+              "8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L 8:r 8:sd:R",
+              "q:r 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "q:r 8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "q:r 8:sd:R q:r q:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R q:sd:L q:r 8:sd:R q:r",
+              "8:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R",
+              "q:r 8:sd:R q:r 8:sd:L q:r",
+              "8:r 8:sd:R 8:sd:L q:r 8:sd:R q:sd:L"
+            ]
+          ]
+        },
+        {
+          "id": "l27",
+          "title": "8/8 — втори и трети удължен дял",
+          "learn": [
+            "8/8 = 2 + 3 + 3",
+            "Броене „1 2 | 1 2 3 | 1 2 3“",
+            "Осмини, четвъртини и паузи"
+          ],
+          "tempo": 80,
+          "timeSignature": "8/8",
+          "parts": [
+            2,
+            3,
+            3
+          ],
+          "examples": [
+            [
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:r 8:sd:R q:r q:sd:L 8:sd:R",
+              "q:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:r",
+              "q:r 8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:r 8:sd:R",
+              "q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:r q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:r 8:sd:R q:sd:L 8:sd:R",
+              "8:r 8:sd:R q:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:r q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:r 8:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:r q:sd:L 8:sd:R q:r 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L q:r 8:sd:R",
+              "8:sd:R 8:r q:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "8:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:sd:R 8:sd:L q:r q:r 8:sd:R",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L q:r 8:sd:R",
+              "q:r 8:sd:R 8:sd:L 8:sd:R q:r 8:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:r 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:r q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R"
+            ]
+          ]
+        },
+        {
+          "id": "l28",
+          "title": "8/8 — първи и втори удължен дял",
+          "learn": [
+            "8/8 = 3 + 3 + 2",
+            "Броене „1 2 3 | 1 2 3 | 1 2“",
+            "Осмини, четвъртини и паузи"
+          ],
+          "tempo": 80,
+          "timeSignature": "8/8",
+          "parts": [
+            3,
+            3,
+            2
+          ],
+          "examples": [
+            [
+              "8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:sd:R q:r 8:r 8:sd:L",
+              "8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L q:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R q:sd:L 8:sd:R q:sd:L 8:r 8:sd:R",
+              "8:r 8:sd:R 8:sd:L 8:sd:R q:r 8:r 8:sd:L",
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L 8:r q:sd:R",
+              "8:sd:R q:r 8:sd:L 8:r 8:sd:R q:sd:L"
+            ],
+            [
+              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R q:r q:r 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R 8:r",
+              "8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R q:r 8:r 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:sd:R q:r q:r 8:sd:L 8:sd:R 8:sd:L",
+              "q:r 8:sd:R q:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "q:r 8:sd:R 8:sd:L q:sd:R q:sd:L"
+            ]
+          ]
+        },
+        {
+          "id": "l29",
+          "title": "9/8 — четвърти удължен дял",
+          "learn": [
+            "9/8 = 2 + 2 + 2 + 3",
+            "Примери 1–2: четвъртини и осмини",
+            "Примери 3–4: и паузите им"
+          ],
+          "tempo": 90,
+          "timeSignature": "9/8",
+          "parts": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "examples": [
+            [
+              "q:sd:R q:sd:L q:sd:R q:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:r 8:sd:R 8:r 8:sd:L 8:r q:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r q:r 8:sd:R",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r",
+              "q:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:r q:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R q:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:r q:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "8:r 8:sd:R q:sd:L q:r 8:sd:R 8:sd:L 8:r",
+              "q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:r 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:r q:r 8:sd:L q:sd:R",
+              "8:r 8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:r 8:sd:R q:sd:L q:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:r 8:sd:L 8:sd:R q:sd:L"
+            ]
+          ]
+        },
+        {
+          "id": "l30",
+          "title": "9/8 — втори удължен дял",
+          "learn": [
+            "9/8 = 2 + 3 + 2 + 2",
+            "Примери 1–2: четвъртини и осмини",
+            "Примери 3–4: и паузите им"
+          ],
+          "tempo": 90,
+          "timeSignature": "9/8",
+          "parts": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "examples": [
+            [
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R q:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R q:sd:L",
+              "q:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:r 8:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:r 8:sd:R 8:r 8:sd:L",
+              "8:r 8:sd:R 8:sd:L q:sd:R q:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "q:r q:r 8:sd:R 8:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r q:sd:R",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R q:r",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "q:r q:sd:R 8:sd:L 8:r 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r q:r q:sd:R",
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R q:sd:L",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r q:sd:L"
+            ]
+          ]
+        },
+        {
+          "id": "l31",
+          "title": "9/8 — първи удължен дял",
+          "learn": [
+            "9/8 = 3 + 2 + 2 + 2",
+            "Примери 1–2: четвъртини и осмини",
+            "Примери 3–4: и паузите им"
+          ],
+          "tempo": 90,
+          "timeSignature": "9/8",
+          "parts": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "examples": [
+            [
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R q:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L",
+              "8:sd:R q:sd:L q:sd:R q:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L",
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:r 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R q:sd:L q:sd:R q:r q:sd:L",
+              "8:sd:R q:r q:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:r q:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R q:sd:L q:sd:R q:sd:L q:r",
+              "q:r 8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R"
+            ],
+            [
+              "8:sd:R q:sd:L q:r q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:sd:L q:r q:sd:R 8:sd:L 8:r",
+              "q:sd:R 8:sd:L q:r 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R q:sd:L",
+              "q:r 8:sd:R q:sd:L q:sd:R q:sd:L",
+              "8:r 8:sd:R 8:sd:L q:sd:R 8:r 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:sd:R q:r 8:r 8:sd:L q:sd:R",
+              "8:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r q:sd:R"
+            ]
+          ]
+        },
+        {
+          "id": "l32",
+          "title": "10/8 — първи и четвърти удължен дял",
+          "learn": [
+            "10/8 = 3 + 2 + 2 + 3",
+            "Примери 1–2: четвъртини и осмини",
+            "Примери 3–4: и паузите им"
+          ],
+          "tempo": 90,
+          "timeSignature": "10/8",
+          "parts": [
+            3,
+            2,
+            2,
+            3
+          ],
+          "examples": [
+            [
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L q:sd:R q:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R q:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R q:sd:L q:sd:R q:sd:L q:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R",
+              "8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "8:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:r 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R q:r 8:sd:L 8:r q:sd:R q:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L q:r",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L",
+              "8:sd:R q:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R q:sd:L 8:sd:R 8:r q:r 8:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L q:sd:R"
+            ],
+            [
+              "q:r 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L q:r",
+              "8:sd:R q:r 8:r 8:sd:L 8:sd:R 8:r q:sd:L 8:sd:R",
+              "8:sd:R q:r q:r q:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:sd:R q:r 8:sd:L 8:r q:r 8:sd:R 8:r 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:r 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:r 8:sd:R 8:sd:L 8:r",
+              "8:sd:R q:r q:sd:L q:sd:R 8:sd:L q:sd:R"
+            ]
+          ]
+        },
+        {
+          "id": "l33",
+          "title": "11/8 — трети удължен дял",
+          "learn": [
+            "11/8 = 2 + 2 + 3 + 2 + 2",
+            "Примери 1–2: четвъртини и осмини",
+            "Примери 3–4: и паузите им"
+          ],
+          "tempo": 90,
+          "timeSignature": "11/8",
+          "parts": [
+            2,
+            2,
+            3,
+            2,
+            2
+          ],
+          "examples": [
+            [
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L q:sd:R 8:sd:L q:sd:R q:sd:L"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "q:sd:R q:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R q:sd:L",
+              "q:sd:R q:sd:L 8:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:r 8:sd:L",
+              "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R q:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:r",
+              "8:r 8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L q:sd:R 8:r 8:sd:L",
+              "q:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:r 8:sd:L",
+              "q:sd:R 8:sd:L 8:r q:sd:R 8:sd:L 8:r 8:sd:R q:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:r q:sd:R"
+            ],
+            [
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L q:r 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R q:r 8:sd:L 8:sd:R",
+              "q:sd:R q:sd:L q:sd:R 8:sd:L q:r 8:sd:R 8:r",
+              "8:r 8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:r 8:sd:R q:sd:L 8:sd:R q:r q:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:r 8:r 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:r 8:sd:L 8:sd:R q:sd:L q:sd:R q:sd:L"
+            ]
+          ]
         }
       ]
     }
