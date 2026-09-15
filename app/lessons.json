@@ -3,77 +3,218 @@
     {
       "id": "snare",
       "name": "Малък барабан",
-      "subtitle": "Палки и рудименти",
+      "subtitle": "Четене на ритъм",
       "voices": {
-        "sd": { "name": "Малък барабан", "hint": "R = дясна, L = лява ръка", "key": "c/5", "sound": "snare" }
+        "sd": {
+          "name": "Малък барабан",
+          "hint": "R = дясна, L = лява ръка",
+          "key": "c/5",
+          "sound": "snare"
+        }
       },
       "lessons": [
         {
-          "id": "grip",
-          "title": "Хват и четвъртини",
+          "id": "l1",
+          "title": "Четвъртини и четвъртини паузи",
           "learn": [
-            "Правилен хват на палките",
-            "Редуване дясна (R) и лява (L) ръка",
-            "Еднаква сила на двете ръце"
+            "Четвъртина нота – един удар",
+            "Четвъртина пауза – един удар тишина",
+            "Броене 1, 2, 3, 4"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
           "measures": [
             "q:sd:R q:sd:L q:sd:R q:sd:L",
-            "q:sd:R q:sd:L q:sd:R q:sd:L",
-            "q:sd:R q:sd:L q:sd:R q:sd:L",
-            "q:sd:R q:sd:L q:sd:R q:sd:L"
+            "q:sd:R q:r q:sd:L q:r",
+            "q:sd:R q:sd:L q:r q:sd:R",
+            "q:r q:sd:R q:r q:sd:L"
           ]
         },
         {
-          "id": "singles",
-          "title": "Единични удари",
+          "id": "l2",
+          "title": "Четвъртини и половинки",
           "learn": [
-            "Single stroke – R L R L",
-            "Осмини ноти",
-            "Постоянно темпо без забързване"
+            "Половинка нота – трае 2 удара",
+            "Удряш веднъж, броиш две",
+            "Смесване с четвъртини"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "q:sd:R q:sd:L q:sd:R q:sd:L",
+            "h:sd:R h:sd:L",
+            "h:sd:R q:sd:L q:sd:R",
+            "q:sd:R q:sd:L h:sd:R"
+          ]
+        },
+        {
+          "id": "l3",
+          "title": "Четвъртини, половинки и паузи",
+          "learn": [
+            "Половинка пауза – 2 удара тишина",
+            "Паузите също се броят",
+            "Всичко досега заедно"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "h:sd:R q:r q:sd:L",
+            "q:sd:R q:r h:sd:L",
+            "h:r q:sd:R q:sd:L",
+            "q:sd:R q:sd:L h:r"
+          ]
+        },
+        {
+          "id": "l4",
+          "title": "Цели, половинки и четвъртини",
+          "learn": [
+            "Цяла нота – трае 4 удара",
+            "Сравнение: цяла, половинка, четвъртина",
+            "Броене през целия такт"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "q:sd:R q:sd:L q:sd:R q:sd:L",
+            "w:sd:R",
+            "h:sd:R q:sd:L q:sd:R",
+            "w:sd:R"
+          ]
+        },
+        {
+          "id": "l5",
+          "title": "Осмини с четвъртини",
+          "learn": [
+            "Осмина нота – половин удар",
+            "Броене „1 и 2 и 3 и 4 и“",
+            "Две осмини = една четвъртина"
           ],
           "tempo": 70,
           "timeSignature": "4/4",
           "measures": [
+            "q:sd:R q:sd:L q:sd:R q:sd:L",
             "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-            "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-            "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-            "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L"
+            "q:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L",
+            "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R q:sd:L"
           ]
         },
         {
-          "id": "doubles",
-          "title": "Двойни удари",
+          "id": "l6",
+          "title": "Осмини, четвъртини и четвъртини паузи",
           "learn": [
-            "Double stroke – R R L L",
-            "Отскок на палката",
-            "Контрол на втория удар"
+            "Осмини след пауза",
+            "Точно влизане след четвъртина пауза",
+            "Смесване на осмини и четвъртини"
           ],
-          "tempo": 65,
+          "tempo": 70,
           "timeSignature": "4/4",
           "measures": [
-            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L",
-            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L",
-            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L",
-            "8:sd:R 8:sd:R 8:sd:L 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:L"
+            "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L q:r",
+            "q:sd:R q:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+            "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r q:sd:R",
+            "q:r 8:sd:R 8:sd:L q:sd:R q:r"
           ]
         },
         {
-          "id": "paradiddle",
-          "title": "Парадидъл",
+          "id": "l7",
+          "title": "Осмини паузи",
           "learn": [
-            "Първият рудимент: R L R R L R L L",
-            "Шестнайсетини ноти",
-            "Смяна на водещата ръка"
+            "Осмина пауза – половин удар тишина",
+            "Удар на „и“",
+            "Осмини и четвъртини с паузи"
+          ],
+          "tempo": 70,
+          "timeSignature": "4/4",
+          "measures": [
+            "8:sd:R 8:r 8:sd:L 8:r q:sd:R q:r",
+            "8:r 8:sd:R 8:r 8:sd:L q:sd:R q:sd:L",
+            "q:sd:R 8:sd:L 8:r q:r 8:r 8:sd:R",
+            "8:sd:R 8:sd:L 8:r 8:sd:R q:r q:sd:L"
+          ]
+        },
+        {
+          "id": "l8",
+          "title": "Шестнайсетини",
+          "learn": [
+            "Шестнайсетина – четвърт удар",
+            "Броене „1 е и а“",
+            "Четири шестнайсетини = една четвъртина"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
           "measures": [
-            "8:sd:R 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:L",
-            "8:sd:R 8:sd:L 8:sd:R 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:L",
-            "16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L",
-            "16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:L"
+            "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R q:sd:L",
+            "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L 8:sd:R",
+            "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R q:sd:L",
+            "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R"
+          ]
+        },
+        {
+          "id": "l9",
+          "title": "Шестнайсетини и паузи",
+          "learn": [
+            "Шестнайсетини между паузи",
+            "Точно спиране и влизане",
+            "Всички дължини и паузи досега"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r q:sd:L q:r",
+            "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:r q:sd:L",
+            "q:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r",
+            "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r 8:sd:R 8:r 8:sd:L 8:sd:R"
+          ]
+        },
+        {
+          "id": "l10",
+          "title": "Група: осмина + 2 шестнайсетини",
+          "learn": [
+            "Групата се свири в един удар",
+            "Броене „1 и а“",
+            "Групата между четвъртини и осмини"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "8:sd:R 16:sd:L 16:sd:R q:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L",
+            "8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L q:sd:R",
+            "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+            "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L"
+          ]
+        },
+        {
+          "id": "l11",
+          "title": "Група: 2 шестнайсетини + осмина",
+          "learn": [
+            "Групата се свири в един удар",
+            "Броене „1 е и“",
+            "Разлика с групата от урок 10"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "16:sd:R 16:sd:L 8:sd:R q:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L",
+            "q:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+            "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R",
+            "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L"
+          ]
+        },
+        {
+          "id": "l12",
+          "title": "Комбинация на групите",
+          "learn": [
+            "Смесване на двете групи",
+            "Осмина пауза преди група",
+            "Четене на по-сложен ритъм"
+          ],
+          "tempo": 60,
+          "timeSignature": "4/4",
+          "measures": [
+            "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
+            "8:r 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L q:sd:R",
+            "16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L",
+            "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L q:sd:R"
           ]
         }
       ]
