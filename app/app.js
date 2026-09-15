@@ -28,7 +28,6 @@ const inst = () => state.data.instruments.find(i => i.id === state.instId);
 const lesson = () => inst().lessons[state.lessonIdx];
 const lessonKey = (i, idx) => `${i.id}/${i.lessons[idx].id}`;
 const isDone = (i, idx) => state.progress.completed.includes(lessonKey(i, idx));
-const isUnlocked = (i, idx) => idx === 0 || isDone(i, idx - 1);
 
 /* ---------- Данни ---------- */
 
@@ -390,15 +389,14 @@ function renderInstrument() {
     <div class="list">
       ${i.lessons.map((l, k) => {
         const done = isDone(i, k);
-        const open = isUnlocked(i, k);
         return `
-          <button class="row" data-lesson="${k}" ${open ? "" : "disabled"}>
+          <button class="row" data-lesson="${k}">
             <span class="badge ${done ? "done" : ""}">${done ? "✓" : k + 1}</span>
             <span class="row-text">
               <span class="row-title">Урок ${k + 1} · ${esc(l.title)}</span>
-              <span class="muted small">${open ? esc(l.learn.join(" · ")) : "Завърши предишния урок, за да отключиш този."}</span>
+              <span class="muted small">${esc(l.learn.join(" · "))}</span>
             </span>
-            <span class="chev">${open ? "›" : ""}</span>
+            <span class="chev">›</span>
           </button>`;
       }).join("")}
     </div>`;
