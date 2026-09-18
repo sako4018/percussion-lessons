@@ -51,15 +51,20 @@ const lesson = () => inst().lessons[state.lessonIdx];
 
 /* ---------- Данни ---------- */
 
-function meter(l) {
-  const [num, den] = l.timeSignature.split("/").map(Number);
-  return { num, den, beats: (num * 4) / den, step: 4 / den };
+const tsOf = (l, e = state.example) => l.timeSignatures?.[e] ?? l.timeSignature;
+
+function meter(l, e) {
+  const ts = tsOf(l, e);
+  const [num, den] = ts.split("/").map(Number);
+  return { ts, num, den, beats: (num * 4) / den, step: 4 / den };
 }
 
 // "8:hh+bd:R" → дължина, удари, надпис
 function parseToken(tok, i) {
   const [durRaw, voicesRaw = "", label] = tok.split(":");
-  const triplet = durRaw.startsWith("t"); // t8 = осмина в триола
+  // t8 = осмина в триола, tq = двувременна триола, s16 = шестнайсетина в секстола
+  const tuplet = /^[ts]/.test(durRaw) ? durRaw[0] : null;
+  const triplet = !!tuplet;
   const plain = triplet ? durRaw.slice(1) : durRaw;
   const dotted = plain.endsWith("d");
   const dur = dotted ? plain.slice(0, -1) : plain;
@@ -70,7 +75,7 @@ function parseToken(tok, i) {
     return i.voices[id];
   });
   return {
-    dur, dotted, triplet, rest, voices,
+    dur, dotted, triplet, tuplet, rest, voices,
     label: label ?? voices.map(v => v.label).filter(Boolean).join(""),
     beats: DUR[dur] * (dotted ? 1.5 : 1) * (triplet ? 2 / 3 : 1),
   };
@@ -78,8 +83,8 @@ function parseToken(tok, i) {
 
 function prepare(i, l) {
   if (l.parsedExamples) return;
-  const expected = meter(l).beats;
   l.parsedExamples = (l.examples || [l.measures]).map((ex, e) => ex.map((m, k) => {
+    const expected = meter(l, e).beats;
     const notes = m.trim().split(/\s+/).map(t => parseToken(t, i));
     const sum = notes.reduce((a, n) => a + n.beats, 0);
     if (Math.abs(sum - expected) > 1e-6) {
@@ -93,7 +98,9 @@ function prepare(i, l) {
 // тактовете на избрания пример
 const bars = () => lesson().parsedExamples[state.example];
 
-const sizeLabel = l => l.timeSignature + (l.parts ? ` (${l.parts.join("+")})` : "");
+const sizeLabel = (l, all = false) =>
+  (all ? [...new Set(l.timeSignatures ?? [l.timeSignature])].join(", ") : tsOf(l)) +
+  (l.parts ? ` (${l.parts.join("+")})` : "");
 
 // кликове на метронома в един такт; при неравноделен размер — акцент в началото на всеки дял
 function clicks(l) {
@@ -133,7 +140,7 @@ function drawMeasure(el, l, data, { width, height, showSig, top = 10, active = -
   const ctx = renderer.getContext();
 
   const stave = new VF.Stave(10, top, width - 20);
-  if (showSig) stave.addClef("percussion").addTimeSignature(l.timeSignature);
+  if (showSig) stave.addClef("percussion").addTimeSignature(tsOf(l));
   stave.setContext(ctx).draw();
 
   const notes = data.map((n, idx) => {
@@ -162,16 +169,19 @@ function drawMeasure(el, l, data, { width, height, showSig, top = 10, active = -
     return note;
   });
 
-  // триоли: поредни триолни ноти за общо 1 удар = една скоба
+  // скоба: триола (t) = 3 на мястото на 2 от първата нота, секстола (s) = 6 на мястото на 4
   const tuplets = [];
   let group = [];
   let acc = 0;
+  let span = 0;
   data.forEach((n, idx) => {
     if (!n.triplet) { group = []; acc = 0; return; }
+    const [num, occ] = n.tuplet === "s" ? [6, 4] : [3, 2];
+    if (!group.length) span = occ * DUR[n.dur];
     group.push(notes[idx]);
     acc += n.beats;
-    if (Math.abs(acc - 1) < 1e-6) {
-      tuplets.push(new VF.Tuplet(group, { num_notes: 3, notes_occupied: 2 }));
+    if (Math.abs(acc - span) < 1e-6) {
+      tuplets.push(new VF.Tuplet(group, { num_notes: num, notes_occupied: occ }));
       group = [];
       acc = 0;
     }
@@ -741,7 +751,7 @@ function renderIntro() {
     <header class="hero">
       <p class="eyebrow">Урок ${state.lessonIdx + 1}</p>
       <h1>${esc(l.title)}</h1>
-      <p class="muted">Темпо ${l.tempo} · Размер ${esc(sizeLabel(l))} · ${l.parsedExamples.length} примера по ${l.parsedExamples[0].length} такта</p>
+      <p class="muted">Темпо ${l.tempo} · Размер ${esc(sizeLabel(l, true))} · ${l.parsedExamples.length} примера по ${l.parsedExamples[0].length} такта</p>
     </header>
     <section class="panel">
       <h2>Какво се учи</h2>
