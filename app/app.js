@@ -708,9 +708,44 @@ function renderHome() {
   });
 }
 
+// представителна фигура по ключови думи в заглавието; първото съвпадение печели
+const FIGURES = [
+  ["/8", "8 8 8"],
+  ["секстола", "s16 s16 s16 s16 s16 s16"],
+  ["двувременна", "tq tq tq"],
+  ["осмина + триола", "8 t16 t16 t16"],
+  ["осмина и триола", "8 t16 t16 t16"],
+  ["триола + осмина", "t16 t16 t16 8"],
+  ["триол", "t8 t8 t8"],
+  ["четвъртина с точка", "qd 8"],
+  ["с точка", "8d 16"],
+  ["синкоп", "8 q 8"],
+  ["шестнайсетина пауза", "16 16:r 8"],
+  ["осмина пауза", "8:r 16 16"],
+  ["2 шестнайсетини + осмина", "16 16 8"],
+  ["осмина + 2", "8 16 16"],
+  ["групите", "8 16 16"],
+  ["шестнайсетини и паузи", "16 16:r 16 16"],
+  ["шестнайсет", "16 16 16 16"],
+  ["осмини паузи", "8:r 8"],
+  ["осмин", "8 8"],
+  ["цели", "w"],
+  ["половин", "q h"],
+  ["пауз", "q q:r"],
+  ["", "q"],
+];
+
+function figureOf(i, l) {
+  const t = l.title.toLowerCase();
+  const [, fig] = FIGURES.find(([key]) => t.includes(key));
+  const v = Object.keys(i.voices)[0];
+  return fig.split(" ").map(tok => parseToken(tok.includes(":") ? tok : `${tok}:${v}`, i));
+}
+
 function renderInstrument() {
   const i = inst();
   const single = state.data.instruments.length === 1;
+  i.lessons.forEach(l => prepare(i, l));
   $app.innerHTML = `
     ${single ? "" : `<button class="back" data-back>‹ Инструменти</button>`}
     <header class="hero">
@@ -719,20 +754,24 @@ function renderInstrument() {
     </header>
     <div class="list">
       ${i.lessons.map((l, k) => {
+        const look = lessonLook(k);
         return `
-          <button class="row" data-lesson="${k}">
+          <button class="row" data-lesson="${k}" style="--lesson:${look.color}">
             <span class="badge">${k + 1}</span>
-            <span class="row-text">
-              <span class="row-title">Урок ${k + 1} · ${esc(l.title)}</span>
-              <span class="muted small">${esc(l.learn.join(" · "))}</span>
-            </span>
-            <span class="chev">›</span>
+            <div class="row-notes"></div>
+            <span class="row-title">${esc(l.title)}</span>
           </button>`;
       }).join("")}
     </div>`;
   if (!single) $("[data-back]").onclick = () => go("home");
   $app.querySelectorAll("[data-lesson]").forEach(b => {
-    b.onclick = () => go("intro", { lessonIdx: Number(b.dataset.lesson) });
+    const k = Number(b.dataset.lesson);
+    const l = i.lessons[k];
+    const meterLesson = l.title.includes("/8");
+    const fig = figureOf(i, l);
+    // ширината следва броя ноти, за да стои фигурата в средата
+    drawMeasure(b.querySelector(".row-notes"), l, fig, { width: 50 + fig.length * 26 + (meterLesson ? 60 : 0), height: 100, top: 20, showSig: meterLesson });
+    b.onclick = () => go("intro", { lessonIdx: k });
   });
 }
 
@@ -748,10 +787,13 @@ function renderIntro() {
   prepare(i, l);
   $app.innerHTML = `
     <button class="back" data-back>‹ ${esc(i.name)}</button>
-    <header class="hero">
-      <p class="eyebrow">Урок ${state.lessonIdx + 1}</p>
-      <h1>${esc(l.title)}</h1>
-      <p class="muted">Темпо ${l.tempo} · Размер ${esc(sizeLabel(l, true))} · ${l.parsedExamples.length} примера по ${l.parsedExamples[0].length} такта</p>
+    <header class="hero hero-lesson">
+      <span class="row-shape hero-shape-inline">${shapeSvg(lessonLook(state.lessonIdx))}</span>
+      <div>
+        <p class="eyebrow">Урок ${state.lessonIdx + 1}</p>
+        <h1>${esc(l.title)}</h1>
+        <p class="muted">Темпо ${l.tempo} · Размер ${esc(sizeLabel(l, true))} · ${l.parsedExamples.length} примера по ${l.parsedExamples[0].length} такта</p>
+      </div>
     </header>
     <section class="panel">
       <h2>Какво се учи</h2>
@@ -948,6 +990,12 @@ function pulse(px, py) {
   hit.classList.remove("go");
   void hit.offsetWidth; // рестартира анимацията
   hit.classList.add("go");
+  const stage = hit.closest(".stage");
+  if (stage) {
+    stage.classList.remove("flash");
+    void stage.offsetWidth;
+    stage.classList.add("flash");
+  }
 }
 
 function updateMeasure() {
