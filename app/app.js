@@ -1050,7 +1050,9 @@ function updateMeasure() {
 
 function updatePlayButton() {
   const btn = document.getElementById("play");
-  if (btn) btn.textContent = state.playing ? "■ Спри" : "▶ Свири";
+  if (!btn) return;
+  btn.textContent = state.playing ? "■ Спри" : "▶ Свири";
+  btn.classList.toggle("playing", state.playing);
 }
 
 function setStatus(text) {
