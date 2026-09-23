@@ -110,19 +110,9 @@ button:disabled { cursor: default; opacity: 0.4; }
 
 .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .counter { font-weight: 600; color: var(--muted); }
-.stage {
-  position: relative;
-  padding: 18px 28px 12px;
-  /* пастелен фон в цвета на урока; нотите са на бял „лист“ (#big) */
-  background: color-mix(in srgb, var(--lesson, var(--accent)) 22%, #fff);
-}
-/* без padding: топчето се позиционира спрямо горния ляв ъгъл на #big */
-#big { background: #fff; border-radius: 16px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1); }
-.stage.flash { animation: stageFlash 0.3s ease-out; }
-@keyframes stageFlash {
-  from { box-shadow: inset 0 0 0 5px var(--lesson, var(--accent)); }
-  to { box-shadow: inset 0 0 0 0 transparent; }
-}
+.stage { position: relative; margin-bottom: 16px; }
+/* нотите са на бял „лист“; топчето се позиционира спрямо горния ляв ъгъл на #big */
+#big { background: #fff; border-radius: 20px; box-shadow: var(--shadow); }
 .big-wrap { position: relative; }
 #big svg, .tile svg { display: block; }
 .ball {

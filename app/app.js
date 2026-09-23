@@ -52,6 +52,7 @@ const state = {
   tempo: 60,
   mode: "auto", // "auto" = минава сам напред, "manual" = повтаря такта, учителят сменя
   metronome: true,
+  sound: true, // звукът на барабанчето (метрономът си има отделен ключ)
   stars: {}, // "урок/пример" → завършен от начало до край (записва се в progress.json)
 };
 
@@ -263,7 +264,7 @@ function ac() {
     comp.connect(audio.destination);
 
     master = audio.createGain();
-    master.gain.value = 0.9;
+    master.gain.value = state.sound ? 0.9 : 0;
     master.connect(comp);
     const room = audio.createConvolver();
     room.buffer = makeRoom();
@@ -863,7 +864,7 @@ function renderPractice() {
       </div>
       <span class="muted small">Размер ${esc(sizeLabel(l))}</span>
     </div>
-    <section class="panel stage">
+    <section class="stage">
       <div class="big-wrap"><div id="big"></div><div id="hit" class="hit"></div><div id="ball" class="ball">${shapeSvg(look)}</div></div>
       <p id="status" class="status"></p>
     </section>
@@ -879,6 +880,7 @@ function renderPractice() {
         <span class="tempo-icon" title="Бързо">${HARE}</span>
         <output id="tempoVal">${state.tempo}</output>
       </label>
+      <label class="toggle"><input type="checkbox" id="sound" ${state.sound ? "checked" : ""}> Звук</label>
       <label class="toggle"><input type="checkbox" id="metro" ${state.metronome ? "checked" : ""}> Метроном</label>
       <div class="modes" role="group" aria-label="Режим">
         <button class="mode-btn ${state.mode === "auto" ? "active" : ""}" data-mode="auto">Автоматично</button>
@@ -905,6 +907,10 @@ function renderPractice() {
     $("#tempoVal").textContent = state.tempo;
   };
   $("#metro").onchange = e => { state.metronome = e.target.checked; };
+  $("#sound").onchange = e => {
+    state.sound = e.target.checked;
+    if (master) master.gain.value = state.sound ? 0.9 : 0;
+  };
   $app.querySelectorAll("[data-mode]").forEach(btn => {
     btn.onclick = () => {
       if (state.mode === btn.dataset.mode) return;
@@ -1031,12 +1037,6 @@ function pulse(px, py) {
   hit.classList.remove("go");
   void hit.offsetWidth; // рестартира анимацията
   hit.classList.add("go");
-  const stage = hit.closest(".stage");
-  if (stage) {
-    stage.classList.remove("flash");
-    void stage.offsetWidth;
-    stage.classList.add("flash");
-  }
 }
 
 function updateMeasure() {
