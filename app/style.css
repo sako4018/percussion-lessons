@@ -21,13 +21,24 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.9L22 9.6l-5.5 4.8L18 21l-6-3.6L6 21l1.5-6.6L2 9.6l7.1-.7z' fill='%23f5a524'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cellipse cx='7' cy='18' rx='4' ry='3' fill='%2312b886'/%3E%3Crect x='10' y='3' width='2' height='16' fill='%2312b886'/%3E%3Cpath d='M12 3l7 2v3l-7-2z' fill='%2312b886'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23ff6b6b'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3l8 18H4z' fill='none' stroke='%237950f2' stroke-width='2.5'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cellipse cx='12' cy='6' rx='9' ry='3' fill='%230071e3'/%3E%3Cpath d='M3 6v10c0 1.7 4 3 9 3s9-1.3 9-3V6' fill='none' stroke='%230071e3' stroke-width='2'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.9L22 9.6l-5.5 4.8L18 21l-6-3.6L6 21l1.5-6.6L2 9.6l7.1-.7z' fill='%2334c759'/%3E%3C/svg%3E");
+  background-position: 6% 10%, 3% 50%, 7% 90%, 94% 14%, 97% 58%, 93% 92%;
+  background-size: 70px 70px, 64px 64px, 56px 56px, 72px 72px, 76px 76px, 60px 60px;
   color: var(--text);
   font: 15px/1.45 "Segoe UI Variable Text", "Segoe UI", -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-#app { max-width: 1040px; margin: 0 auto; padding: 28px 32px 64px; }
+#app { max-width: 1280px; margin: 0 auto; padding: 28px 32px 64px; }
 
 h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.02em; margin: 4px 0 6px; }
 h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 12px; }
@@ -75,6 +86,11 @@ button:disabled { cursor: default; opacity: 0.4; }
 .bar span { display: block; height: 100%; background: var(--accent); }
 
 /* Списък с уроци */
+.section { margin-bottom: 30px; }
+.section-title {
+  font-size: 18px; text-transform: none; letter-spacing: 0; color: var(--text);
+  border-left: 5px solid var(--lesson); padding-left: 10px; margin-bottom: 14px;
+}
 .list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .row {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
@@ -93,6 +109,8 @@ button:disabled { cursor: default; opacity: 0.4; }
 
 /* Урок */
 .panel { background: var(--card); border-radius: 20px; padding: 20px 22px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.intro-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.intro-cols .panel { margin-bottom: 0; background: color-mix(in srgb, var(--lesson, var(--accent)) 14%, #fff); }
 .learn { margin: 0; padding-left: 20px; }
 .learn li { margin: 4px 0; }
 .legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
@@ -103,12 +121,11 @@ button:disabled { cursor: default; opacity: 0.4; }
 .stage {
   position: relative;
   padding: 18px 28px 12px;
-  /* бяло в средата, съвсем лек нюанс от цвета на урока по краищата */
-  background: radial-gradient(120% 140% at 50% 45%, var(--card) 55%, color-mix(in srgb, var(--lesson, var(--accent)) 8%, var(--card)) 100%);
+  /* пастелен фон в цвета на урока; нотите са на бял „лист“ (#big) */
+  background: color-mix(in srgb, var(--lesson, var(--accent)) 22%, #fff);
 }
-.progress { display: flex; justify-content: center; gap: 6px; margin-bottom: 6px; }
-.progress span { width: 10px; height: 10px; border-radius: 50%; background: var(--line); transition: background 0.2s; }
-.progress span.done { background: var(--lesson, var(--accent)); }
+/* без padding: топчето се позиционира спрямо горния ляв ъгъл на #big */
+#big { background: #fff; border-radius: 16px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1); }
 .stage.flash { animation: stageFlash 0.3s ease-out; }
 @keyframes stageFlash {
   from { box-shadow: inset 0 0 0 5px var(--lesson, var(--accent)); }
