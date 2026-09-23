@@ -183,9 +183,9 @@ button:disabled { cursor: default; opacity: 0.4; }
   body::before, body::after {
     content: ""; position: fixed; top: 0; bottom: 0; z-index: -1; pointer-events: none;
     width: calc((100vw - 1280px) / 2);
-    background: url("decor.svg") center top / 120px auto repeat-y;
+    background: url("decor.svg") center top / 150px auto repeat-y;
     opacity: 0.9;
   }
   body::before { left: 0; }
-  body::after { right: 0; background-position: center 360px; }
+  body::after { right: 0; background-position: center 470px; }
 }
