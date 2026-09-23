@@ -244,6 +244,12 @@ const live = new Set();
 
 // закъснението между „пуснат звук“ и „чут звук“ — за да върви картината заедно със звука
 const outLatency = () => (audio?.outputLatency || 0) + (audio?.baseLatency || 0);
+// моментът от звука, който излиза от колонките точно сега — по отчета на самата звукова карта
+function heardNow() {
+  const ts = audio.getOutputTimestamp?.();
+  if (!ts?.contextTime) return audio.currentTime - outLatency();
+  return ts.contextTime + (performance.now() - ts.performanceTime) / 1000;
+}
 
 function ac() {
   if (!audio) {
@@ -433,7 +439,7 @@ const LOOKAHEAD = 0.25; // следващият такт се подготвя �
 const switchDelay = dur => Math.min(0.12, dur * 0.4);
 // изпълнява fn, когато звукът за момент t се чуе
 function at(t, fn) {
-  timers.push(setTimeout(fn, Math.max(0, (t + outLatency() - audio.currentTime) * 1000)));
+  timers.push(setTimeout(fn, Math.max(0, (t - heardNow()) * 1000)));
 }
 
 function play() {
@@ -951,7 +957,7 @@ function animateBall() {
   if (!state.playing || !audio || !track.length || !svg) return ball.classList.remove("on");
 
   // моментът, който се чува сега (+ половин кадър, защото картината излиза на екрана малко след рисуването)
-  const now = audio.currentTime - outLatency() + 0.008;
+  const now = heardNow() + 0.008;
   while (trackPos + 1 < track.length && track[trackPos + 1].t <= now) trackPos++;
   const cur = track[trackPos];
   if (cur.t > now) return ball.classList.remove("on");
