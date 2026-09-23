@@ -7,7 +7,19 @@ const DUR = { w: 4, h: 2, q: 1, 8: 0.5, 16: 0.25 }; // в четвъртини
 // всеки урок има свой цвят и фигура за топчето
 const PALETTE = ["#ff6b6b", "#fd7e14", "#f59f00", "#2fb344", "#12b886", "#228be6", "#7950f2", "#e64980"];
 const SHAPES = ["smile", "star", "heart", "ball", "flower"];
-const lessonLook = idx => ({ color: PALETTE[idx % PALETTE.length], shape: SHAPES[idx % SHAPES.length] });
+// раздели по тема: от кой урок (индекс) започват; всички уроци в раздела са в един цвят
+// ponytail: вързано за реда на уроците в lessons.json; при нови уроци — да се премести в JSON-а
+const SECTIONS = [
+  { from: 0, title: "Основни дължини", color: "#228be6" },
+  { from: 4, title: "Осмини и шестнайсетини", color: "#12b886" },
+  { from: 9, title: "Групи, точка и синкоп", color: "#f59f00" },
+  { from: 18, title: "Триоли", color: "#7950f2" },
+  { from: 22, title: "Неравноделни размери", color: "#e64980" },
+  { from: 36, title: "6/8, 9/8 и 12/8", color: "#15aabf" },
+  { from: 40, title: "Двувременна триола, секстола и групи", color: "#fd7e14" },
+];
+const sectionOf = idx => SECTIONS.findLast(s => s.from <= idx);
+const lessonLook = idx => ({ color: sectionOf(idx).color, shape: SHAPES[idx % SHAPES.length] });
 
 function shapeSvg({ color: c, shape }) {
   const body = {
@@ -40,7 +52,7 @@ const state = {
   tempo: 60,
   mode: "auto", // "auto" = минава сам напред, "manual" = повтаря такта, учителят сменя
   metronome: true,
-  stars: {}, // "урок/пример" → завършен от начало до край (само докато е отворено)
+  stars: {}, // "урок/пример" → завършен от начало до край (записва се в progress.json)
 };
 
 const TURTLE = `<svg viewBox="0 0 32 20" aria-hidden="true"><path d="M5 15a9 9 0 0 1 18 0Z"/><circle cx="26" cy="12" r="3.2"/>
@@ -419,7 +431,6 @@ let lastLanded = null;
 const LOOKAHEAD = 0.25; // следващият такт се подготвя толкова секунди предварително
 // след последната нота листът минава на следващия такт толкова по-късно — колкото да се види ударът
 const switchDelay = dur => Math.min(0.12, dur * 0.4);
-
 // изпълнява fn, когато звукът за момент t се чуе
 function at(t, fn) {
   timers.push(setTimeout(fn, Math.max(0, (t + outLatency() - audio.currentTime) * 1000)));
@@ -569,6 +580,7 @@ function finishLesson() {
   const idx = state.lessonIdx;
   const ex = state.example;
   state.stars[`${idx}/${ex}`] = true;
+  state.api?.save_progress(state.stars);
   $app.querySelector(`[data-example="${ex}"]`)?.classList.add("star");
   const hasNextExample = ex < lesson().parsedExamples.length - 1;
   const hasNextLesson = idx < i.lessons.length - 1;
@@ -761,17 +773,26 @@ function renderInstrument() {
       <h1>${esc(i.name)}</h1>
       <p class="muted">${esc(i.subtitle)}</p>
     </header>
-    <div class="list">
-      ${i.lessons.map((l, k) => {
-        const look = lessonLook(k);
-        return `
-          <button class="row" data-lesson="${k}" style="--lesson:${look.color}">
-            <span class="badge">${k + 1}</span>
-            <div class="row-notes"></div>
-            <span class="row-title">${esc(l.title)}</span>
-          </button>`;
-      }).join("")}
-    </div>`;
+    ${SECTIONS.map((s, n) => {
+      const end = SECTIONS[n + 1]?.from ?? i.lessons.length;
+      const items = i.lessons.slice(s.from, end);
+      if (!items.length) return "";
+      return `
+      <section class="section" style="--lesson:${s.color}">
+        <h2 class="section-title">${esc(s.title)}</h2>
+        <div class="list">
+          ${items.map((l, j) => {
+            const k = s.from + j;
+            return `
+              <button class="row" data-lesson="${k}">
+                <span class="badge">${k + 1}</span>
+                <div class="row-notes"></div>
+                <span class="row-title">${esc(l.title)}</span>
+              </button>`;
+          }).join("")}
+        </div>
+      </section>`;
+    }).join("")}`;
   if (!single) $("[data-back]").onclick = () => go("home");
   $app.querySelectorAll("[data-lesson]").forEach(b => {
     const k = Number(b.dataset.lesson);
@@ -804,14 +825,16 @@ function renderIntro() {
         <p class="muted">Темпо ${l.tempo} · Размер ${esc(sizeLabel(l, true))} · ${l.parsedExamples.length} примера по ${l.parsedExamples[0].length} такта</p>
       </div>
     </header>
-    <section class="panel">
-      <h2>Какво се учи</h2>
-      <ul class="learn">${l.learn.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
-    </section>
-    <section class="panel">
-      <h2>Удари в този урок</h2>
-      ${legend(l)}
-    </section>
+    <div class="intro-cols">
+      <section class="panel">
+        <h2>Какво се учи</h2>
+        <ul class="learn">${l.learn.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      </section>
+      <section class="panel">
+        <h2>Удари в този урок</h2>
+        ${legend(l)}
+      </section>
+    </div>
     <button class="primary big" data-start>Започни урока</button>`;
   $("[data-back]").onclick = () => go("instrument");
   $("[data-start]").onclick = () => go("practice", { example: 0, measure: 0, active: -1, tempo: l.tempo });
@@ -835,7 +858,6 @@ function renderPractice() {
       <span class="muted small">Размер ${esc(sizeLabel(l))}</span>
     </div>
     <section class="panel stage">
-      <div class="progress">${bars().map(() => "<span></span>").join("")}</div>
       <div class="big-wrap"><div id="big"></div><div id="hit" class="hit"></div><div id="ball" class="ball">${shapeSvg(look)}</div></div>
       <p id="status" class="status"></p>
     </section>
@@ -984,7 +1006,8 @@ function animateBall() {
     const p = Math.min(Math.max((now - t0) / flight, 0), 1); // постоянна скорост — без ускорение по средата
     const lift = Math.min(Math.max(dur * 55, Math.abs(x1 - x0) * 0.1, 10), 40); // по-дълга нота или по-далечен скок — по-високо
     x = x0 + (x1 - x0) * p;
-    y = y0 + (b.landY - y0) * p - lift * 4 * p * (1 - p);
+    // бързо нагоре, бавно горе, бързо надолу — ударът в нотата съвпада със звука
+    y = y0 + (b.landY - y0) * p - lift * (1 - (2 * p - 1) ** 4);
     if (p > 0.8 && sx === 1) { // леко издължено при падане
       const k = (p - 0.8) / 0.2;
       sx = 1 - 0.1 * k;
@@ -1015,7 +1038,6 @@ function updateMeasure() {
   drawBig();
   $("#counter").textContent = `Пример ${state.example + 1} · Такт ${state.measure + 1} от ${total}`;
   $app.querySelectorAll(".tile").forEach((t, k) => t.classList.toggle("current", k === state.measure));
-  $app.querySelectorAll(".progress span").forEach((d, k) => d.classList.toggle("done", k <= state.measure));
   $("[data-prev]").disabled = state.measure === 0;
   $("[data-next]").disabled = state.measure === total - 1;
 }
@@ -1044,6 +1066,7 @@ async function init() {
   state.api = await waitApi();
   try {
     state.data = state.api ? await state.api.get_lessons() : await (await fetch("lessons.json")).json();
+    if (state.api) state.stars = await state.api.get_progress();
   } catch (e) {
     $app.innerHTML = `<p class="error">Не мога да заредя уроците: ${esc(e.message)}</p>`;
     return;
