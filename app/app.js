@@ -40,7 +40,14 @@ const state = {
   tempo: 60,
   mode: "auto", // "auto" = минава сам напред, "manual" = повтаря такта, учителят сменя
   metronome: true,
+  stars: {}, // "урок/пример" → завършен от начало до край (само докато е отворено)
 };
+
+const TURTLE = `<svg viewBox="0 0 32 20" aria-hidden="true"><path d="M5 15a9 9 0 0 1 18 0Z"/><circle cx="26" cy="12" r="3.2"/>
+  <rect x="7" y="14" width="3.5" height="4.5" rx="1.5"/><rect x="17.5" y="14" width="3.5" height="4.5" rx="1.5"/></svg>`;
+const HARE = `<svg viewBox="0 0 32 20" aria-hidden="true"><ellipse cx="13" cy="13" rx="9" ry="5.5"/><circle cx="23" cy="9" r="3.6"/>
+  <ellipse cx="22" cy="3.5" rx="1.4" ry="4" transform="rotate(-15 22 3.5)"/><ellipse cx="25" cy="3.5" rx="1.4" ry="4" transform="rotate(15 25 3.5)"/>
+  <circle cx="4" cy="12" r="2"/></svg>`;
 
 const $app = document.getElementById("app");
 const $ = sel => $app.querySelector(sel);
@@ -561,6 +568,8 @@ function finishLesson() {
   const i = inst();
   const idx = state.lessonIdx;
   const ex = state.example;
+  state.stars[`${idx}/${ex}`] = true;
+  $app.querySelector(`[data-example="${ex}"]`)?.classList.add("star");
   const hasNextExample = ex < lesson().parsedExamples.length - 1;
   const hasNextLesson = idx < i.lessons.length - 1;
   const next = hasNextExample
@@ -821,11 +830,12 @@ function renderPractice() {
     <div class="example-bar">
       <span class="muted">Пример</span>
       <div class="modes">
-        ${l.parsedExamples.map((_, e) => `<button class="mode-btn ${e === state.example ? "active" : ""}" data-example="${e}">${e + 1}</button>`).join("")}
+        ${l.parsedExamples.map((_, e) => `<button class="mode-btn ${e === state.example ? "active" : ""} ${state.stars[`${state.lessonIdx}/${e}`] ? "star" : ""}" data-example="${e}">${e + 1}</button>`).join("")}
       </div>
       <span class="muted small">Размер ${esc(sizeLabel(l))}</span>
     </div>
     <section class="panel stage">
+      <div class="progress">${bars().map(() => "<span></span>").join("")}</div>
       <div class="big-wrap"><div id="big"></div><div id="hit" class="hit"></div><div id="ball" class="ball">${shapeSvg(look)}</div></div>
       <p id="status" class="status"></p>
     </section>
@@ -836,7 +846,9 @@ function renderPractice() {
     </div>
     <div class="options">
       <label class="tempo">Темпо
+        <span class="tempo-icon" title="Бавно">${TURTLE}</span>
         <input type="range" id="tempo" min="30" max="160" value="${state.tempo}">
+        <span class="tempo-icon" title="Бързо">${HARE}</span>
         <output id="tempoVal">${state.tempo}</output>
       </label>
       <label class="toggle"><input type="checkbox" id="metro" ${state.metronome ? "checked" : ""}> Метроном</label>
@@ -1003,6 +1015,7 @@ function updateMeasure() {
   drawBig();
   $("#counter").textContent = `Пример ${state.example + 1} · Такт ${state.measure + 1} от ${total}`;
   $app.querySelectorAll(".tile").forEach((t, k) => t.classList.toggle("current", k === state.measure));
+  $app.querySelectorAll(".progress span").forEach((d, k) => d.classList.toggle("done", k <= state.measure));
   $("[data-prev]").disabled = state.measure === 0;
   $("[data-next]").disabled = state.measure === total - 1;
 }
