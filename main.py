@@ -7,6 +7,7 @@ import webview
 
 BASE = Path(__file__).resolve().parent
 LESSONS_FILE = BASE / "app" / "lessons.json"
+PROGRESS_FILE = BASE / "progress.json"
 
 
 class Api:
@@ -14,6 +15,15 @@ class Api:
 
     def get_lessons(self):
         return json.loads(LESSONS_FILE.read_text(encoding="utf-8"))
+
+    def get_progress(self):
+        try:
+            return json.loads(PROGRESS_FILE.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return {}
+
+    def save_progress(self, stars):
+        PROGRESS_FILE.write_text(json.dumps(stars), encoding="utf-8")
 
 
 def main():
