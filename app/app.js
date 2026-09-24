@@ -895,10 +895,6 @@ function renderPractice() {
       <div class="tiles">
         ${bars().map((_, k) => `<button class="tile" data-m="${k}"><span class="tile-n">${k + 1}</span><div></div></button>`).join("")}
       </div>
-    </section>
-    <section class="panel">
-      <h2>Удари</h2>
-      ${legend(l)}
     </section>`;
 
   $("[data-back]").onclick = () => go("intro");
