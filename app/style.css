@@ -24,7 +24,7 @@
 
 body {
   margin: 0;
-  background: linear-gradient(160deg, #fff3dc 0%, #ffe7ee 55%, #e8f0ff 100%) fixed;
+  background: var(--bg) radial-gradient(circle, rgba(255, 140, 110, 0.1) 1.6px, transparent 1.8px) 0 0 / 26px 26px fixed;
   color: var(--text);
   font: 16px/1.45 "Nunito", "Segoe UI", -apple-system, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -177,15 +177,3 @@ button:disabled { cursor: default; opacity: 0.4; }
 }
 @keyframes pop { from { transform: scale(0.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; }
-
-/* Забавни картинки в празните полета отстрани — само на широк екран, не пречат на урока */
-@media (min-width: 1600px) {
-  body::before, body::after {
-    content: ""; position: fixed; top: 0; bottom: 0; z-index: -1; pointer-events: none;
-    width: calc((100vw - 1280px) / 2);
-    background: url("decor.svg") center top / 150px auto repeat-y;
-    opacity: 0.9;
-  }
-  body::before { left: 0; }
-  body::after { right: 0; background-position: center 470px; }
-}
