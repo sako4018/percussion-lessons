@@ -7,19 +7,22 @@ const DUR = { w: 4, h: 2, q: 1, 8: 0.5, 16: 0.25 }; // в четвъртини
 // всеки урок има свой цвят и фигура за топчето
 const PALETTE = ["#ff6b6b", "#fd7e14", "#f59f00", "#2fb344", "#12b886", "#228be6", "#7950f2", "#e64980"];
 const SHAPES = ["smile", "star", "heart", "ball", "flower"];
-// раздели по тема: от кой урок (индекс) започват; всички уроци в раздела са в един цвят
+// цветове на разделите по ред (червен, оранжев, жълт, зелен, син, лилав, розов); след седмия започват отначало
+// фонът на кутиите се смесва от този цвят в style.css (--lesson)
+const SECTION_COLORS = ["#e03131", "#f76707", "#f59f00", "#2f9e44", "#1c7ed6", "#7048e8", "#d6336c"];
+// раздели по тема: от кой урок (индекс) започват
 // ponytail: вързано за реда на уроците в lessons.json; при нови уроци — да се премести в JSON-а
 const SECTIONS = [
-  { from: 0, title: "Основни дължини", color: "#228be6" },
-  { from: 4, title: "Осмини и шестнайсетини", color: "#12b886" },
-  { from: 9, title: "Групи, точка и синкоп", color: "#f59f00" },
-  { from: 18, title: "Триоли", color: "#7950f2" },
-  { from: 22, title: "Неравноделни размери", color: "#e64980" },
-  { from: 36, title: "6/8, 9/8 и 12/8", color: "#15aabf" },
-  { from: 40, title: "Двувременна триола, секстола и групи", color: "#fd7e14" },
+  { from: 0, title: "Основни дължини" },
+  { from: 4, title: "Осмини и шестнайсетини" },
+  { from: 9, title: "Групи, точка и синкоп" },
+  { from: 18, title: "Триоли" },
+  { from: 22, title: "Неравноделни размери" },
+  { from: 36, title: "6/8, 9/8 и 12/8" },
+  { from: 40, title: "Двувременна триола, секстола и групи" },
 ];
-const sectionOf = idx => SECTIONS.findLast(s => s.from <= idx);
-const lessonLook = idx => ({ color: sectionOf(idx).color, shape: SHAPES[idx % SHAPES.length] });
+const sectionColor = n => SECTION_COLORS[n % SECTION_COLORS.length];
+const lessonLook = idx => ({ color: sectionColor(SECTIONS.findLastIndex(s => s.from <= idx)), shape: SHAPES[idx % SHAPES.length] });
 
 function shapeSvg({ color: c, shape }) {
   const body = {
@@ -785,7 +788,7 @@ function renderInstrument() {
       const items = i.lessons.slice(s.from, end);
       if (!items.length) return "";
       return `
-      <section class="section" style="--lesson:${s.color}">
+      <section class="section" style="--lesson:${sectionColor(n)}">
         <h2 class="section-title">${esc(s.title)}</h2>
         <div class="list">
           ${items.map((l, j) => {
