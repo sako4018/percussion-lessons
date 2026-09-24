@@ -796,8 +796,8 @@ function renderInstrument() {
             return `
               <button class="row" data-lesson="${k}">
                 <span class="badge">${k + 1}</span>
-                <div class="row-notes"></div>
                 <span class="row-title">${esc(l.title)}</span>
+                <div class="row-notes"></div>
               </button>`;
           }).join("")}
         </div>
