@@ -115,15 +115,12 @@ function prepare(i, l) {
     }
     return notes;
   }));
-  l.usedVoices = [...new Set(l.parsedExamples.flat(2).flatMap(n => n.voices))];
 }
 
 // тактовете на избрания пример
 const bars = () => lesson().parsedExamples[state.example];
 
-const sizeLabel = (l, all = false) =>
-  (all ? [...new Set(l.timeSignatures ?? [l.timeSignature])].join(", ") : tsOf(l)) +
-  (l.parts ? ` (${l.parts.join("+")})` : "");
+const sizeLabel = l => tsOf(l) + (l.parts ? ` (${l.parts.join("+")})` : "");
 
 // кликове на метронома в един такт; при неравноделен размер — акцент в началото на всеки дял
 function clicks(l) {
@@ -619,7 +616,7 @@ function finishLesson() {
     dlg.remove();
     go("practice", { example: ex + 1, measure: 0, active: -1 });
   });
-  dlg.querySelector("[data-next-lesson]")?.addEventListener("click", () => { dlg.remove(); go("intro", { lessonIdx: idx + 1 }); });
+  dlg.querySelector("[data-next-lesson]")?.addEventListener("click", () => { dlg.remove(); openLesson(idx + 1); });
   dlg.querySelector("[data-list]")?.addEventListener("click", () => { dlg.remove(); go("instrument"); });
 }
 
@@ -716,9 +713,11 @@ function celebrate(color) {
 function go(view, patch = {}) {
   stop();
   Object.assign(state, patch, { view });
-  ({ home: renderHome, instrument: renderInstrument, intro: renderIntro, practice: renderPractice })[view]();
+  ({ home: renderHome, instrument: renderInstrument, practice: renderPractice })[view]();
   window.scrollTo(0, 0);
 }
+
+const openLesson = k => go("practice", { lessonIdx: k, example: 0, measure: 0, active: -1, tempo: inst().lessons[k].tempo });
 
 function renderHome() {
   $app.innerHTML = `
@@ -811,43 +810,8 @@ function renderInstrument() {
     const fig = figureOf(i, l);
     // ширината следва броя ноти, за да стои фигурата в средата
     drawMeasure(b.querySelector(".row-notes"), l, fig, { width: 50 + fig.length * 26 + (meterLesson ? 60 : 0), height: 100, top: 20, showSig: meterLesson });
-    b.onclick = () => go("intro", { lessonIdx: k });
+    b.onclick = () => openLesson(k);
   });
-}
-
-function legend(l) {
-  return `<ul class="legend">${l.usedVoices.map(v => `
-    <li><b>${esc(v.label || "●")}</b>${esc(v.name)} <span class="muted small">— ${esc(v.hint)}</span></li>`).join("")}
-  </ul>`;
-}
-
-function renderIntro() {
-  const i = inst();
-  const l = lesson();
-  prepare(i, l);
-  $app.innerHTML = `
-    <button class="back" data-back>‹ ${esc(i.name)}</button>
-    <header class="hero hero-lesson">
-      <span class="row-shape hero-shape-inline">${shapeSvg(lessonLook(state.lessonIdx))}</span>
-      <div>
-        <p class="eyebrow">Урок ${state.lessonIdx + 1}</p>
-        <h1>${esc(l.title)}</h1>
-        <p class="muted">Темпо ${l.tempo} · Размер ${esc(sizeLabel(l, true))} · ${l.parsedExamples.length} примера по ${l.parsedExamples[0].length} такта</p>
-      </div>
-    </header>
-    <div class="intro-cols">
-      <section class="panel">
-        <h2>Какво се учи</h2>
-        <ul class="learn">${l.learn.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
-      </section>
-      <section class="panel">
-        <h2>Удари в този урок</h2>
-        ${legend(l)}
-      </section>
-    </div>
-    <button class="primary big" data-start>Започни урока</button>`;
-  $("[data-back]").onclick = () => go("instrument");
-  $("[data-start]").onclick = () => go("practice", { example: 0, measure: 0, active: -1, tempo: l.tempo });
 }
 
 function renderPractice() {
@@ -857,7 +821,8 @@ function renderPractice() {
   $app.style.setProperty("--lesson", look.color);
   $app.innerHTML = `
     <div class="topbar">
-      <button class="back" data-back>‹ Урок ${state.lessonIdx + 1} · ${esc(l.title)}</button>
+      <button class="back" data-back>‹ Всички уроци</button>
+      <b class="lesson-name">Урок ${state.lessonIdx + 1} · ${esc(l.title)}</b>
       <span class="counter" id="counter"></span>
     </div>
     <div class="example-bar">
@@ -897,7 +862,7 @@ function renderPractice() {
       </div>
     </section>`;
 
-  $("[data-back]").onclick = () => go("intro");
+  $("[data-back]").onclick = () => go("instrument");
   $("[data-prev]").onclick = () => jumpMeasure(state.measure - 1);
   $("[data-next]").onclick = () => jumpMeasure(state.measure + 1);
   $("#play").onclick = play;
