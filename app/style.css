@@ -32,17 +32,15 @@ body {
 
 #app { max-width: 1280px; margin: 0 auto; padding: 28px 32px 64px; }
 
-h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; margin: 4px 0 6px; }
+h1 { font-size: 46px; font-weight: 800; letter-spacing: -0.02em; margin: 4px 0 6px; }
 h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 12px; }
 
 .muted { color: var(--muted); }
 .small { font-size: 13px; }
 .error { color: #d70015; }
-.eyebrow { margin: 0; color: var(--accent); font-weight: 600; font-size: 13px; }
-.hero { margin: 12px 0 28px; }
-.hero p { margin: 0; }
-.hero-lesson { display: flex; align-items: center; gap: 16px; }
-.hero-shape-inline { width: 52px; height: 52px; flex: none; }
+.hero { margin: 12px 0 28px; text-align: center; }
+.hero h1 { margin-bottom: 0; }
+.hero p { margin: 0; font-size: 20px; font-weight: 400; }
 
 button { font: inherit; color: inherit; cursor: pointer; }
 button:disabled { cursor: default; opacity: 0.4; }
