@@ -4,3 +4,5 @@ dist/
 progress.json
 .venv/
 .DS_Store
+progress.db
+progress.sql
