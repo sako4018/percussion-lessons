@@ -1,24 +1,30 @@
-"""Уроци по перкусии — прозорец за компютър."""
+"""Уроци по ударни инструменти — програма с прозорец.
+
+Прозорецът е малък „браузър“ (pywebview), който показва страницата от папка app.
+Тук е само Python частта: зарежда уроците и записва напредъка.
+"""
 import json
-import os
 from pathlib import Path
 
 import webview
 
-BASE = Path(__file__).resolve().parent
-LESSONS_FILE = BASE / "app" / "lessons.json"
-PROGRESS_FILE = BASE / "progress.json"
+FOLDER = Path(__file__).resolve().parent
+LESSONS_FILE = FOLDER / "app" / "lessons.json"
+PROGRESS_FILE = FOLDER / "progress.json"
 
 
 class Api:
-    """Функции, които страницата вика през window.pywebview.api."""
+    """Функциите тук могат да се викат от JavaScript през window.pywebview.api."""
 
     def get_lessons(self):
-        return json.loads(LESSONS_FILE.read_text(encoding="utf-8"))
+        text = LESSONS_FILE.read_text(encoding="utf-8")
+        return json.loads(text)
 
     def get_progress(self):
+        # ако файлът още го няма (първо пускане) или е повреден — започваме начисто
         try:
-            return json.loads(PROGRESS_FILE.read_text(encoding="utf-8"))
+            text = PROGRESS_FILE.read_text(encoding="utf-8")
+            return json.loads(text)
         except (OSError, ValueError):
             return {}
 
@@ -27,10 +33,9 @@ class Api:
 
 
 def main():
-    os.chdir(BASE)
     webview.create_window(
-        "Уроци по перкусии",
-        "app/index.html",
+        "Уроци по ударни инструменти",
+        str(FOLDER / "app" / "index.html"),
         js_api=Api(),
         width=1200,
         height=860,
