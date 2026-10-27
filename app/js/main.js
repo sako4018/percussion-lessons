@@ -34,7 +34,6 @@ async function init() {
   try {
     if (state.api) {
       state.data = await state.api.get_lessons();
-      state.stars = await state.api.get_progress();
     } else {
       const response = await fetch("lessons.json");
       state.data = await response.json();
@@ -44,11 +43,18 @@ async function init() {
     return;
   }
 
-  // с един инструмент отваряме направо списъка с уроци
-  if (state.data.instruments.length === 1) {
-    go("instrument", { instId: state.data.instruments[0].id });
+  // без Python (отворено в браузър) няма къде да се пазят учениците — направо към уроците
+  if (!state.api) {
+    openLessons();
+    return;
+  }
+
+  // отваряме последно избрания ученик; ако няма такъв — екрана „Кой свири?“
+  const last = await loadStudents();
+  if (last && hasStudent(last)) {
+    await selectStudent(last);
   } else {
-    go("home");
+    go("students");
   }
 }
 

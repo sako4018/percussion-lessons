@@ -8,10 +8,36 @@ function go(view, patch) {
   stop();
   Object.assign(state, patch || {});
   state.view = view;
+  if (view === "students") renderStudents();
   if (view === "home") renderHome();
   if (view === "instrument") renderInstrument();
   if (view === "practice") renderPractice();
   window.scrollTo(0, 0);
+}
+
+// Отваря списъка с уроци (с един инструмент — направо неговите уроци)
+function openLessons() {
+  if (state.data.instruments.length === 1) {
+    go("instrument", { instId: state.data.instruments[0].id });
+  } else {
+    go("home");
+  }
+}
+
+// Лентата горе с името на ученика и бутона „Смени ученик“ (празна, ако няма ученици)
+function studentBar() {
+  if (!state.student) return "";
+  return `
+    <div class="student-bar">
+      <span class="student-name">Ученик: <b>${esc(state.student)}</b></span>
+      <button class="back" data-change-student>Смени ученик</button>
+    </div>`;
+}
+
+// Оживява бутона „Смени ученик“, ако го има на екрана
+function bindStudentBar() {
+  const button = $("[data-change-student]");
+  if (button) button.onclick = () => go("students", { editing: null, deleting: null, studentError: "" });
 }
 
 // Отваря урок с номер k от първия му пример
@@ -38,12 +64,14 @@ function renderHome() {
       </button>`;
   }
   appEl.innerHTML = `
+    ${studentBar()}
     <header class="hero">
       <h1>Уроци по перкусии</h1>
       <p class="muted">Избери инструмент и започни от първия урок.</p>
     </header>
     <div class="cards">${cards}</div>`;
 
+  bindStudentBar();
   for (const button of appEl.querySelectorAll("[data-inst]")) {
     button.onclick = () => go("instrument", { instId: button.dataset.inst });
   }
@@ -81,6 +109,7 @@ function renderInstrument() {
   }
 
   appEl.innerHTML = `
+    ${studentBar()}
     ${onlyOne ? "" : `<button class="back" data-back>‹ Инструменти</button>`}
     <header class="hero">
       <h1>${esc(inst.name)}</h1>
@@ -88,6 +117,7 @@ function renderInstrument() {
     </header>
     ${sectionsHtml}`;
 
+  bindStudentBar();
   if (!onlyOne) $("[data-back]").onclick = () => go("home");
 
   // рисува малката фигура във всяка кутия и оживява кликването
@@ -133,6 +163,7 @@ function renderPractice() {
   }
 
   appEl.innerHTML = `
+    ${studentBar()}
     <div class="topbar">
       <button class="back" data-back>‹ Всички уроци</button>
       <b class="lesson-name">Урок ${state.lessonIdx + 1} · ${esc(lesson.title)}</b>
@@ -176,6 +207,7 @@ function renderPractice() {
     </section>`;
 
   // бутони
+  bindStudentBar();
   $("[data-back]").onclick = () => go("instrument");
   $("[data-prev]").onclick = () => jumpMeasure(state.measure - 1);
   $("[data-next]").onclick = () => jumpMeasure(state.measure + 1);
@@ -275,7 +307,7 @@ function finishLesson() {
 
   // запомняме напредъка и слагаме звезда на бутона на примера
   state.stars[lessonIdx + "/" + example] = true;
-  if (state.api) state.api.save_progress(state.stars);
+  if (state.api && state.student) state.api.save_progress(state.student, state.stars);
   const exampleButton = appEl.querySelector('[data-example="' + example + '"]');
   if (exampleButton) exampleButton.classList.add("star");
 
