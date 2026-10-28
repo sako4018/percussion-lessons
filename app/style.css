@@ -155,11 +155,15 @@ button:disabled { cursor: default; opacity: 0.4; }
 .mode-btn { border: 0; background: none; padding: 7px 14px; border-radius: 8px; font-size: 13px; color: var(--muted); }
 .mode-btn.active { background: var(--card); color: var(--text); font-weight: 600; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
-.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-.tile { position: relative; background: none; border: 1.5px solid var(--line); border-radius: 12px; padding: 6px; }
-.tile:hover { border-color: #c7c7cc; }
-.tile.current { border-color: var(--accent); background: #f0f6ff; }
-.tile-n { position: absolute; top: 6px; left: 10px; font-size: 12px; color: var(--muted); }
+/* Всички тактове: плочките са по-ясни — видима рамка, големи за натискане, текущият е отбелязан */
+.panel h2 { font-size: 18px; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--text); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 12px; }
+.tile { position: relative; background: none; border: 2px solid #8a8a90; border-radius: 10px; padding: 6px; min-height: 44px; transition: border-color 0.15s, background-color 0.15s; }
+.tile:hover { background: #e6f0fb; }
+.tile:active { transform: translateY(1px); }
+.tile:focus-visible { outline: 3px solid #0050a8; outline-offset: 2px; }
+.tile.current { border-color: var(--accent); background: #e6f0fb; }
+.tile-n { position: absolute; top: 6px; left: 10px; font-size: 15px; font-weight: 700; color: var(--muted); }
 
 /* Прозорец „Браво“ */
 .overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.25); display: grid; place-items: center; backdrop-filter: blur(4px); }

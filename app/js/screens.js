@@ -129,7 +129,7 @@ function renderPractice() {
   // празните плочки с всички тактове (нотите се рисуват след това)
   let tiles = "";
   for (let k = 0; k < getBars().length; k++) {
-    tiles += `<button class="tile" data-m="${k}"><span class="tile-n">${k + 1}</span><div></div></button>`;
+    tiles += `<button class="tile" data-m="${k}" aria-label="Такт ${k + 1}"><span class="tile-n">${k + 1}</span><div></div></button>`;
   }
 
   appEl.innerHTML = `
@@ -171,7 +171,7 @@ function renderPractice() {
       </div>
     </div>
     <section class="panel">
-      <h2>Всички ноти на урока</h2>
+      <h2>Всички тактове</h2>
       <div class="tiles">${tiles}</div>
     </section>`;
 
@@ -245,6 +245,8 @@ function updateMeasure() {
   const tileButtons = appEl.querySelectorAll(".tile");
   for (let k = 0; k < tileButtons.length; k++) {
     tileButtons[k].classList.toggle("current", k === state.measure);
+    if (k === state.measure) tileButtons[k].setAttribute("aria-current", "true");
+    else tileButtons[k].removeAttribute("aria-current");
   }
   $("[data-prev]").disabled = state.measure === 0;
   $("[data-next]").disabled = state.measure === total - 1;
