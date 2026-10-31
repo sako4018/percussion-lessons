@@ -15,11 +15,21 @@ function waitForApi() {
   });
 }
 
+// Прозорецът „Браво“ е отворен
+function isDialogOpen() {
+  return document.querySelector(".overlay") !== null;
+}
+
+// Пише се в поле
+function isTypingInField(event) {
+  return Boolean(event.target.matches && event.target.matches("input"));
+}
+
 // Клавиши: интервал = свири/спри, стрелките сменят такта
-document.addEventListener("keydown", event => {
+function handleKey(event) {
   if (state.view !== "practice") return;
-  if (document.querySelector(".overlay")) return;          // прозорецът „Браво“ е отворен
-  if (event.target.matches && event.target.matches("input")) return; // пише се в поле
+  if (isDialogOpen()) return;
+  if (isTypingInField(event)) return;
 
   if (event.code === "Space") {
     event.preventDefault();
@@ -27,29 +37,44 @@ document.addEventListener("keydown", event => {
   }
   if (event.code === "ArrowLeft") jumpMeasure(state.measure - 1);
   if (event.code === "ArrowRight") jumpMeasure(state.measure + 1);
-});
+}
+
+document.addEventListener("keydown", handleKey);
+
+// Взема уроците от Python, а в браузър - от файла
+async function loadData() {
+  if (state.api) {
+    state.data = await state.api.get_lessons();
+    state.stars = await state.api.get_progress();
+    return;
+  }
+  const response = await fetch("lessons.json");
+  state.data = await response.json();
+}
+
+function showLoadError(error) {
+  appEl.innerHTML = `<p class="error">Не мога да заредя уроците: ${esc(error.message)}</p>`;
+}
+
+// С един инструмент отваряме направо списъка с уроци
+function showFirstScreen() {
+  const instruments = state.data.instruments;
+  if (instruments.length === 1) {
+    go("instrument", { instId: instruments[0].id });
+    return;
+  }
+  go("home");
+}
 
 async function init() {
   state.api = await waitForApi();
   try {
-    if (state.api) {
-      state.data = await state.api.get_lessons();
-      state.stars = await state.api.get_progress();
-    } else {
-      const response = await fetch("lessons.json");
-      state.data = await response.json();
-    }
-  } catch (e) {
-    appEl.innerHTML = `<p class="error">Не мога да заредя уроците: ${esc(e.message)}</p>`;
+    await loadData();
+  } catch (error) {
+    showLoadError(error);
     return;
   }
-
-  // с един инструмент отваряме направо списъка с уроци
-  if (state.data.instruments.length === 1) {
-    go("instrument", { instId: state.data.instruments[0].id });
-  } else {
-    go("home");
-  }
+  showFirstScreen();
 }
 
 prepareSnares();

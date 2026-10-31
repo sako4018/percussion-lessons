@@ -2,24 +2,55 @@
 //
 // Важно: звукът се задава предварително по часовника на звуковата карта (audio.currentTime),
 // затова е точен. Таймерите на JavaScript (setTimeout) само обновяват картинката.
+// Самото топче е във файла ball.js — той чете track, trackPos и lastLanded оттук.
 
 let playId = 0;        // номер на текущото свирене; старите таймери проверяват дали още е техният ред
 let timers = [];       // всички таймери, за да могат да се спрат
-let track = [];        // кога коя нота звучи: {t, m, idx, end, rest} — по него скача топчето
+let track = [];        // кога коя нота звучи: {time, measure, index, end, rest} — по него скача топчето
 let trackPos = 0;      // докъде в track сме стигнали
 let lastLanded = null; // последната нота, на която е кацнало топчето
 
-const LOOKAHEAD = 0.25; // следващият такт се подготвя толкова секунди предварително
+const LOOKAHEAD = 0.25;            // следващият такт се подготвя толкова секунди предварително
+const COUNT_IN_DELAY = 0.15;       // пауза преди първия удар на отброяването
+const JUMP_DELAY = 0.05;           // пауза преди такта при бърза смяна в ръчен режим
+const END_DELAY = 0.25;            // след последния такт изчакваме удара да отзвучи
+const SWITCH_BACKUP_DELAY = 0.15;  // резервната смяна на листа идва малко след основната
+const SWITCH_MAX = 0.12;           // най-много колко се бави смяната на листа след удара
+const SWITCH_FRACTION = 0.4;       // или толкова от дължината на последната нота
+const STRONG_VELOCITY = 1;         // сила на удара на силните времена
+const WEAK_VELOCITY = 0.84;        // по-меко между тях
+const VELOCITY_JITTER = 0.06;      // лека случайна разлика
+const POSITION_DIGITS = 4;         // позициите се сравняват като текст, закръглени така
 
 // След последната нота листът минава на следващия такт малко по-късно — колкото да се види ударът
 function switchDelay(duration) {
-  return Math.min(0.12, duration * 0.4);
+  return Math.min(SWITCH_MAX, duration * SWITCH_FRACTION);
 }
 
-// Изпълнява функцията fn, когато звукът за момент t се чуе
-function runAt(t, fn) {
-  const wait = Math.max(0, (t - heardNow()) * 1000);
-  timers.push(setTimeout(fn, wait));
+// Изпълнява функцията action, когато звукът за момент time се чуе
+function runAt(time, action) {
+  const wait = Math.max(0, (time - heardNow()) * 1000);
+  timers.push(setTimeout(action, wait));
+}
+
+function secondsPerQuarter() {
+  return 60 / state.tempo;
+}
+
+function beatsPerMeasure() {
+  return getMeter(getLesson(), state.example).beats;
+}
+
+function resetTrack() {
+  track = [];
+  trackPos = 0;
+}
+
+// Листът показва такт measure и нито една нота не е оцветена
+function showMeasure(measure) {
+  state.measure = measure;
+  state.active = -1;
+  updateMeasure();
 }
 
 // Бутонът „Свири / Спри“
@@ -35,109 +66,131 @@ function play() {
   const id = playId;
   updatePlayButton();
 
-  // един такт отброяване с метронома
-  const lesson = getLesson();
-  const quarter = 60 / state.tempo; // колко секунди е една четвъртина
-  const t0 = audio.currentTime + 0.15;
-  track = [];
-  trackPos = 0;
-  for (const c of getClicks(lesson)) {
-    const when = t0 + c.at * quarter;
-    playClick(when, c.level);
-    if (c.label) {
-      runAt(when, () => {
-        if (id === playId) setStatus("Отброяване… " + c.label);
-      });
-      // топчето подскача на място
-      track.push({ t: when, m: state.measure, idx: 0, end: null });
-    }
-  }
-  scheduleMeasure(id, t0 + getMeter(lesson, state.example).beats * quarter, state.measure);
+  const countInStart = audio.currentTime + COUNT_IN_DELAY;
+  resetTrack();
+  scheduleCountIn(id, countInStart);
+  const firstMeasureStart = countInStart + beatsPerMeasure() * secondsPerQuarter();
+  scheduleMeasure(id, firstMeasureStart, state.measure);
 }
 
-// Планира звука на такт m, който започва в момент t
-function scheduleMeasure(id, t, m) {
-  const lesson = getLesson();
-  const quarter = 60 / state.tempo;
-  const beats = getMeter(lesson, state.example).beats;
-  const end = t + beats * quarter; // кога свършва тактът
-  const bar = getBars()[m];
-  const isLast = m === getBars().length - 1;
-
-  // кой е следващият такт: в ръчен режим същият, в автоматичен — следващият (null след последния)
-  let next = null;
-  if (state.mode === "manual") next = m;
-  else if (!isLast) next = m + 1;
-
-  // на кои позиции са силните времена (там ударите са по-силни)
-  const clicks = getClicks(lesson);
-  const strong = [];
-  for (const c of clicks) {
-    if (c.label) strong.push(c.at.toFixed(4));
-  }
-
-  let pos = 0;         // позицията в такта в четвъртини
-  let lastWhen = t;    // кога звучи последната нота
-  for (let idx = 0; idx < bar.length; idx++) {
-    const note = bar[idx];
-    const when = t + pos * quarter;
-    lastWhen = when;
-
-    // по-силно на силните времена, малко по-меко между тях, с лека случайна разлика
-    let vel = strong.includes(pos.toFixed(4)) ? 1 : 0.84;
-    vel += (Math.random() - 0.5) * 0.06;
-
-    track.push({ t: when, m: m, idx: idx, end: end, rest: note.rest });
-    for (const voice of note.voices) {
-      if (SOUNDS[voice.sound]) SOUNDS[voice.sound](when, vel);
-    }
-
-    // когато нотата се чуе, я оцветяваме
+// Един такт отброяване с метронома
+function scheduleCountIn(id, start) {
+  const quarter = secondsPerQuarter();
+  for (const click of getClicks(getLesson())) {
+    const when = start + click.at * quarter;
+    playClick(when, click.level);
+    if (!click.label) continue;
     runAt(when, () => {
-      if (id !== playId) return;
-      if (state.measure !== m) { // резервно, ако смяната на такта не е стигнала навреме
-        state.measure = m;
-        state.active = -1;
-        updateMeasure();
-      }
-      highlight(idx);
+      if (id === playId) setStatus("Отброяване… " + click.label);
     });
-    pos += note.beats;
+    // топчето подскача на място
+    track.push({ time: when, measure: state.measure, index: 0, end: null });
   }
+}
 
-  // Веднага след удара на последната нота листът минава на следващия такт — детето вижда
-  // новите ноти по-рано. Обикновено това го прави анимацията на топчето; това е резерва.
-  if (next !== null && next !== m) {
-    runAt(lastWhen + switchDelay(end - lastWhen) + 0.15, () => {
-      if (id !== playId || state.measure === next) return;
-      state.measure = next;
-      state.active = -1;
-      updateMeasure();
+// Планира звука на такт measure, който започва в момент start
+function scheduleMeasure(id, start, measure) {
+  const end = start + beatsPerMeasure() * secondsPerQuarter(); // кога свършва тактът
+  const next = measureAfter(measure);
+
+  const lastNoteTime = scheduleNotes(id, start, end, measure);
+  scheduleEarlySwitch(id, lastNoteTime, end, measure, next);
+  scheduleMetronome(id, start);
+
+  if (next !== null) scheduleNextMeasure(id, end, next);
+  else scheduleEnd(id, end);
+}
+
+// Кой такт е следващият: в ръчен режим същият, в автоматичен — следващият (null след последния)
+function measureAfter(measure) {
+  if (state.mode === "manual") return measure;
+  if (measure === getBars().length - 1) return null;
+  return measure + 1;
+}
+
+// Позициите (в четвъртини) на силните времена — там ударите са по-силни
+function strongPositions() {
+  const positions = [];
+  for (const click of getClicks(getLesson())) {
+    if (click.label) positions.push(click.at.toFixed(POSITION_DIGITS));
+  }
+  return positions;
+}
+
+// По-силно на силните времена, по-меко между тях, с лека случайна разлика
+function velocityAt(position, strong) {
+  const base = strong.includes(position.toFixed(POSITION_DIGITS)) ? STRONG_VELOCITY : WEAK_VELOCITY;
+  return base + (Math.random() - 0.5) * VELOCITY_JITTER;
+}
+
+// Пуска звука на всяка нота от такта и записва в track кога звучи. Връща кога звучи последната.
+function scheduleNotes(id, start, end, measure) {
+  const bar = getBars()[measure];
+  const strong = strongPositions();
+  const quarter = secondsPerQuarter();
+  let position = 0;      // позицията в такта в четвъртини
+  let lastNoteTime = start;
+  for (let index = 0; index < bar.length; index++) {
+    const note = bar[index];
+    const when = start + position * quarter;
+    lastNoteTime = when;
+    track.push({ time: when, measure: measure, index: index, end: end, rest: note.rest });
+    playNote(note, when, velocityAt(position, strong));
+    scheduleHighlight(id, when, measure, index);
+    position += note.beats;
+  }
+  return lastNoteTime;
+}
+
+function playNote(note, when, velocity) {
+  for (const voice of note.voices) {
+    if (SOUNDS[voice.sound]) SOUNDS[voice.sound](when, velocity);
+  }
+}
+
+// Когато нотата се чуе, я оцветяваме
+function scheduleHighlight(id, when, measure, index) {
+  runAt(when, () => {
+    if (id !== playId) return;
+    if (state.measure !== measure) showMeasure(measure); // резервно, ако смяната на такта не е стигнала навреме
+    highlight(index);
+  });
+}
+
+// Веднага след удара на последната нота листът минава на следващия такт — детето вижда
+// новите ноти по-рано. Обикновено това го прави анимацията на топчето; това е резерва.
+function scheduleEarlySwitch(id, lastNoteTime, end, measure, next) {
+  if (next === null || next === measure) return;
+  const when = lastNoteTime + switchDelay(end - lastNoteTime) + SWITCH_BACKUP_DELAY;
+  runAt(when, () => {
+    if (id !== playId || state.measure === next) return;
+    showMeasure(next);
+  });
+}
+
+function scheduleMetronome(id, start) {
+  const quarter = secondsPerQuarter();
+  for (const click of getClicks(getLesson())) {
+    const when = start + click.at * quarter;
+    if (state.metronome) playClick(when, click.level);
+    if (!click.label) continue;
+    runAt(when, () => {
+      if (id === playId) setStatus(click.label);
     });
   }
+}
 
-  // метроном
-  for (const c of clicks) {
-    const when = t + c.at * quarter;
-    if (state.metronome) playClick(when, c.level);
-    if (c.label) {
-      runAt(when, () => {
-        if (id === playId) setStatus(c.label);
-      });
-    }
-  }
+// Подготвя следващия такт малко преди да е дошъл редът му
+function scheduleNextMeasure(id, end, next) {
+  const early = Math.min(LOOKAHEAD, (beatsPerMeasure() * secondsPerQuarter()) / 2);
+  runAt(end - early, () => {
+    if (id === playId) scheduleMeasure(id, end, next);
+  });
+}
 
-  if (next !== null) {
-    // подготвя следващия такт малко преди да е дошъл редът му
-    const early = Math.min(LOOKAHEAD, (beats * quarter) / 2);
-    runAt(end - early, () => {
-      if (id === playId) scheduleMeasure(id, end, next);
-    });
-    return;
-  }
-
-  // това е последният такт — след като последният удар отзвучи, свирим е приключило
-  runAt(end + 0.25, () => {
+// Последният такт — след като последният удар отзвучи, свиренето е приключило
+function scheduleEnd(id, end) {
+  runAt(end + END_DELAY, () => {
     if (id !== playId) return;
     const finished = state.fromStart;
     stop();
@@ -150,17 +203,15 @@ function scheduleMeasure(id, t, m) {
 function stop() {
   playId++;
   clearAllTimers();
-  track = [];
-  trackPos = 0;
+  resetTrack();
   stopAllSounds();
   if (!state.playing) return;
   state.playing = false;
   state.active = -1;
-  if (state.view === "practice") {
-    updatePlayButton();
-    setStatus("");
-    drawBig();
-  }
+  if (state.view !== "practice") return;
+  updatePlayButton();
+  setStatus("");
+  drawBig();
 }
 
 function clearAllTimers() {
@@ -179,17 +230,21 @@ function stopAllSounds() {
   liveSounds.clear();
 }
 
-// Оцветява нота idx от текущия такт
-function highlight(idx) {
-  state.active = idx;
+// Оцветява нота index от текущия такт
+function highlight(index) {
+  state.active = index;
   drawBig();
 }
 
-// Отива на такт k (и спира свиренето)
-function setMeasure(k) {
+// Държи номера на такта в границите на урока
+function clampMeasure(measure) {
+  return Math.min(Math.max(measure, 0), getBars().length - 1);
+}
+
+// Отива на такт measure (и спира свиренето)
+function setMeasure(measure) {
   stop();
-  const total = getBars().length;
-  state.measure = Math.min(Math.max(k, 0), total - 1);
+  state.measure = clampMeasure(measure);
   state.active = -1;
   setStatus("");
   updateMeasure();
@@ -198,9 +253,8 @@ function setMeasure(k) {
 // Бутоните „Предишен / Следващ такт“.
 // В ръчен режим, докато свири: сменя такта веднага, без да спира звука.
 // Иначе: обикновена смяна със спиране.
-function jumpMeasure(k) {
-  const total = getBars().length;
-  const target = Math.min(Math.max(k, 0), total - 1);
+function jumpMeasure(measure) {
+  const target = clampMeasure(measure);
   if (!state.playing || state.mode !== "manual") {
     setMeasure(target);
     return;
@@ -212,132 +266,8 @@ function jumpMeasure(k) {
 
   state.measure = target;
   state.active = -1;
-  track = [];
-  trackPos = 0;
+  resetTrack();
   updateMeasure();
   playId++;
-  scheduleMeasure(playId, audio.currentTime + 0.05, target);
-}
-
-/* ---------- Топчето ---------- */
-
-// Къде са нотите в такт m. Рисува се веднъж настрани и резултатът се помни (кеш).
-function layoutOf(m) {
-  const lesson = getLesson();
-  if (!lesson.layouts) lesson.layouts = {};
-  const key = state.example + "/" + m;
-  if (!lesson.layouts[key]) {
-    lesson.layouts[key] = drawMeasure(document.createElement("div"), lesson, getBars()[m], BIG);
-  }
-  return lesson.layouts[key];
-}
-
-// Следващото кацане след последната нота на такта (още не е в track)
-function nextAfter(cur) {
-  if (cur.end === null || cur.end === undefined) return null;
-  const m = state.mode === "manual" ? cur.m : cur.m + 1;
-  if (m < getBars().length) return { t: cur.end, m: m, idx: 0 };
-  return null;
-}
-
-// Вика се на всеки кадър (около 60 пъти в секунда) и мести топчето.
-// Топчето скача от нота на нота; ударът му в нотата съвпада със звука.
-function animateBall() {
-  requestAnimationFrame(animateBall);
-  const ball = document.getElementById("ball");
-  if (!ball) return;
-  const svg = document.querySelector("#big svg");
-  if (!state.playing || !audio || track.length === 0 || !svg) {
-    ball.classList.remove("on");
-    return;
-  }
-
-  // Моментът, който се чува сега (+ половин кадър, защото картината излиза на екрана малко след рисуването)
-  const now = heardNow() + 0.008;
-  while (trackPos + 1 < track.length && track[trackPos + 1].t <= now) trackPos++;
-  const cur = track[trackPos];
-  if (cur.t > now) {
-    ball.classList.remove("on");
-    return;
-  }
-
-  const scale = svg.clientWidth / BIG.width;         // колко е смалена картинката на екрана
-  const nxt = track[trackPos + 1] || nextAfter(cur); // към коя нота лети топчето
-  const dur = nxt ? nxt.t - cur.t : 0.3;             // колко трае полетът
-  const since = now - cur.t;                         // колко време мина от удара
-  const crossing = nxt && nxt.m !== cur.m;           // последната нота преди нов такт
-
-  // веднага след удара на последната нота листът минава на следващия такт
-  if (crossing && state.mode !== "manual" && state.measure === cur.m && since >= switchDelay(dur)) {
-    state.measure = nxt.m;
-    state.active = -1;
-    updateMeasure();
-  }
-  const switched = cur.m !== state.measure; // листът вече показва новия такт
-
-  // Откъде скача топчето: от нотата — или, след смяната на листа, от началото на новия такт
-  let x0;
-  let y0;
-  let t0 = cur.t;
-  let flight = dur;
-  if (switched) {
-    const layout = layoutOf(state.measure);
-    x0 = Math.max(24, layout.xs[0] - 70);
-    y0 = layout.landY;
-    t0 = cur.t + switchDelay(dur);
-    flight = Math.max(0.05, dur - switchDelay(dur));
-  } else {
-    const layout = layoutOf(cur.m);
-    x0 = layout.xs[cur.idx];
-    y0 = layout.landY;
-    if (cur !== lastLanded) { // точно в момента на звука — кръгче на мястото на кацане
-      lastLanded = cur;
-      if (!cur.rest && since < 0.1) pulse(x0 * scale, y0 * scale);
-    }
-  }
-
-  let x = x0;
-  let y = y0;
-  let stretchX = 1; // сплесквания на топчето
-  let stretchY = 1;
-
-  // сплескване веднага СЛЕД удара (не преди), за да се вижда кога точно е звукът
-  const squashTime = Math.min(0.09, Math.max(0.06, dur * 0.5));
-  if (!switched && !cur.rest && since < squashTime) {
-    const k = 1 - since / squashTime;
-    stretchX = 1 + 0.35 * k;
-    stretchY = 1 - 0.3 * k;
-  }
-
-  // На последната нота топчето стои, докато листът се смени, после продължава в ритъм
-  const waiting = crossing && !switched && state.mode !== "manual";
-  if (nxt && !waiting) {
-    const target = layoutOf(nxt.m);
-    const x1 = target.xs[nxt.idx];
-    const p = Math.min(Math.max((now - t0) / flight, 0), 1); // 0 = току-що тръгнало, 1 = кацнало
-    // по-дълга нота или по-далечен скок — по-високо подскачане
-    const lift = Math.min(Math.max(dur * 55, Math.abs(x1 - x0) * 0.1, 10), 40);
-    x = x0 + (x1 - x0) * p;
-    // бързо нагоре, бавно горе, бързо надолу
-    y = y0 + (target.landY - y0) * p - lift * (1 - Math.pow(2 * p - 1, 4));
-    if (p > 0.8 && stretchX === 1) { // леко издължено при падане
-      const k = (p - 0.8) / 0.2;
-      stretchX = 1 - 0.1 * k;
-      stretchY = 1 + 0.14 * k;
-    }
-  }
-
-  ball.style.transform = "translate(" + (x * scale) + "px, " + (y * scale) + "px) translate(-50%, -100%) scale(" +
-    stretchX + ", " + stretchY + ")";
-  ball.classList.add("on");
-}
-
-// Кръгче, което се разширява на мястото на кацане
-function pulse(px, py) {
-  const hit = document.getElementById("hit");
-  if (!hit) return;
-  hit.style.setProperty("--pos", "translate(" + px + "px, " + py + "px)");
-  hit.classList.remove("go");
-  void hit.offsetWidth; // тази линия рестартира анимацията
-  hit.classList.add("go");
+  scheduleMeasure(playId, audio.currentTime + JUMP_DELAY, target);
 }

@@ -105,30 +105,50 @@ function lessonLook(lessonIdx) {
   };
 }
 
-// Рисува топчето като SVG картинка (форма + цвят)
-function shapeSvg(look) {
-  const c = look.color;
-  let body = "";
-  if (look.shape === "ball") {
-    body = `<circle cx="12" cy="12" r="10" fill="${c}"/><circle cx="8.5" cy="8" r="2.8" fill="#fff" opacity=".5"/>`;
-  } else if (look.shape === "smile") {
-    body = `<circle cx="12" cy="12" r="10" fill="${c}"/><circle cx="8.6" cy="10" r="1.3" fill="#fff"/>
+// Формите на топчето: всяка е малка функция, която връща вътрешността на SVG-то
+function ballSvg(color) {
+  return `<circle cx="12" cy="12" r="10" fill="${color}"/><circle cx="8.5" cy="8" r="2.8" fill="#fff" opacity=".5"/>`;
+}
+
+function smileSvg(color) {
+  return `<circle cx="12" cy="12" r="10" fill="${color}"/><circle cx="8.6" cy="10" r="1.3" fill="#fff"/>
       <circle cx="15.4" cy="10" r="1.3" fill="#fff"/>
       <path d="M8 13.8Q12 17.6 16 13.8" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
-  } else if (look.shape === "star") {
-    body = `<path d="M12 2.5 14.8 8.7 21.5 9.4 16.5 13.9 17.9 20.6 12 17.2 6.1 20.6 7.5 13.9 2.5 9.4 9.2 8.7Z"
-      fill="${c}" stroke="${c}" stroke-width="1.6" stroke-linejoin="round"/>`;
-  } else if (look.shape === "heart") {
-    body = `<path d="M12 21C5.5 16.4 2 12.8 2 8.6 2 5.8 4.2 3.6 7 3.6c2 0 3.8 1.1 5 2.9 1.2-1.8 3-2.9 5-2.9 2.8 0 5 2.2 5 5 0 4.2-3.5 7.8-10 12.4Z" fill="${c}"/>`;
-  } else if (look.shape === "flower") {
-    // 5 листенца в кръг около средата
-    for (let k = 0; k < 5; k++) {
-      const angle = -Math.PI / 2 + (k * 2 * Math.PI) / 5;
-      const x = (12 + 5.6 * Math.cos(angle)).toFixed(2);
-      const y = (12 + 5.6 * Math.sin(angle)).toFixed(2);
-      body += `<circle cx="${x}" cy="${y}" r="4.4" fill="${c}"/>`;
-    }
-    body += `<circle cx="12" cy="12" r="3.4" fill="#fff"/>`;
+}
+
+function starSvg(color) {
+  return `<path d="M12 2.5 14.8 8.7 21.5 9.4 16.5 13.9 17.9 20.6 12 17.2 6.1 20.6 7.5 13.9 2.5 9.4 9.2 8.7Z"
+      fill="${color}" stroke="${color}" stroke-width="1.6" stroke-linejoin="round"/>`;
+}
+
+function heartSvg(color) {
+  return `<path d="M12 21C5.5 16.4 2 12.8 2 8.6 2 5.8 4.2 3.6 7 3.6c2 0 3.8 1.1 5 2.9 1.2-1.8 3-2.9 5-2.9 2.8 0 5 2.2 5 5 0 4.2-3.5 7.8-10 12.4Z" fill="${color}"/>`;
+}
+
+function flowerSvg(color) {
+  const petalCount = 5;
+  const petalDistance = 5.6; // колко далеч от средата е всяко листенце
+  let petals = "";
+  for (let k = 0; k < petalCount; k++) {
+    const angle = -Math.PI / 2 + (k * 2 * Math.PI) / petalCount;
+    const x = (12 + petalDistance * Math.cos(angle)).toFixed(2);
+    const y = (12 + petalDistance * Math.sin(angle)).toFixed(2);
+    petals += `<circle cx="${x}" cy="${y}" r="4.4" fill="${color}"/>`;
   }
+  return petals + `<circle cx="12" cy="12" r="3.4" fill="#fff"/>`;
+}
+
+const SHAPE_DRAWERS = {
+  ball: ballSvg,
+  smile: smileSvg,
+  star: starSvg,
+  heart: heartSvg,
+  flower: flowerSvg,
+};
+
+// Рисува топчето като SVG картинка (форма + цвят)
+function shapeSvg(look) {
+  const drawShape = SHAPE_DRAWERS[look.shape];
+  const body = drawShape ? drawShape(look.color) : "";
   return `<svg viewBox="0 0 24 24" aria-hidden="true">${body}</svg>`;
 }
