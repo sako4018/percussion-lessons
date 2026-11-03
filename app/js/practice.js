@@ -55,9 +55,9 @@ function stageHtml(look) {
       <p id="status" class="status"></p>
     </section>
     <div class="controls">
-      <button class="pill" data-prev>‹ Предишен такт</button>
+      <button class="pill" data-prev aria-label="Предишен такт">‹<span class="lbl"> Предишен такт</span></button>
       <button class="primary" id="play">▶ Свири</button>
-      <button class="pill" data-next>Следващ такт ›</button>
+      <button class="pill" data-next aria-label="Следващ такт"><span class="lbl">Следващ такт </span>›</button>
     </div>`;
 }
 
@@ -79,12 +79,14 @@ function optionsHtml() {
     </div>`;
 }
 
+// На телефон панелът е сгънат, за да има повече място за нотите
 function tilesPanelHtml() {
+  const openAttribute = isPhone ? "" : " open";
   return `
-    <section class="panel">
-      <h2>Всички тактове</h2>
+    <details class="panel tiles-panel"${openAttribute}>
+      <summary><h2>Всички тактове</h2></summary>
       <div class="tiles">${tilesHtml()}</div>
-    </section>`;
+    </details>`;
 }
 
 function practiceHtml(lesson, look) {
@@ -180,11 +182,13 @@ function renderPractice() {
 function drawBig() {
   const container = document.getElementById("big");
   if (!container) return;
-  drawMeasure(container, getLesson(), getBars()[state.measure], {
-    width: BIG.width,
-    height: BIG.height,
-    top: BIG.top,
-    showSig: BIG.showSig,
+  const bar = getBars()[state.measure];
+  const size = bigSizeFor(bar);
+  drawMeasure(container, getLesson(), bar, {
+    width: size.width,
+    height: size.height,
+    top: size.top,
+    showSig: size.showSig,
     active: state.active,
   });
 }

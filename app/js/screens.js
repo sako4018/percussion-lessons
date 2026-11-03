@@ -1,8 +1,22 @@
 // Екраните на програмата: начален и списък с уроци.
 // Упражнението е в practice.js, прозорецът „Браво“ е в bravo.js.
 
-// Размер на голямия такт горе (отгоре има място за подскоците на топчето)
+// Размер на голямия такт горе (отгоре има място за подскоците на топчето).
+// На телефон тактът е по-тесен, за да се мащабира по-голям и нотите да се виждат.
+const PHONE_MAX_WIDTH = 600;
+const isPhone = window.matchMedia("(max-width: " + PHONE_MAX_WIDTH + "px)").matches;
 const BIG = { width: 640, height: 170, top: 50, showSig: true };
+const PHONE_BIG_MIN_WIDTH = 380;
+const PHONE_BIG_BASE_WIDTH = 40;
+const PHONE_BIG_WIDTH_PER_NOTE = 18;
+
+// Размерът на големия такт. На телефон е по-тесен, но с много ноти му трябва повече място.
+function bigSizeFor(bar) {
+  if (!isPhone) return BIG;
+  const needed = PHONE_BIG_BASE_WIDTH + PHONE_BIG_WIDTH_PER_NOTE * bar.length;
+  const width = Math.min(BIG.width, Math.max(PHONE_BIG_MIN_WIDTH, needed));
+  return Object.assign({}, BIG, { width: width });
+}
 
 // Размери на малката фигура в кутията на урока
 const LESSON_FIGURE_HEIGHT = 100;

@@ -157,6 +157,12 @@ button:disabled { cursor: default; opacity: 0.4; }
 
 /* Всички тактове: плочките са по-ясни — видима рамка, големи за натискане, текущият е отбелязан */
 .panel h2 { font-size: 18px; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--text); }
+/* „Всички тактове“: на компютър е винаги отворен, на телефон се сгъва (виж долу) */
+.tiles-panel summary { list-style: none; cursor: pointer; }
+.tiles-panel summary::-webkit-details-marker { display: none; }
+.tiles-panel summary h2 { display: inline; margin: 0; }
+.tiles-panel[open] summary { margin-bottom: 12px; }
+@media (min-width: 601px) { .tiles-panel summary { pointer-events: none; cursor: default; } }
 .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 12px; }
 .tile { position: relative; background: none; border: 2px solid #8a8a90; border-radius: 10px; padding: 6px; min-height: 44px; transition: border-color 0.15s, background-color 0.15s; }
 .tile:hover { background: #e6f0fb; }
@@ -181,3 +187,31 @@ button:disabled { cursor: default; opacity: 0.4; }
 }
 @keyframes pop { from { transform: scale(0.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 .confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; }
+
+/* Телефон: по-тесни отстояния, бутоните на урока са един под друг */
+@media (max-width: 600px) {
+  #app { padding: 16px 16px 110px; }
+  h1 { font-size: 34px; }
+  .hero p { font-size: 17px; }
+  .section-title { font-size: 22px; }
+  .panel { padding: 16px; }
+  .topbar { flex-wrap: wrap; row-gap: 4px; }
+  .lesson-name { order: 3; flex-basis: 100%; text-align: center; }
+  .example-bar { flex-wrap: wrap; gap: 8px 12px; }
+  /* бутоните са в лента най-долу, където стига палецът */
+  .controls {
+    position: fixed; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); z-index: 10;
+    margin: 0; padding: 8px; gap: 8px; flex-wrap: nowrap;
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+  .controls .primary { flex: 1 1 auto; min-width: 0; min-height: 52px; }
+  .controls .pill { flex: 0 0 52px; width: 52px; min-height: 52px; padding: 0; font-size: 26px; line-height: 1; box-shadow: none; background: var(--bg); }
+  .controls .lbl { display: none; }
+  .overlay { z-index: 20; }
+  .tiles-panel summary::after { content: "▾"; float: right; color: var(--muted); }
+  .tiles-panel[open] summary::after { content: "▴"; }
+  .options { gap: 14px 20px; }
+  .dialog { max-width: calc(100vw - 32px); padding: 22px 20px; }
+  .row-notes svg { height: 100px !important; }
+}

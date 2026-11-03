@@ -26,7 +26,8 @@ function layoutOf(measure) {
   if (!lesson.layouts) lesson.layouts = {};
   const key = state.example + "/" + measure;
   if (!lesson.layouts[key]) {
-    lesson.layouts[key] = drawMeasure(document.createElement("div"), lesson, getBars()[measure], BIG);
+    const bar = getBars()[measure];
+    lesson.layouts[key] = drawMeasure(document.createElement("div"), lesson, bar, bigSizeFor(bar));
   }
   return lesson.layouts[key];
 }
@@ -58,7 +59,7 @@ function animateBall() {
     return;
   }
 
-  const pose = poseAt(current, now, svg.clientWidth / BIG.width);
+  const pose = poseAt(current, now, svg.clientWidth / svg.viewBox.baseVal.width);
   ball.style.transform = ballTransform(pose);
   ball.classList.add("on");
 }
