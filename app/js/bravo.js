@@ -4,6 +4,7 @@
 function markExampleDone(lessonIndex, exampleIndex) {
   state.stars[lessonIndex + "/" + exampleIndex] = true;
   if (state.api) state.api.save_progress(state.stars);
+  else saveBrowserProgress(state.stars);
   const exampleButton = appEl.querySelector('[data-example="' + exampleIndex + '"]');
   if (exampleButton) exampleButton.classList.add("star");
 }

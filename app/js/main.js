@@ -41,6 +41,25 @@ function handleKey(event) {
 
 document.addEventListener("keydown", handleKey);
 
+// Напредъкът в браузър се пази в localStorage (в програмата го пази Python)
+const BROWSER_PROGRESS_KEY = "percussion-progress";
+
+function loadBrowserProgress() {
+  try {
+    return JSON.parse(localStorage.getItem(BROWSER_PROGRESS_KEY)) || {};
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveBrowserProgress(stars) {
+  try {
+    localStorage.setItem(BROWSER_PROGRESS_KEY, JSON.stringify(stars));
+  } catch (error) {
+    // няма достъп до localStorage – напредъкът важи само за този път
+  }
+}
+
 // Взема уроците от Python, а в браузър - от файла
 async function loadData() {
   if (state.api) {
@@ -50,6 +69,7 @@ async function loadData() {
   }
   const response = await fetch("lessons.json");
   state.data = await response.json();
+  state.stars = loadBrowserProgress();
 }
 
 function showLoadError(error) {
