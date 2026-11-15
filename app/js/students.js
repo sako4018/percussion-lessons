@@ -1,4 +1,5 @@
-// Учениците: екранът „Кой свири?“ и напредъкът на всеки ученик (пази се в progress.json от Python).
+// Учениците: екранът „Кой свири?“ и напредъкът на всеки ученик.
+// Пази го Python (progress.db) в програмата или браузърът (browser-api.js) в сайта.
 
 // Зарежда списъка с ученици. Връща името на последно избрания ученик (или null).
 async function loadStudents() {
@@ -19,6 +20,15 @@ function hasStudent(name) {
 async function selectStudent(name) {
   state.stars = await state.api.select_student(name);
   state.student = name;
+  state.guest = false;
+  openLessons();
+}
+
+// Влиза като гост: всички уроци, но отметките не се записват никъде
+function enterAsGuest() {
+  state.stars = {};
+  state.student = null;
+  state.guest = true;
   openLessons();
 }
 
@@ -75,7 +85,9 @@ function renderStudents() {
   }
 
   let back = "";
-  if (state.student && hasStudent(state.student)) {
+  if (state.guest) {
+    back = `<button class="back" data-back>‹ Обратно към уроците (гост)</button>`;
+  } else if (state.student && hasStudent(state.student)) {
     back = `<button class="back" data-back>‹ Обратно към уроците на ${esc(state.student)}</button>`;
   }
 
@@ -90,7 +102,13 @@ function renderStudents() {
       <input class="name-input" id="newName" placeholder="Име на нов ученик" maxlength="40">
       <button class="primary" type="submit">+ Добави</button>
     </form>
-    <p class="error student-error">${esc(state.studentError)}</p>`;
+    <p class="error student-error">${esc(state.studentError)}</p>
+    <div class="guest-entry">
+      <button class="pill" data-guest>Влез като гост</button>
+      <p class="muted small">Всички уроци, но отметките ✓ не се запазват.</p>
+    </div>`;
+
+  $("[data-guest]").onclick = enterAsGuest;
 
   if (back) $("[data-back]").onclick = () => openLessons();
 

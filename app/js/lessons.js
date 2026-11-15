@@ -31,59 +31,116 @@ function getMeter(lesson, example) {
   };
 }
 
+// Колко може да се различава сумата от очакваното заради закръгляне на дробни числа
+const BEAT_TOLERANCE = 0.000001;
+
+const TRIPLET_PREFIX = "t";
+const SEXTUPLET_PREFIX = "s";
+const DOT_SUFFIX = "d";
+const REST_VOICE = "r";
+
+// Отделя t/s отпред: "t8" -> { tuplet: "t", durationText: "8" }
+function splitTupletPrefix(durationText) {
+  const first = durationText[0];
+  if (first === TRIPLET_PREFIX || first === SEXTUPLET_PREFIX) {
+    return { tuplet: first, durationText: durationText.slice(1) };
+  }
+  return { tuplet: null, durationText: durationText };
+}
+
+// Отделя точката накрая: "qd" -> { dotted: true, durationText: "q" }
+function splitDot(durationText) {
+  if (durationText.endsWith(DOT_SUFFIX)) {
+    return { dotted: true, durationText: durationText.slice(0, -1) };
+  }
+  return { dotted: false, durationText: durationText };
+}
+
+// Намира ударите на нотата; пауза няма удари
+function voicesOf(voicesText, instrument, noteText) {
+  const voices = [];
+  if (voicesText === REST_VOICE) return voices;
+
+  for (const id of voicesText.split("+")) {
+    if (!instrument.voices[id]) {
+      throw new Error('Непознат удар "' + id + '" в "' + noteText + '"');
+    }
+    voices.push(instrument.voices[id]);
+  }
+  return voices;
+}
+
+// Надписът е или зададен изрично, или събран от ударите
+function labelOf(explicitLabel, voices) {
+  if (explicitLabel !== undefined) return explicitLabel;
+
+  let label = "";
+  for (const voice of voices) {
+    if (voice.label) label += voice.label;
+  }
+  return label;
+}
+
+// Колко четвъртини трае нотата
+function beatsOf(duration, dotted, tuplet) {
+  let beats = DURATIONS[duration];
+  if (dotted) beats = beats * 1.5;
+  if (tuplet) beats = beats * 2 / 3;
+  return beats;
+}
+
 // Превръща една дума като "8:hh+bd:R" в обект с всичко за нотата
 function parseNote(text, instrument) {
   const parts = text.split(":");
-  const durText = parts[0];
+  const originalDuration = parts[0];
   const voicesText = parts[1] || "";
-  const labelText = parts[2];
+  const explicitLabel = parts[2];
 
-  // триола (t) или секстола (s) отпред
-  let tuplet = null;
-  let dur = durText;
-  if (dur[0] === "t" || dur[0] === "s") {
-    tuplet = dur[0];
-    dur = dur.slice(1);
+  const withoutTuplet = splitTupletPrefix(originalDuration);
+  const withoutDot = splitDot(withoutTuplet.durationText);
+  const duration = withoutDot.durationText;
+  const tuplet = withoutTuplet.tuplet;
+  const dotted = withoutDot.dotted;
+
+  if (!(duration in DURATIONS)) {
+    throw new Error('Непозната дължина "' + originalDuration + '" в "' + text + '"');
   }
 
-  // точка накрая
-  let dotted = false;
-  if (dur.endsWith("d")) {
-    dotted = true;
-    dur = dur.slice(0, -1);
-  }
-  if (!(dur in DURATIONS)) {
-    throw new Error('Непозната дължина "' + durText + '" в "' + text + '"');
-  }
+  const voices = voicesOf(voicesText, instrument, text);
 
-  // удари (или пауза)
-  const rest = voicesText === "r";
-  const voices = [];
-  if (!rest) {
-    for (const id of voicesText.split("+")) {
-      if (!instrument.voices[id]) {
-        throw new Error('Непознат удар "' + id + '" в "' + text + '"');
-      }
-      voices.push(instrument.voices[id]);
-    }
+  return {
+    dur: duration,
+    dotted: dotted,
+    tuplet: tuplet,
+    rest: voicesText === REST_VOICE,
+    voices: voices,
+    label: labelOf(explicitLabel, voices),
+    beats: beatsOf(duration, dotted, tuplet),
+  };
+}
+
+// Разбира един такт (ред текст) на ноти
+function parseBar(barText, instrument) {
+  const notes = [];
+  for (const noteText of barText.trim().split(/\s+/)) {
+    notes.push(parseNote(noteText, instrument));
   }
+  return notes;
+}
 
-  // надпис: или зададен изрично, или взет от ударите
-  let label = "";
-  if (labelText !== undefined) {
-    label = labelText;
-  } else {
-    for (const v of voices) {
-      if (v.label) label += v.label;
-    }
-  }
+function totalBeats(notes) {
+  let sum = 0;
+  for (const note of notes) sum += note.beats;
+  return sum;
+}
 
-  // колко четвъртини трае нотата
-  let beats = DURATIONS[dur];
-  if (dotted) beats = beats * 1.5;
-  if (tuplet) beats = beats * 2 / 3;
+// Само предупреждава (не спира), за да се вижда грешка в урока
+function checkBarLength(notes, expectedBeats, lesson, exampleIdx, barIdx) {
+  const sum = totalBeats(notes);
+  if (Math.abs(sum - expectedBeats) <= BEAT_TOLERANCE) return;
 
-  return { dur: dur, dotted: dotted, tuplet: tuplet, rest: rest, voices: voices, label: label, beats: beats };
+  console.warn("„" + lesson.title + "“, пример " + (exampleIdx + 1) + ", такт " + (barIdx + 1) +
+    ": " + sum + " четвъртини вместо " + expectedBeats);
 }
 
 // Подготвя нотите на урока (само първия път, после ги помни в lesson.parsedExamples).
@@ -94,21 +151,12 @@ function prepareLesson(instrument, lesson) {
   const examples = lesson.examples || [lesson.measures];
   lesson.parsedExamples = [];
 
-  for (let e = 0; e < examples.length; e++) {
-    const expected = getMeter(lesson, e).beats;
+  for (let exampleIdx = 0; exampleIdx < examples.length; exampleIdx++) {
+    const expectedBeats = getMeter(lesson, exampleIdx).beats;
     const bars = [];
-    for (let k = 0; k < examples[e].length; k++) {
-      const notes = [];
-      let sum = 0;
-      for (const text of examples[e][k].trim().split(/\s+/)) {
-        const note = parseNote(text, instrument);
-        notes.push(note);
-        sum += note.beats;
-      }
-      if (Math.abs(sum - expected) > 0.000001) {
-        console.warn("„" + lesson.title + "“, пример " + (e + 1) + ", такт " + (k + 1) +
-          ": " + sum + " четвъртини вместо " + expected);
-      }
+    for (let barIdx = 0; barIdx < examples[exampleIdx].length; barIdx++) {
+      const notes = parseBar(examples[exampleIdx][barIdx], instrument);
+      checkBarLength(notes, expectedBeats, lesson, exampleIdx, barIdx);
       bars.push(notes);
     }
     lesson.parsedExamples.push(bars);
@@ -127,33 +175,53 @@ function sizeLabel(lesson) {
   return text;
 }
 
+const STRONGEST_CLICK = 2; // началото на такта
+const PART_START_CLICK = 1;
+const PLAIN_CLICK = 0;
+
+// Кликове за равноделен размер: само първото време е силно
+function regularClicks(meter) {
+  const clicks = [];
+  for (let beat = 0; beat < meter.num; beat++) {
+    clicks.push({
+      at: beat * meter.step,
+      level: beat === 0 ? STRONGEST_CLICK : PLAIN_CLICK,
+      label: String(beat + 1),
+    });
+  }
+  return clicks;
+}
+
+// Кликове за един дял, който започва на времето firstBeat
+function partClicks(partIdx, partLength, firstBeat, meter) {
+  const clicks = [];
+  for (let beatInPart = 0; beatInPart < partLength; beatInPart++) {
+    const beat = firstBeat + beatInPart;
+    let level = PLAIN_CLICK;
+    if (beat === 0) level = STRONGEST_CLICK;
+    else if (beatInPart === 0) level = PART_START_CLICK;
+
+    clicks.push({
+      at: beat * meter.step,
+      level: level,
+      label: beatInPart === 0 ? String(partIdx + 1) : null, // броим само началото на всеки дял
+    });
+  }
+  return clicks;
+}
+
 // Кликовете на метронома в един такт.
 // При неравноделен размер (parts) има по-силен клик в началото на всеки дял.
-// level: 2 = най-силен (началото на такта), 1 = начало на дял, 0 = обикновен
 function getClicks(lesson) {
   const meter = getMeter(lesson, state.example);
-  const clicks = [];
+  if (!lesson.parts) return regularClicks(meter);
 
-  if (!lesson.parts) {
-    for (let b = 0; b < meter.num; b++) {
-      clicks.push({ at: b * meter.step, level: b === 0 ? 2 : 0, label: String(b + 1) });
-    }
-    return clicks;
-  }
-
-  let pos = 0; // на кое време сме
-  for (let p = 0; p < lesson.parts.length; p++) {
-    for (let k = 0; k < lesson.parts[p]; k++) {
-      let level = 0;
-      if (pos + k === 0) level = 2;
-      else if (k === 0) level = 1;
-      clicks.push({
-        at: (pos + k) * meter.step,
-        level: level,
-        label: k === 0 ? String(p + 1) : null, // броим само началото на всеки дял
-      });
-    }
-    pos += lesson.parts[p];
+  let clicks = [];
+  let firstBeat = 0;
+  for (let partIdx = 0; partIdx < lesson.parts.length; partIdx++) {
+    const partLength = lesson.parts[partIdx];
+    clicks = clicks.concat(partClicks(partIdx, partLength, firstBeat, meter));
+    firstBeat += partLength;
   }
   return clicks;
 }

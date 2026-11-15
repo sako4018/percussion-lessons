@@ -15,11 +15,21 @@ function waitForApi() {
   });
 }
 
+// Прозорецът „Браво“ е отворен
+function isDialogOpen() {
+  return document.querySelector(".overlay") !== null;
+}
+
+// Пише се в поле
+function isTypingInField(event) {
+  return Boolean(event.target.matches && event.target.matches("input"));
+}
+
 // Клавиши: интервал = свири/спри, стрелките сменят такта
-document.addEventListener("keydown", event => {
+function handleKey(event) {
   if (state.view !== "practice") return;
-  if (document.querySelector(".overlay")) return;          // прозорецът „Браво“ е отворен
-  if (event.target.matches && event.target.matches("input")) return; // пише се в поле
+  if (isDialogOpen()) return;
+  if (isTypingInField(event)) return;
 
   if (event.code === "Space") {
     event.preventDefault();
@@ -27,35 +37,40 @@ document.addEventListener("keydown", event => {
   }
   if (event.code === "ArrowLeft") jumpMeasure(state.measure - 1);
   if (event.code === "ArrowRight") jumpMeasure(state.measure + 1);
-});
+}
 
-async function init() {
-  state.api = await waitForApi();
-  try {
-    if (state.api) {
-      state.data = await state.api.get_lessons();
-    } else {
-      const response = await fetch("lessons.json");
-      state.data = await response.json();
-    }
-  } catch (e) {
-    appEl.innerHTML = `<p class="error">Не мога да заредя уроците: ${esc(e.message)}</p>`;
-    return;
-  }
+document.addEventListener("keydown", handleKey);
 
-  // без Python (отворено в браузър) няма къде да се пазят учениците — направо към уроците
-  if (!state.api) {
-    openLessons();
-    return;
-  }
+// Взема уроците от Python, а в браузър - от файла
+async function loadData() {
+  state.data = await state.api.get_lessons();
+}
 
-  // отваряме последно избрания ученик; ако няма такъв — екрана „Кой свири?“
+function showLoadError(error) {
+  appEl.innerHTML = `<p class="error">Не мога да заредя уроците: ${esc(error.message)}</p>`;
+}
+
+// Отваряме последно избрания ученик; ако няма такъв – екрана „Кой свири?“
+async function showFirstScreen() {
   const last = await loadStudents();
   if (last && hasStudent(last)) {
     await selectStudent(last);
   } else {
     go("students");
   }
+}
+
+async function init() {
+  // в програмата учениците ги пази Python, а в браузър – самият браузър (browser-api.js)
+  state.api = await waitForApi();
+  if (!state.api) state.api = makeBrowserApi();
+  try {
+    await loadData();
+  } catch (error) {
+    showLoadError(error);
+    return;
+  }
+  await showFirstScreen();
 }
 
 prepareSnares();
