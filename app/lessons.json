@@ -3,7 +3,7 @@
     {
       "id": "snare",
       "name": "Малък барабан",
-      "subtitle": "Четене на ритми",
+      "subtitle": "Четене на ритъм",
       "voices": {
         "sd": {
           "name": "Малък барабан",
@@ -15,7 +15,7 @@
       "lessons": [
         {
           "id": "l1",
-          "title": "Четвъртини и четвъртини паузи",
+          "title": "Четвъртини ноти и четвъртини паузи",
           "learn": [
             "Четвъртина нота – един удар",
             "Четвъртина пауза – един удар тишина",
@@ -41,14 +41,14 @@
               "q:r q:r q:sd:R q:sd:L"
             ],
             [
-              "q:sd:R q:sd:L q:r q:r",
-              "q:sd:R q:sd:L q:sd:R q:r",
+              "q:sd:R q:sd:L q:r q:sd:R",
               "q:sd:R q:r q:r q:sd:L",
-              "q:r q:r q:sd:R q:sd:L",
-              "q:r q:sd:R q:r q:sd:L",
               "q:sd:R q:r q:sd:L q:r",
               "q:sd:R q:r q:sd:L q:sd:R",
-              "q:r q:sd:R q:sd:L q:sd:R"
+              "q:sd:R q:sd:L q:r q:r",
+              "q:sd:R q:sd:L q:sd:R q:r",
+              "q:sd:R q:sd:L q:r q:r",
+              "q:sd:R q:r q:sd:L q:sd:R"
             ],
             [
               "q:r q:sd:R",
@@ -61,10 +61,10 @@
               "q:r q:sd:R"
             ],
             [
-              "q:sd:R q:sd:L q:r",
+              "q:r q:r q:sd:R",
               "q:sd:R q:r q:r",
+              "q:sd:R q:sd:L q:r",
               "q:sd:R q:r q:sd:L",
-              "q:r q:sd:R q:sd:L",
               "q:r q:sd:R q:r",
               "q:sd:R q:r q:r",
               "q:sd:R q:sd:L q:r",
@@ -74,9 +74,9 @@
         },
         {
           "id": "l2",
-          "title": "Четвъртини и половинки",
+          "title": "Четвъртини ноти и половини ноти",
           "learn": [
-            "Половинка нота – трае 2 удара",
+            "Половина нота – трае 2 удара",
             "Удряш веднъж, броиш две",
             "Смесване с четвъртини"
           ],
@@ -100,13 +100,13 @@
               "h:sd:R h:sd:L"
             ],
             [
+              "q:sd:R h:sd:L q:sd:R",
+              "h:sd:R q:sd:L q:sd:R",
+              "h:sd:R h:sd:L",
+              "q:sd:R q:sd:L h:sd:R",
+              "q:sd:R h:sd:L q:sd:R",
               "h:sd:R h:sd:L",
               "h:sd:R q:sd:L q:sd:R",
-              "q:sd:R q:sd:L h:sd:R",
-              "q:sd:R h:sd:L q:sd:R",
-              "h:sd:R h:sd:L",
-              "q:sd:R q:sd:L h:sd:R",
-              "q:sd:R h:sd:L q:sd:R",
               "h:sd:R h:sd:L"
             ],
             [
@@ -120,22 +120,22 @@
               "q:sd:R q:sd:L"
             ],
             [
-              "q:sd:R h:sd:L",
               "h:sd:R q:sd:L",
               "q:sd:R h:sd:L",
               "h:sd:R q:sd:L",
               "q:sd:R h:sd:L",
               "h:sd:R q:sd:L",
               "q:sd:R h:sd:L",
-              "h:sd:R q:sd:L"
+              "h:sd:R q:sd:L",
+              "q:sd:R h:sd:L"
             ]
           ]
         },
         {
           "id": "l3",
-          "title": "Четвъртини, половинки и паузи",
+          "title": "Четвъртини ноти, половини ноти и паузи",
           "learn": [
-            "Половинка пауза – 2 удара тишина",
+            "Половина пауза – 2 удара тишина",
             "Паузите също се броят",
             "Всичко досега заедно"
           ],
@@ -159,14 +159,14 @@
               "h:sd:R h:r"
             ],
             [
-              "h:sd:R q:sd:L q:r",
-              "q:sd:R h:r q:sd:L",
-              "h:sd:R h:r",
               "q:sd:R h:sd:L q:r",
+              "q:sd:R h:r q:sd:L",
+              "q:sd:R q:sd:L q:r q:sd:R",
+              "q:r h:sd:R q:sd:L",
+              "h:sd:R h:r",
               "q:sd:R q:sd:L h:r",
               "q:sd:R q:r h:sd:L",
-              "q:r h:sd:R q:sd:L",
-              "q:r q:sd:R h:sd:L"
+              "h:r h:sd:R"
             ],
             [
               "q:sd:R q:r",
@@ -179,23 +179,23 @@
               "q:r q:sd:R"
             ],
             [
-              "h:r q:sd:R",
               "h:sd:R q:r",
-              "q:sd:R h:r",
               "q:sd:R q:r q:sd:L",
               "q:r h:sd:R",
-              "q:r q:sd:R q:sd:L",
+              "q:sd:R h:r",
               "q:sd:R q:sd:L q:r",
+              "h:sd:R q:r",
+              "q:sd:R h:r",
               "q:sd:R q:r q:sd:L"
             ]
           ]
         },
         {
           "id": "l4",
-          "title": "Цели, половинки и четвъртини",
+          "title": "Цели ноти, половини ноти и четвъртини ноти",
           "learn": [
             "Цяла нота – трае 4 удара",
-            "Сравнение: цяла, половинка, четвъртина",
+            "Сравнение: цяла, половина, четвъртина",
             "Броене през целия такт"
           ],
           "tempo": 60,
@@ -218,14 +218,14 @@
               "w:sd:R"
             ],
             [
-              "h:sd:R h:sd:L",
+              "w:sd:R",
               "q:sd:R h:sd:L q:sd:R",
-              "w:sd:R",
-              "h:sd:R q:sd:L q:sd:R",
               "q:sd:R q:sd:L h:sd:R",
+              "h:sd:R h:sd:L",
               "h:sd:R q:sd:L q:sd:R",
               "w:sd:R",
-              "h:sd:R q:sd:L q:sd:R"
+              "h:sd:R q:sd:L q:sd:R",
+              "w:sd:R"
             ],
             [
               "h:sd:R",
@@ -251,7 +251,7 @@
         },
         {
           "id": "l5",
-          "title": "Осмини с четвъртини",
+          "title": "Осмини ноти с четвъртини ноти",
           "learn": [
             "Осмина нота – половин удар",
             "Броене „1 и 2 и 3 и 4 и“",
@@ -277,14 +277,14 @@
               "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L"
             ],
             [
-              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R q:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:sd:R q:sd:L q:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R q:sd:L"
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L q:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R q:sd:L q:sd:R"
             ],
             [
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L",
@@ -292,25 +292,25 @@
               "8:sd:R 8:sd:L q:sd:R",
               "q:sd:R 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L q:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L q:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R"
+              "8:sd:R 8:sd:L q:sd:R"
             ],
             [
-              "q:sd:R 8:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
               "q:sd:R q:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R q:sd:L",
               "8:sd:R 8:sd:L q:sd:R q:sd:L",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R"
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l6",
-          "title": "Осмини, четвъртини и четвъртини паузи",
+          "title": "Осмини ноти, четвъртини ноти и четвъртини паузи",
           "learn": [
             "Осмини след пауза",
             "Точно влизане след четвъртина пауза",
@@ -336,34 +336,34 @@
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r"
             ],
             [
+              "q:r 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "q:sd:R q:sd:L q:r 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L q:sd:R q:sd:L q:r",
-              "q:sd:R q:sd:L q:sd:R q:r",
+              "q:sd:R q:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
               "q:sd:R 8:sd:L 8:sd:R q:r 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L q:sd:R q:r 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L q:sd:R q:r q:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r q:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:r",
-              "q:sd:R q:r q:sd:L q:sd:R"
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:r q:sd:R q:sd:L"
             ],
             [
+              "q:r 8:sd:R 8:sd:L",
+              "q:r q:sd:R",
               "8:sd:R 8:sd:L q:r",
               "q:sd:R q:r",
               "8:sd:R 8:sd:L q:r",
               "q:sd:R q:r",
               "8:sd:R 8:sd:L q:r",
-              "q:sd:R q:r",
-              "8:sd:R 8:sd:L q:r",
-              "q:r 8:sd:R 8:sd:L"
+              "q:r q:sd:R"
             ],
             [
-              "8:sd:R 8:sd:L q:sd:R q:r",
-              "q:sd:R q:r q:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r",
-              "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L",
-              "q:sd:R 8:sd:L 8:sd:R q:r",
               "q:sd:R q:sd:L q:r",
+              "8:sd:R 8:sd:L q:r 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L q:sd:R q:r",
+              "q:sd:R q:r 8:sd:L 8:sd:R",
               "8:sd:R 8:sd:L q:r q:sd:R",
-              "q:r q:sd:R q:sd:L"
+              "q:r q:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R q:r q:sd:L"
             ]
           ]
         },
@@ -428,7 +428,7 @@
         },
         {
           "id": "l8",
-          "title": "Шестнайсетини",
+          "title": "Шестнайсетини ноти",
           "learn": [
             "Шестнайсетина – четвърт удар",
             "Броене „1 е и а“",
@@ -454,40 +454,40 @@
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "q:sd:R q:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
-              "q:sd:R q:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R q:sd:L"
             ],
             [
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L"
             ],
             [
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L q:sd:R"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "q:sd:R q:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l9",
-          "title": "Шестнайсетини и паузи",
+          "title": "Шестнайсетини ноти и осмини паузи",
           "learn": [
             "Шестнайсетини между паузи",
             "Точно спиране и влизане",
@@ -513,18 +513,18 @@
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r q:r"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R q:r",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r 8:sd:R 8:r 8:sd:L 8:sd:R",
-              "q:r 8:r 8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
-              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r q:r 8:r 8:sd:L",
-              "8:sd:R 8:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R 8:r 8:sd:L q:sd:R"
+              "8:sd:R 8:sd:L q:r 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "q:r 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
+              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L q:r",
+              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L 8:r 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
+              "q:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L 8:r",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:r 8:sd:L",
+              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r q:sd:R"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
               "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
               "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r",
@@ -533,24 +533,24 @@
               "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R"
             ],
             [
-              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r 8:r 8:sd:R",
-              "q:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:r 8:sd:R q:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L",
-              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "q:r 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "q:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R"
+              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r",
+              "8:sd:R 8:r q:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "q:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "8:r 8:sd:R 8:r 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:r",
+              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L"
             ]
           ]
         },
         {
           "id": "l10",
-          "title": "Група: осмина + 2 шестнайсетини",
+          "title": "Ритмична група: осмина нота + 2 шестнайсетини ноти",
           "learn": [
-            "Групата се свири в един удар",
+            "Ритмичната група се свири в един удар",
             "Броене „1 и а“",
-            "Групата между четвъртини и осмини"
+            "Ритмичната група между четвъртини и осмини"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
@@ -572,44 +572,44 @@
               "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R q:sd:L"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R q:sd:L q:sd:R q:sd:L"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R q:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R q:sd:L"
             ],
             [
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
               "8:sd:R 16:sd:L 16:sd:R q:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
               "q:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L"
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "q:sd:R 8:sd:L 16:sd:R 16:sd:L"
             ],
             [
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R q:sd:L 8:sd:R 8:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R",
               "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R q:sd:L"
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L",
+              "q:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l11",
-          "title": "Група: 2 шестнайсетини + осмина",
+          "title": "Ритмична група: 2 шестнайсетини ноти + осмина нота",
           "learn": [
-            "Групата се свири в един удар",
+            "Ритмичната група се свири в един удар",
             "Броене „1 е и“",
-            "Разлика с групата от урок 10"
+            "Разлика с ритмичната група от урок 10"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
@@ -631,43 +631,43 @@
               "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R q:sd:L"
             ],
             [
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R",
-              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R q:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R q:sd:L q:sd:R q:sd:L"
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "q:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L q:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L q:sd:R"
             ],
             [
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R q:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L"
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "q:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R q:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "q:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R q:sd:L q:sd:R",
               "q:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l12",
-          "title": "Комбинация на групите",
+          "title": "Комбинация на ритмичните групи",
           "learn": [
-            "Смесване на двете групи",
-            "Осмина пауза преди група",
+            "Смесване на двете ритмични групи",
+            "Осмина пауза преди ритмична група",
             "Четене на по-сложен ритъм"
           ],
           "tempo": 60,
@@ -690,14 +690,14 @@
               "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L"
             ],
             [
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R q:sd:L"
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "q:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L",
+              "8:r 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R"
             ],
             [
               "16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
@@ -710,23 +710,23 @@
               "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L"
             ],
             [
-              "8:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
+              "q:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
               "8:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "8:sd:R 8:r 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R"
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R q:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R q:sd:L 8:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l13",
-          "title": "Осмина пауза и 2 шестнайсетини",
+          "title": "Осмина пауза и 2 шестнайсетини ноти",
           "learn": [
-            "Група „осмина пауза + 2 шестнайсетини“",
-            "Група „2 шестнайсетини + осмина пауза“",
+            "Ритмична група „осмина пауза + 2 шестнайсетини“",
+            "Ритмична група „2 шестнайсетини + осмина пауза“",
             "Смесване с четвъртини, осмини, шестнайсетини и паузите им"
           ],
           "tempo": 60,
@@ -739,50 +739,50 @@
           ],
           "examples": [
             [
-              "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L",
-              "8:r 16:sd:R 16:sd:L q:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r",
-              "16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L q:sd:R",
-              "8:r 16:sd:R 16:sd:L 8:sd:R 8:sd:L q:sd:R 16:sd:L 16:sd:R 8:r",
-              "16:sd:R 16:sd:L 8:r 8:sd:R 8:sd:L q:sd:R 8:r 16:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L q:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
-              "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R q:sd:L"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r",
+              "16:sd:R 16:sd:L 8:r q:sd:R 16:sd:L 16:sd:R 8:r q:sd:L",
+              "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r q:sd:R 8:r 16:sd:L 16:sd:R",
+              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L",
+              "q:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r",
+              "16:sd:R 16:sd:L 8:r q:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r q:sd:R"
             ],
             [
-              "8:r 16:sd:R 16:sd:L q:r 8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8:r 8:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R 8:r 16:sd:L 16:sd:R",
-              "8:sd:R 8:r 16:sd:L 16:sd:R 8:r 16:sd:L 16:sd:R 8:r 8:r 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 8:r q:r 16:sd:R 16:sd:L 8:r 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R 8:r 8:r 8:sd:L",
-              "q:r 8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L q:sd:R"
+              "8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L q:r q:sd:R",
+              "q:r 8:r 16:sd:R 16:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
+              "8:sd:R 8:r q:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L 8:sd:R",
+              "8:r 8:sd:R q:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r",
+              "q:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:r",
+              "16:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L"
             ],
             [
-              "8:r 8:sd:R 16:sd:L 16:sd:R 8:r",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
+              "16:sd:R 16:sd:L 8:r 8:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 8:r 16:sd:L 16:sd:R",
               "16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
+              "16:sd:R 16:sd:L 8:r q:sd:R",
               "16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L",
-              "8:r 16:sd:R 16:sd:L q:r",
-              "16:sd:R 16:sd:L 8:r q:sd:R"
+              "16:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R",
+              "8:r 16:sd:R 16:sd:L q:sd:R"
             ],
             [
-              "8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
-              "8:r 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:r 16:sd:L 16:sd:R",
-              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
-              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r",
-              "8:sd:R 16:sd:L 16:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r",
-              "16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:r 16:sd:R 16:sd:L 8:r 16:sd:R 16:sd:L 8:r 8:sd:R",
-              "8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L q:sd:R"
+              "8:sd:R 16:sd:L 16:sd:R q:r 8:r 16:sd:L 16:sd:R",
+              "8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:r 16:sd:R 16:sd:L",
+              "8:r 8:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8:r 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R q:r",
+              "q:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
+              "8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 16:sd:L 16:sd:R 8:r",
+              "q:sd:R 8:r 16:sd:L 16:sd:R q:sd:L"
             ]
           ]
         },
         {
           "id": "l14",
-          "title": "Осмина с точка и шестнайсетина",
+          "title": "Осмина нота с точка и шестнайсетина нота",
           "learn": [
             "Осмина с точка + шестнайсетина – в един удар",
             "Обратното: шестнайсетина + осмина с точка",
@@ -798,54 +798,54 @@
           ],
           "examples": [
             [
-              "8d:sd:R 16:sd:L q:sd:R 16:sd:L 8d:sd:R 16:sd:L 8d:sd:R",
-              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 8d:sd:R 16:sd:L",
-              "16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 8:sd:R 8:sd:L",
-              "8d:sd:R 16:sd:L q:sd:R q:sd:L 8d:sd:R 16:sd:L",
-              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 16:sd:R 8d:sd:L 8d:sd:R 16:sd:L",
+              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 8:sd:R 8:sd:L",
+              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 8d:sd:L",
+              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L q:sd:R 8d:sd:L 16:sd:R",
               "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 8d:sd:L 8d:sd:R 16:sd:L",
+              "8d:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8d:sd:R 16:sd:L",
               "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 8d:sd:L",
-              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8:sd:R 8:sd:L q:sd:R"
+              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8d:sd:R 16:sd:L q:sd:R",
+              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 8d:sd:R 16:sd:L q:sd:R"
             ],
             [
-              "16:sd:R 8d:sd:L q:r 8d:sd:R 16:sd:L 16:sd:R 8d:sd:L",
-              "16:sd:R 8d:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 16:sd:L 8d:sd:R",
-              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 8d:sd:L 8:sd:R 8:sd:L",
-              "q:r 16:sd:R 8d:sd:L 8:sd:R 8:r 8:sd:L 8:r",
-              "8d:sd:R 16:sd:L q:sd:R 8d:sd:L 16:sd:R 8:sd:L 8:r",
-              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8:sd:R 8:r 16:sd:L 8d:sd:R",
-              "8:r 8:sd:R 16:sd:L 8d:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
-              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8:sd:R 8:r q:sd:L"
+              "16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 8d:sd:R 16:sd:L",
+              "16:sd:R 8d:sd:L 8:sd:R 8:sd:L 16:sd:R 8d:sd:L 16:sd:R 8d:sd:L",
+              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 16:sd:R 8d:sd:L",
+              "8:sd:R 8:r 8d:sd:L 16:sd:R 8:sd:L 8:sd:R 8d:sd:L 16:sd:R",
+              "8:sd:R 8:sd:L q:r 16:sd:R 8d:sd:L 8:sd:R 8:r",
+              "q:sd:R 16:sd:L 8d:sd:R 8d:sd:L 16:sd:R 8:r 8:sd:L",
+              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L q:r 8d:sd:R 16:sd:L",
+              "16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 8d:sd:R 16:sd:L q:sd:R"
             ],
             [
+              "16:sd:R 8d:sd:L q:r",
+              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L",
               "q:sd:R 16:sd:L 8d:sd:R",
-              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L",
-              "q:r 8d:sd:R 16:sd:L",
-              "8:r 8:sd:R 8d:sd:L 16:sd:R",
-              "q:sd:R 8d:sd:L 16:sd:R",
-              "16:sd:R 8d:sd:L 8:sd:R 8:sd:L",
               "8d:sd:R 16:sd:L 8:r 8:sd:R",
-              "16:sd:R 8d:sd:L q:sd:R"
+              "16:sd:R 8d:sd:L 16:sd:R 8d:sd:L",
+              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L",
+              "16:sd:R 8d:sd:L q:sd:R",
+              "8d:sd:R 16:sd:L q:sd:R"
             ],
             [
-              "16:sd:R 8d:sd:L q:sd:R 8d:sd:L 16:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 8d:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:r 8d:sd:L 16:sd:R",
-              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L q:r",
-              "8:sd:R 8:r 16:sd:L 8d:sd:R q:sd:L",
-              "8d:sd:R 16:sd:L q:sd:R 8d:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 8d:sd:L",
-              "16:sd:R 8d:sd:L q:sd:R q:sd:L"
+              "8d:sd:R 16:sd:L 8:r 8:sd:R 8d:sd:L 16:sd:R",
+              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L q:r",
+              "q:sd:R 8:r 8:sd:L 16:sd:R 8d:sd:L",
+              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L q:sd:R",
+              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "8d:sd:R 16:sd:L 8:sd:R 8:sd:L 8d:sd:R 16:sd:L",
+              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L 8:sd:R 8:r",
+              "8d:sd:R 16:sd:L q:sd:R q:sd:L"
             ]
           ]
         },
         {
           "id": "l15",
-          "title": "Групи и осмина с точка",
+          "title": "Ритмични групи и осмина нота с точка",
           "learn": [
-            "Групи „осмина + 2 шестнайсетини“ и „2 шестнайсетини + осмина“",
+            "Ритмични групи „осмина + 2 шестнайсетини“ и „2 шестнайсетини + осмина“",
             "Заедно с осмина с точка + шестнайсетина",
-            "Бърза смяна между групите"
+            "Бърза смяна между ритмичните групи"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
@@ -857,54 +857,54 @@
           ],
           "examples": [
             [
+              "q:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R",
               "16:sd:R 8d:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8d:sd:R 16:sd:L",
-              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8d:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 8d:sd:R 8d:sd:L 16:sd:R",
-              "16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8:sd:R 8d:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 8d:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L"
+              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R 8d:sd:L 16:sd:R",
+              "8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 8d:sd:R 8d:sd:L 16:sd:R",
+              "8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L"
             ],
             [
-              "16:sd:R 16:sd:L 8:sd:R 8d:sd:L 16:sd:R q:sd:L 16:sd:R 8d:sd:L",
-              "q:r 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:r 8d:sd:R 16:sd:L",
-              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L",
-              "8d:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8:sd:R q:r",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R",
-              "8d:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8d:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L q:sd:R"
+              "8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8d:sd:R 16:sd:L",
+              "q:r 8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8d:sd:R 16:sd:L",
+              "8d:sd:R 16:sd:L q:sd:R q:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L q:r 8d:sd:R 16:sd:L",
+              "8:sd:R 8:sd:L 8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 8d:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 8d:sd:L q:sd:R"
             ],
             [
-              "8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "16:sd:R 8d:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R",
               "8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 8d:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R 8d:sd:L 16:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R",
               "16:sd:R 16:sd:L 8:sd:R 16:sd:L 8d:sd:R",
-              "16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8:sd:R"
+              "16:sd:R 16:sd:L 8:sd:R 8d:sd:L 16:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 8d:sd:R",
+              "16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 8d:sd:L 8:sd:R 16:sd:L 16:sd:R"
             ],
             [
-              "16:sd:R 8d:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R 16:sd:L 8d:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 8d:sd:L 16:sd:R 8:sd:L 8:sd:R",
-              "8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8d:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "q:r 8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8d:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L"
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 8d:sd:R q:sd:L",
+              "8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8d:sd:R 16:sd:L q:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 8d:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 8d:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 8d:sd:L 8d:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 8d:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L"
             ]
           ]
         },
         {
           "id": "l16",
-          "title": "Шестнайсетина пауза в групата",
+          "title": "Шестнайсетина пауза в ритмичната група",
           "learn": [
             "Шестнайсетина пауза на 1-во, 2-ро, 3-то и 4-то място",
             "Броене „1 е и а“ – пауза, без спиране",
-            "Смесване с групите, осмините и паузите"
+            "Смесване с ритмичните групи, осмините и паузите"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
@@ -916,44 +916,44 @@
           ],
           "examples": [
             [
-              "16:sd:R 16:sd:L 16:r 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L",
-              "q:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:r 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:r 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L",
-              "16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L",
-              "16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R q:sd:L"
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
+              "q:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r",
+              "16:sd:R 16:sd:L 16:r 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
+              "16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r",
+              "16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
+              "16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r q:sd:R"
             ],
             [
-              "16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
-              "q:r 8:r 8:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
-              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 16:r 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:r 8:r 8:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R q:r",
-              "q:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
-              "q:r 16:sd:R 16:sd:L 16:sd:R 16:r 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:r 16:sd:R 8:sd:L 8:sd:R",
-              "q:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R q:sd:L"
+              "16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R",
+              "16:sd:R 16:r 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L q:r 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:r 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
+              "8:r 8:sd:R q:r 16:r 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 8:r q:r 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 16:r 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R q:sd:L",
+              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:r 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R"
             ],
             [
-              "16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:r 16:r 16:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R",
-              "16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r",
-              "16:sd:R 16:r 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r",
-              "16:sd:R 16:sd:L 16:sd:R 16:r q:sd:L"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
+              "16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:r 16:sd:L 16:sd:R 8:sd:L 8:r",
+              "16:sd:R 16:sd:L 16:r 16:sd:R q:sd:L"
             ],
             [
-              "16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:r 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r",
-              "16:sd:R 16:r 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L",
-              "8:sd:R 8:r q:r 16:sd:L 16:sd:R 16:r 16:sd:L",
-              "8:sd:R 8:r 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
-              "16:sd:R 16:sd:L 16:r 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L q:sd:R"
+              "q:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L q:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R",
+              "8:sd:R 16:sd:L 16:sd:R q:r 16:sd:L 16:sd:R 16:sd:L 16:r",
+              "16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:r",
+              "8:sd:R 8:r 16:sd:L 16:r 16:sd:R 16:sd:L q:r",
+              "16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L q:sd:R"
             ]
           ]
         },
@@ -963,7 +963,7 @@
           "learn": [
             "Синкоп: осмина – четвъртина – осмина",
             "Удар между ударите на метронома",
-            "Синкопът заедно с групите и паузите"
+            "Синкопът заедно с ритмичните групи и паузите"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
@@ -1018,7 +1018,7 @@
         },
         {
           "id": "l18",
-          "title": "Четвъртина с точка",
+          "title": "Четвъртина нота с точка",
           "learn": [
             "Точката удължава нотата с половината ѝ",
             "Четвъртина с точка + осмина = 2 удара",
@@ -1034,43 +1034,43 @@
           ],
           "examples": [
             [
-              "qd:sd:R 8:sd:L qd:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "q:sd:R q:sd:L qd:sd:R 8:sd:L",
-              "q:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L qd:sd:R 8:sd:L q:sd:R",
               "qd:sd:R 8:sd:L q:sd:R q:sd:L",
-              "8:sd:R 8:sd:L q:sd:R qd:sd:L 8:sd:R",
-              "q:sd:R qd:sd:L 8:sd:R q:sd:L",
+              "8:sd:R 8:sd:L qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "qd:sd:R 8:sd:L qd:sd:R 8:sd:L",
+              "q:sd:R q:sd:L qd:sd:R 8:sd:L",
               "qd:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
             ],
             [
-              "q:r qd:sd:R 8:sd:L 8:r 8:sd:R",
-              "qd:sd:R 8:sd:L q:r 8:sd:R 8:r",
-              "qd:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "q:r q:sd:R qd:sd:L 8:sd:R",
-              "qd:sd:R 8:sd:L qd:sd:R 8:sd:L",
-              "q:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L qd:sd:R 8:sd:L",
-              "q:sd:R 8:r 8:sd:L qd:sd:R 8:sd:L",
+              "8:r 8:sd:R qd:sd:L 8:sd:R 8:sd:L 8:r",
+              "qd:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L qd:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 8:r q:sd:L qd:sd:R 8:sd:L",
+              "q:r 16:r 16:sd:R 16:sd:L 16:sd:R qd:sd:L 8:sd:R",
+              "qd:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
               "qd:sd:R 8:sd:L q:sd:R q:sd:L"
             ],
             [
               "qd:sd:R 8:sd:L",
-              "8:r 8:sd:R q:sd:L",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
               "qd:sd:R 8:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r",
+              "16:sd:R 16:sd:L 8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
               "qd:sd:R 8:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R q:sd:L",
+              "8:r 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
               "qd:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L q:sd:R"
+              "q:sd:R q:sd:L"
             ],
             [
+              "8:sd:R 8:sd:L qd:sd:R 8:sd:L",
+              "qd:sd:R 8:sd:L q:r",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:sd:R qd:sd:L 8:sd:R",
-              "8:r 8:sd:R qd:sd:L 8:sd:R",
-              "qd:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "qd:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L qd:sd:R 8:sd:L",
-              "qd:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R",
-              "qd:sd:R 8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R qd:sd:L 8:sd:R",
+              "qd:sd:R 8:sd:L 8:r 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R qd:sd:L 8:sd:R",
               "qd:sd:R 8:sd:L q:sd:R"
             ]
           ]
@@ -1195,7 +1195,7 @@
         },
         {
           "id": "l21",
-          "title": "Триоли и шестнайсетини",
+          "title": "Триоли и шестнайсетини ноти",
           "learn": [
             "Смяна от триола към шестнайсетини",
             "3 или 4 удара в един удар",
@@ -1212,52 +1212,52 @@
           "examples": [
             [
               "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:r t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "t8:sd:R t8:r t8:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L t8:sd:R t8:sd:L t8:sd:R",
-              "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:r t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L q:sd:R"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L q:sd:R",
+              "q:sd:R t8:sd:L t8:r t8:sd:R t8:sd:L t8:sd:R t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R q:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L q:sd:R"
             ],
             [
-              "t8:sd:R t8:sd:L t8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:r t8:sd:R t8:sd:L t8:sd:R t8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L t8:sd:R t8:sd:L t8:sd:R q:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R t8:sd:L t8:r t8:sd:R",
-              "8:r 8:sd:R t8:sd:L t8:r t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L"
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:r t8:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:r t8:sd:R 8:r 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L q:sd:R t8:sd:L t8:r t8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R q:r t8:sd:L t8:sd:R t8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L",
               "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L",
-              "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
               "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L"
             ],
             [
-              "t8:sd:R t8:sd:L t8:sd:R q:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 8:r",
-              "t8:sd:R t8:sd:L t8:sd:R 8:r 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
               "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r t8:sd:L t8:r t8:sd:R",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:r t8:sd:L t8:sd:R t8:r t8:sd:L",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "16:r 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:r t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "t8:sd:R t8:r t8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l22",
-          "title": "Триоли и групи",
+          "title": "Триоли, ритмични групи и шестнайсетинкови ритмични групи",
           "learn": [
-            "Триола до група „осмина + 2 шестнайсетини“",
-            "Триола до група „2 шестнайсетини + осмина“",
+            "Триола до ритмична група „осмина + 2 шестнайсетини“",
+            "Триола до ритмична група „2 шестнайсетини + осмина“",
             "Бързо превключване между деленията"
           ],
           "tempo": 60,
@@ -1270,44 +1270,44 @@
           ],
           "examples": [
             [
-              "t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
               "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R q:sd:L"
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R q:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R q:sd:L"
             ],
             [
-              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:r 8:sd:R 16:sd:L 16:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R q:r",
-              "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R"
+              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L 16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L 16:sd:R 16:sd:L 8:sd:R q:sd:L",
+              "16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L t8:sd:R t8:sd:L t8:sd:R q:sd:L"
             ],
             [
               "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L",
               "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L",
-              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
               "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
               "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L"
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "8:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L"
             ],
             [
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R q:r 16:sd:L 16:sd:R 8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R",
-              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L q:r",
-              "8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t8:sd:L t8:sd:R t8:sd:L",
-              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L q:sd:R"
+              "16:sd:R 16:sd:L 8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "q:sd:R 16:sd:L 16:sd:R 8:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L",
+              "t8:sd:R t8:sd:L t8:sd:R 8:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
+              "16:sd:R 16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L t8:sd:R t8:sd:L t8:sd:R",
+              "t8:sd:R t8:sd:L t8:sd:R 16:sd:L 16:sd:R 8:sd:L q:sd:R"
             ]
           ]
         },
@@ -2128,7 +2128,7 @@
         },
         {
           "id": "l37",
-          "title": "6/8 — осмини и четвъртина с точка",
+          "title": "6/8 — осмини ноти и четвъртина нота с точка",
           "learn": [
             "6/8 = 3 + 3, броене „1 2 3 | 1 2 3“",
             "Четвъртина с точка – цял дял от 3 осмини",
@@ -2143,13 +2143,23 @@
           "examples": [
             [
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "qd:sd:R qd:sd:L",
               "qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "qd:sd:R qd:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "qd:sd:R qd:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L",
               "qd:sd:R qd:sd:L"
+            ],
+            [
+              "qd:sd:R qd:r",
+              "8:sd:R 8:sd:L 8:sd:R qd:r",
+              "qd:sd:R qd:r",
+              "8:sd:R 8:sd:L 8:sd:R qd:r",
+              "qd:sd:R qd:r",
+              "8:sd:R 8:sd:L 8:sd:R qd:r",
+              "qd:sd:R qd:r",
+              "qd:r qd:sd:R"
             ],
             [
               "8:sd:R 8:sd:L 8:sd:R qd:r",
@@ -2163,16 +2173,6 @@
             ],
             [
               "qd:r qd:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R qd:r",
-              "qd:sd:R qd:r",
-              "8:sd:R 8:sd:L 8:sd:R qd:r",
-              "qd:sd:R qd:r",
-              "8:sd:R 8:sd:L 8:sd:R qd:r",
-              "qd:sd:R qd:r",
-              "qd:r qd:sd:R"
-            ],
-            [
-              "8:sd:R 8:sd:L 8:sd:R qd:r",
               "qd:sd:R qd:r",
               "8:sd:R 8:sd:L 8:sd:R qd:r",
               "qd:sd:R qd:r",
@@ -2185,10 +2185,10 @@
         },
         {
           "id": "l38",
-          "title": "6/8 — групи и паузите им",
+          "title": "6/8 — ритмични групи и паузите им",
           "learn": [
-            "Групи: четвъртина + осмина, три осмини, четвъртина с точка",
-            "Примери 1–2: само групите",
+            "Ритмични групи: четвъртина + осмина, три осмини, четвъртина с точка",
+            "Примери 1–2: само ритмичните групи",
             "Примери 3–4: и паузите им"
           ],
           "tempo": 80,
@@ -2200,52 +2200,52 @@
           "examples": [
             [
               "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "q:sd:R 8:sd:L qd:sd:R",
-              "qd:sd:R q:sd:L 8:sd:R",
-              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "qd:sd:R qd:sd:L",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L qd:sd:R",
               "q:sd:R 8:sd:L q:sd:R 8:sd:L",
-              "qd:sd:R qd:sd:L"
+              "8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "qd:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R"
             ],
             [
-              "q:sd:R 8:sd:L q:sd:R 8:sd:L",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L qd:sd:R",
               "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R",
-              "qd:sd:R q:sd:L 8:sd:R",
               "qd:sd:R qd:sd:L",
               "qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "q:sd:R 8:sd:L qd:sd:R"
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "qd:sd:R q:sd:L 8:sd:R"
             ],
             [
-              "qd:r qd:sd:R",
-              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R q:r 8:sd:L",
-              "q:sd:R 8:sd:L qd:r",
+              "qd:r q:sd:R 8:sd:L",
+              "q:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:r 8:sd:L qd:r",
               "q:sd:R 8:sd:L q:r 8:sd:R",
-              "qd:sd:R 8:r 8:sd:L 8:sd:R",
-              "q:sd:R 8:r q:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:sd:L q:r 8:sd:R",
+              "q:sd:R 8:r qd:sd:L",
               "q:r 8:sd:R qd:sd:L"
             ],
             [
-              "8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R q:r 8:sd:L",
-              "q:sd:R 8:r 8:sd:L 8:sd:R 8:r",
-              "8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L",
-              "8:sd:R 8:r 8:sd:L q:r 8:sd:R",
-              "q:sd:R 8:r 8:sd:L 8:r 8:sd:R",
-              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:r 8:sd:L qd:sd:R"
+              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:sd:L qd:r",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "q:sd:R 8:sd:L q:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:r 8:r 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:r qd:sd:R"
             ]
           ]
         },
         {
           "id": "l39",
-          "title": "9/8 — групи и паузите им",
+          "title": "9/8 — ритмични групи и паузите им",
           "learn": [
             "9/8 = 3 + 3 + 3",
-            "Групи: четвъртина + осмина, три осмини, четвъртина с точка",
+            "Ритмични групи: четвъртина + осмина, три осмини, четвъртина с точка",
             "Примери 3–4: и паузите им"
           ],
           "tempo": 80,
@@ -2257,53 +2257,53 @@
           ],
           "examples": [
             [
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L qd:sd:R",
-              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L q:sd:R 8:sd:L",
-              "qd:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R",
-              "qd:sd:R qd:sd:L q:sd:R 8:sd:L",
-              "qd:sd:R q:sd:L 8:sd:R qd:sd:L"
-            ],
-            [
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L qd:sd:R",
-              "qd:sd:R qd:sd:L q:sd:R 8:sd:L",
-              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L",
-              "q:sd:R 8:sd:L qd:sd:R q:sd:L 8:sd:R",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
               "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R qd:sd:L qd:sd:R",
               "qd:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R",
-              "q:sd:R 8:sd:L q:sd:R 8:sd:L qd:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R qd:sd:L"
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R qd:sd:L q:sd:R 8:sd:L",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "qd:sd:R qd:sd:L qd:sd:R"
             ],
             [
-              "8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L qd:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "q:sd:R 8:sd:L qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R qd:sd:L",
+              "qd:sd:R q:sd:L 8:sd:R qd:sd:L",
+              "qd:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L qd:sd:R qd:sd:L"
+            ],
+            [
+              "qd:sd:R qd:r 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:r qd:r q:r 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "q:sd:R 8:r 8:r 8:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:r qd:sd:L q:sd:R 8:sd:L",
               "8:sd:R 8:sd:L 8:sd:R qd:r 8:sd:L 8:sd:R 8:sd:L",
-              "q:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "q:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L qd:r",
-              "8:sd:R 8:r 8:sd:L q:sd:R 8:r q:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
-              "q:sd:R 8:r 8:sd:L 8:r 8:sd:R qd:sd:L"
+              "q:sd:R 8:r q:r 8:sd:L qd:sd:R"
             ],
             [
-              "q:sd:R 8:r qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r q:r 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:r",
-              "q:sd:R 8:sd:L qd:sd:R qd:r",
-              "q:sd:R 8:r q:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "8:sd:R 8:sd:L 8:r 8:r 8:sd:R 8:sd:L qd:sd:R"
+              "qd:r 8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "qd:sd:R qd:sd:L q:r 8:sd:R",
+              "q:sd:R 8:r qd:r qd:sd:L",
+              "qd:r 8:r 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
+              "qd:r 8:sd:R 8:sd:L 8:r q:sd:R 8:sd:L",
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R",
+              "qd:sd:R q:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:sd:L 8:r qd:r qd:sd:R"
             ]
           ]
         },
         {
           "id": "l40",
-          "title": "12/8 — групи и паузите им",
+          "title": "12/8 — ритмични групи и паузите им",
           "learn": [
             "12/8 = 3 + 3 + 3 + 3",
-            "Групи: четвъртина + осмина, три осмини, четвъртина с точка",
+            "Ритмични групи: четвъртина + осмина, три осмини, четвъртина с точка",
             "Примери 3–4: и паузите им"
           ],
           "tempo": 80,
@@ -2316,44 +2316,44 @@
           ],
           "examples": [
             [
-              "qd:sd:R qd:sd:L q:sd:R 8:sd:L qd:sd:R",
-              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R qd:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R qd:sd:L",
-              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "qd:sd:R q:sd:L 8:sd:R qd:sd:L qd:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R qd:sd:L",
+              "q:sd:R 8:sd:L qd:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L qd:sd:R q:sd:L 8:sd:R",
               "qd:sd:R qd:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "qd:sd:R q:sd:L 8:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "qd:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R qd:sd:L"
+              "qd:sd:R qd:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L qd:sd:R"
             ],
             [
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R",
-              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R",
-              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L q:sd:R 8:sd:L",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R qd:sd:L 8:sd:R 8:sd:L 8:sd:R qd:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R qd:sd:L qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R qd:sd:L",
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R qd:sd:L",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L 8:sd:R",
               "qd:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "q:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R qd:sd:L"
+              "qd:sd:R q:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L qd:sd:R"
             ],
             [
-              "q:r 8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "q:r 8:sd:R q:r 8:sd:L qd:r qd:sd:R",
-              "8:sd:R 8:r 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L q:r 8:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:r 8:sd:R qd:sd:L",
-              "q:sd:R 8:r q:sd:L 8:sd:R q:sd:L 8:r q:sd:R 8:r",
-              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L",
-              "q:sd:R 8:r 8:r 8:sd:L 8:sd:R qd:sd:L 8:sd:R 8:sd:L 8:r",
-              "8:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:sd:L qd:sd:R qd:sd:L"
+              "8:r 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r q:r 8:sd:R q:sd:L 8:sd:R",
+              "q:sd:R 8:r q:r 8:sd:L qd:sd:R qd:sd:L",
+              "8:sd:R 8:sd:L 8:r qd:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:sd:L q:sd:R 8:sd:L qd:r q:r 8:sd:R",
+              "qd:r 8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L q:r 8:sd:R",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R q:sd:L 8:r",
+              "q:sd:R 8:r q:r 8:sd:L 8:sd:R 8:r 8:sd:L q:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:sd:R qd:r qd:sd:L qd:sd:R"
             ],
             [
-              "8:r 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
-              "qd:sd:R 8:sd:L 8:sd:R 8:r qd:r q:sd:L 8:r",
-              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R q:sd:L 8:r 8:sd:R 8:sd:L 8:r",
-              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R qd:sd:L q:sd:R 8:r",
-              "8:sd:R 8:sd:L 8:sd:R q:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R qd:r",
-              "8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 8:sd:L",
-              "q:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
-              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r qd:sd:L"
+              "qd:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:sd:L 8:r qd:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:sd:R 8:r",
+              "8:sd:R 8:sd:L 8:sd:R q:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r 8:sd:R",
+              "q:sd:R 8:r qd:sd:L qd:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:r q:sd:L 8:r q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R qd:r 8:sd:L 8:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L 8:r q:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L",
+              "qd:sd:R q:r 8:sd:L q:r 8:sd:R qd:sd:L"
             ]
           ]
         },
@@ -2536,7 +2536,7 @@
         },
         {
           "id": "l44",
-          "title": "Секстола, осмини и шестнайсетини",
+          "title": "Секстола, осмини ноти и шестнайсетини ноти",
           "learn": [
             "Смяна между 4 и 6 ноти в удар",
             "Осмини паузи",
@@ -2552,44 +2552,44 @@
           ],
           "examples": [
             [
-              "8:sd:R 8:r 8:sd:L 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:r 8:sd:L",
-              "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L",
-              "8:sd:R 8:r 8:sd:L 8:r 8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L q:sd:R 8:r 8:sd:L",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L q:sd:R 8:r 8:sd:L",
-              "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:r 8:sd:L",
-              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R q:sd:L"
+              "8:r 8:sd:R 8:sd:L 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:sd:L 8:sd:R",
+              "8:sd:R 8:r 8:r 8:sd:L q:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R 8:sd:L 8:r s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r 8:sd:L 8:r 8:r 8:sd:R",
+              "8:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L",
+              "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L",
+              "8:r 8:sd:R 8:r 8:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R q:sd:L"
             ],
             [
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:sd:L 8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:r 8:sd:R 8:r 8:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L q:sd:R",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R",
-              "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:sd:L 8:r s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L",
-              "8:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R q:sd:L",
-              "8:sd:R 8:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r 8:r 8:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L",
-              "q:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:sd:L 8:r q:sd:R"
+              "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 8:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R 8:sd:L 8:r",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:r 8:sd:L",
+              "8:r 8:sd:R 8:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L",
+              "8:sd:R 8:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
+              "8:sd:R 8:sd:L q:sd:R 8:r 8:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L",
+              "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L"
             ],
             [
+              "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
+              "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r",
               "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R",
               "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r",
-              "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
-              "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R",
               "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
               "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R"
             ],
             [
-              "8:sd:R 8:sd:L 8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L q:sd:R 8:sd:L 8:r",
-              "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:r 8:sd:L",
-              "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:sd:L 8:r",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
+              "8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:sd:L 8:r",
+              "8:sd:R 8:r q:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R 8:r 8:sd:L",
               "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R 8:r 8:sd:L",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:sd:L 8:r 8:sd:R",
-              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r q:sd:L"
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:sd:R 8:r 8:sd:L 8:r",
+              "s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L 8:r 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R",
+              "8:r 8:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R s16:sd:L s16:sd:R q:sd:L"
             ]
           ]
         },
@@ -2654,11 +2654,11 @@
         },
         {
           "id": "l46",
-          "title": "Група: осмина + триола",
+          "title": "Ритмична група: осмина нота + триола",
           "learn": [
             "Осмина и триола от шестнайсетини – в един удар",
-            "Групата до осмини и шестнайсетини",
-            "Четвъртини между групите"
+            "Ритмичната група до осмини и шестнайсетини",
+            "Четвъртини между ритмичните групи"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
@@ -2670,52 +2670,52 @@
           ],
           "examples": [
             [
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
               "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R 8:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L q:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R q:sd:L"
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R"
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R 8:sd:L q:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R q:sd:L q:sd:R"
             ],
             [
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
               "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
               "8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R",
+              "q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
               "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L"
             ],
             [
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
               "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R"
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "q:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l47",
-          "title": "Група: осмина + триола и паузи",
+          "title": "Ритмична група: осмина нота + триола и паузи",
           "learn": [
-            "Групата и с осмина пауза отпред",
+            "Ритмичната група и с осмина пауза отпред",
             "Паузите на четвъртина, осмина и шестнайсетина",
             "Точно влизане след паузата"
           ],
@@ -2729,54 +2729,54 @@
           ],
           "examples": [
             [
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:r 8:r 8:sd:L",
-              "8:r 8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L q:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R q:r 8:r t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
-              "q:r 8:r t16:sd:R t16:sd:L t16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r",
-              "q:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:r",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R q:sd:L"
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:r q:r 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:r t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "16:r 16:sd:R 16:sd:L 16:sd:R q:r 8:r t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R q:r 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R 8:r 8:sd:L q:r",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R q:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R",
+              "q:r 8:r 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R q:sd:L"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R",
-              "16:r 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R",
-              "8:r t16:sd:R t16:sd:L t16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L",
-              "8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R q:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r 8:sd:R 8:r",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R q:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R q:sd:L"
+              "16:r 16:sd:R 16:sd:L 16:sd:R q:r 8:sd:L 8:r 8:r t16:sd:R t16:sd:L t16:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L q:r 8:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R q:r",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L q:sd:R",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R 8:sd:L 8:r 8:r t16:sd:R t16:sd:L t16:sd:R",
+              "8:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R q:r",
+              "8:sd:R 8:r 8:sd:L 8:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R"
             ],
             [
-              "8:r t16:sd:R t16:sd:L t16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "16:r 16:sd:R 16:sd:L 16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:r t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L",
               "8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r",
-              "8:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "8:r t16:sd:R t16:sd:L t16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
               "8:r 8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
-              "16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R",
-              "8:r t16:sd:R t16:sd:L t16:sd:R q:r",
-              "8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R"
+              "8:r 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "16:r 16:sd:R 16:sd:L 16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:r t16:sd:R t16:sd:L t16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:r",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L q:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "q:r 16:r 16:sd:R 16:sd:L 16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "q:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L q:r",
+              "8:sd:R 8:sd:L q:r 8:r t16:sd:R t16:sd:L t16:sd:R",
+              "8:r 8:sd:R 8:sd:L 8:r 8:r t16:sd:R t16:sd:L t16:sd:R",
+              "8:r 8:sd:R 8:r 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R",
+              "q:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "q:r 8:r 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "q:r 8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
               "q:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l48",
-          "title": "Група: триола + осмина",
+          "title": "Ритмична група: триола + осмина нота",
           "learn": [
             "Триола от шестнайсетини и осмина – в един удар",
-            "Групата до осмини и шестнайсетини",
-            "Разлика с групата от урок 46"
+            "Ритмичната група до осмини и шестнайсетини",
+            "Разлика с ритмичната група от урок 46"
           ],
           "tempo": 60,
           "timeSignature": "4/4",
@@ -2788,52 +2788,52 @@
           ],
           "examples": [
             [
-              "8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "q:sd:R q:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R"
-            ],
-            [
-              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R q:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R",
+              "8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L",
               "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L",
+              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R q:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R"
             ],
             [
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R",
+              "q:sd:R q:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R q:sd:L q:sd:R"
+            ],
+            [
               "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
               "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L"
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L"
             ],
             [
-              "8:sd:R 8:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R q:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
-              "q:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
               "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R q:sd:L"
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:sd:L q:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R"
             ]
           ]
         },
         {
           "id": "l49",
-          "title": "Група: триола + осмина и паузи",
+          "title": "Ритмична група: триола + осмина нота и паузи",
           "learn": [
-            "Групата и с осмина пауза отзад",
+            "Ритмичната група и с осмина пауза отзад",
             "Паузите на четвъртина, осмина и шестнайсетина",
             "Точно спиране след триолата"
           ],
@@ -2847,52 +2847,52 @@
           ],
           "examples": [
             [
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R 8:r 8:sd:L 8:r 8:sd:R",
-              "q:r 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r 8:sd:R",
-              "q:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r 8:sd:R 8:r 8:sd:L",
-              "q:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R",
-              "8:r 8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R 8:r 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:r 8:r 8:sd:L",
-              "8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r 8:sd:R q:sd:L"
+              "8:r 8:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:r 8:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 8:r 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r",
+              "8:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R 8:r 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r q:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:sd:R",
+              "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R q:sd:L"
             ],
             [
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R 8:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r q:r 16:r 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
-              "8:r 8:sd:R 16:sd:L 16:sd:R 16:sd:L 16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 16:r 16:sd:R 16:sd:L 16:sd:R",
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R q:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R q:sd:L 8:sd:R 8:r",
-              "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r q:sd:R q:sd:L",
-              "8:r 8:sd:R q:r 16:r 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R q:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r 8:sd:L q:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r 8:sd:R 8:sd:L 8:r 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:r",
               "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L q:sd:R"
             ],
             [
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r 8:sd:R",
-              "q:r t16:sd:R t16:sd:L t16:sd:R 8:r",
               "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r q:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r 8:sd:L",
+              "q:r t16:sd:R t16:sd:L t16:sd:R 8:r",
               "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r 8:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:r",
               "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R"
             ],
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L q:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "16:r 16:sd:R 16:sd:L 16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L 8:sd:R",
-              "q:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r",
+              "8:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:r 8:sd:L",
+              "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r q:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "q:r 8:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
               "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r 8:sd:L 8:r 8:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 16:r 16:sd:L 16:sd:R 16:sd:L 8:r 8:sd:R",
-              "q:sd:R q:r t16:sd:L t16:sd:R t16:sd:L 8:r",
-              "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r q:sd:R"
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:r 8:sd:R 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:r",
+              "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R q:sd:L"
             ]
           ]
         },
         {
           "id": "l50",
-          "title": "Комбинация: осмина и триола",
+          "title": "Комбинация: осмина нота и триола",
           "learn": [
-            "Двете групи заедно",
+            "Двете ритмични групи заедно",
             "С паузите им",
             "Четене на по-сложен ритъм"
           ],
@@ -2906,44 +2906,44 @@
           ],
           "examples": [
             [
-              "16:sd:R 16:sd:L 16:sd:R 16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "8:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R"
+              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "8:r t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:sd:R 8:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
+              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R q:sd:L"
             ],
             [
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:r 8:r t16:sd:R t16:sd:L t16:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 16:sd:R 16:sd:L 16:sd:R 16:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:r t16:sd:R t16:sd:L t16:sd:R",
-              "8:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "q:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R q:sd:L"
+              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 16:sd:R 16:sd:L 16:sd:R 16:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r 16:r 16:sd:R 16:sd:L 16:sd:R 16:r 16:sd:L 16:sd:R 16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L 8:r 8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 16:sd:L 16:sd:R 16:sd:L 16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R q:sd:L"
             ],
             [
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R",
               "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R",
-              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
               "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R",
               "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L"
             ],
             [
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r q:r",
-              "q:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
-              "8:sd:R t16:sd:L t16:sd:R t16:sd:L 16:r 16:sd:R 16:sd:L 16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L q:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
               "t16:sd:R t16:sd:L t16:sd:R 8:r 8:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r 8:sd:L 8:r t16:sd:R t16:sd:L t16:sd:R",
-              "t16:sd:R t16:sd:L t16:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
-              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L q:sd:R"
+              "8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:r 8:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "t16:sd:R t16:sd:L t16:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:sd:L t16:sd:R t16:sd:L t16:sd:R",
+              "8:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:r",
+              "t16:sd:R t16:sd:L t16:sd:R 8:sd:L 8:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R 8:sd:L",
+              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:sd:R 8:r t16:sd:L t16:sd:R t16:sd:L",
+              "8:r t16:sd:R t16:sd:L t16:sd:R t16:sd:L t16:sd:R t16:sd:L 8:r q:sd:R"
             ]
           ]
         }
